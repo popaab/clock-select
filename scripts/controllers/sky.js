@@ -142,14 +142,14 @@
               
           });
 
-          object = new THREE.Mesh(new THREE.TetrahedronGeometry(40, 3), shiny);
+          dot = new THREE.Mesh(new THREE.TetrahedronGeometry(40, 3), shiny);
 
-          object.position.x = 0;
-          object.position.y = 0;
-          object.position.z = 0;
+          dot.position.x = 0;
+          dot.position.y = 0;
+          dot.position.z = 0;
 
-          scene.add(object);
-          EventsControls.attach( object );
+          scene.add(dot);
+          
 
     }
 
