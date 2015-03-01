@@ -130,6 +130,7 @@
           wireobj.position.y = object.position.y;
           wireobj.position.z = object.position.z;
           scene.add( wireobj );
+          EventsControls.attach( object );
 
         
 
