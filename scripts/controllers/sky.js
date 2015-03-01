@@ -1,10 +1,5 @@
       var container, stats;
-      var camera, scene, renderer
-          aspectRatio = width / height,
-          near = 0.1,
-          far = 1000,
-          width = window.innerWidth,
-          height = window.innerHeight;
+      var camera, scene, renderer;
 
       var radius = 100, theta = 0;
 
@@ -13,32 +8,23 @@
 
       function init() {
 
-        if (window.WebGLRenderingContext) {
-          renderer = new THREE.WebGLRenderer({alpha: true});
-        } else {
-          renderer = new THREE.CanvasRenderer();
-        }
         container = document.createElement( 'div' );
         document.body.appendChild( container );
-        scene = new THREE.Scene();
-  
-        // renderer.setClearColor( 0xf0f0f0 );
-        renderer.setSize( width, height );
+
+        renderer = new THREE.WebGLRenderer();
+        renderer.setClearColor( 0xf0f0f0 );
+        renderer.setSize( window.innerWidth, window.innerHeight );
         renderer.sortObjects = false;
         container.appendChild(renderer.domElement);
 
-
-        //add camera
         var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
         var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 10, FAR = 80000;
         camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
-        camera.position.set(0,150,400);
-        scene.add(camera);
-        camera.lookAt(scene.position);
+        camera.position.set(0,250,400);
         
-        
+        scene = new THREE.Scene();
 
-        //lights red and blue
+
         var L1 = new THREE.PointLight(0xff0000, 1);
         L1.position.x = 500;
         L1.position.y = 400;
@@ -53,7 +39,7 @@
 
         scene.add(L3);
 
-        
+
         EventsControls = new EventsControls( camera, renderer.domElement );
 
         EventsControls.attachEvent( 'mouseOver', function () {
@@ -125,7 +111,6 @@
         renderer.render( scene, camera );
 
       }
-
 
 
 
