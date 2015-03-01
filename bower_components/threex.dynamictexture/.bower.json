@@ -1,0 +1,12 @@
+{
+  "name": "threex.dynamictexture",
+  "homepage": "https://github.com/jeromeetienne/threex.dynamictexture",
+  "_release": "a755fd1e8a",
+  "_resolution": {
+    "type": "commit",
+    "commit": "a755fd1e8a"
+  },
+  "_source": "git://github.com/jeromeetienne/threex.dynamictexture.git",
+  "_target": "a755fd1e8a",
+  "_originalSource": "threex.dynamictexture"
+}
