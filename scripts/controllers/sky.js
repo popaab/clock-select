@@ -141,13 +141,6 @@ function addOcta()
 var x1, y1;
 var mc = document.getElementById("ThreeJS");
 
-var pinch = new Hammer.Pinch();
-var touch = new Hammer.Touch();
-// add to the Manager
-mc.add([pinch]);
-mc.add([touch]);
-
-
 
 $(mc).hammer().on("pinch", function(ev) {
         ev.preventDefault();
