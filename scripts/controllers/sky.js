@@ -190,8 +190,24 @@ var element = document.getElementById("ThreeJS");
     mc.add(new Hammer.Pinch({ threshold: 0}));
 
     mc.add(new Hammer.Tap());
+    mc.add(new Hammer.Pan());
+    mc.on("panstart panmove", function onPan(ev) {
+        if( ev.pointerType === "touch"){
 
-    mc.on("pinch", onPinch)
+                  console.log(ev.pointerType);
+                  
+                  panx1 = ev.pointers[0].clientX;
+                  pany1 = ev.pointers[0].clientY;
+           
+                  console.log("paning : " + x1 + " " + y1);
+                  checkSelection(x1, y1);
+
+                  // document.getElementById("resultDIV").innerHTML = "pann: "+ x1 + " " + y1;
+        }
+                  
+
+    }););
+    mc.on("pinch", onPinch);
     mc.on("tap", function onTap(ev) {
         if( ev.pointerType === "touch"){
 
@@ -211,10 +227,10 @@ var element = document.getElementById("ThreeJS");
 
 
     function onPinch(ev) {
-    // if(ev.type == 'pinchout') {
+    if(ev.type == 'pinchout') {
           console.log("pinch");
             addOcta();
-        // }
+        }
 
     }
 
