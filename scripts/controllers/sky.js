@@ -161,10 +161,10 @@ addOcta();
 mc.on("pan", function(ev) {
         ev.preventDefault();
 
-    var x1 = ev.gesture.center.pageX;
+    var x1 = ev.gesture.pageX;
 
-    var y1 = ev.gesture.center.pageY;
-    consloe.log(x1);
+    var y1 = ev.gesture.pageY;
+    console.log(ev);
   
 
     var vector = new THREE.Vector3( x1, y1, 1 );
