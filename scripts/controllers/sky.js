@@ -310,7 +310,7 @@ var element = document.getElementById("ThreeJS");
     mc.on("panstart panmove", function onPan(ev) {
         if( ev.pointerType === "touch"){
 
-                  console.log(ev.pointerType);
+                  console.log(ev);
                   
                   panx1 = ev.pointers[0].clientX;
                   pany1 = ev.pointers[0].clientY;
