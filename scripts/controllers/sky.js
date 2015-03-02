@@ -159,8 +159,8 @@ var element = document.getElementById("ThreeJS");
 mc.on("tap", function onTap(ev) {
             console.log(ev);
 
-            x1 = ev.gesture.center.pageX;
-            y1 = ev.gesture.center.pageY;
+            x1 = ev.posx;
+            y1 = ev.posy;
 
             console.log(x1 + " " + y1);
 
