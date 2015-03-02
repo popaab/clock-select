@@ -138,9 +138,9 @@ function addOcta()
   
   targetList.push(octa);
 }
+var x1, y1;
+var mc = document.getElementById("ThreeJS");
 
-var mc = new Hammer.Manager(document.body);
-var count = 0;
 var pinch = new Hammer.Pinch();
 var touch = new Hammer.Touch();
 // add to the Manager
@@ -149,7 +149,7 @@ mc.add([touch]);
 
 
 
-mc.on("pinch", function(ev) {
+$(mc).hammer().on("pinch", function(ev) {
         ev.preventDefault();
 addOcta();
   setInterval(function(){
@@ -160,7 +160,7 @@ addOcta();
 
 });
 
-mc.on("touch", function(e) {
+$(mc).hammer().on("touch", function(e) {
         e.preventDefault();
 
     x1 = ( e.gesture.center.pageX /  window.innerWidth ) * 2 - 1;
