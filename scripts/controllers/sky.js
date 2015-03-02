@@ -163,6 +163,7 @@ function addOcta(x,y,z){
   }
   var octa= new THREE.Mesh( octaGeom, faceColorMaterial );
   octa.position.set(position[0], position[2], position[1]);
+  console.log(position[0] + " " + position[2] + " " + position[1]);
   // creates a wireMesh object
   var wireOcta = new THREE.Mesh(octaGeom, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
   
