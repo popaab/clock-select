@@ -97,9 +97,6 @@ function init()
   // initialize object to perform world/screen calculations
   projector = new THREE.Projector();
   
-  // when the mouse moves, call the given function
-  document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-  document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 }
 function addOcta()
@@ -145,99 +142,63 @@ var element = document.getElementById("ThreeJS");
 
 
     mc.add(new Hammer.Swipe()).recognizeWith(mc.get('pan'));
-    mc.add(new Hammer.Rotate({ threshold: 0 })).recognizeWith(mc.get('pan'));
-    mc.add(new Hammer.Pinch({ threshold: 0,  pointerType: "touch", pointer: 0 })).recognizeWith([mc.get('pan'), mc.get('rotate')]);
-
+    mc.add(new Hammer.Pinch({ threshold: 0}));
     mc.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
     mc.add(new Hammer.Tap());
 
     mc.on("panstart panmove", onPan);
     mc.on("swipe", onSwipe);
-
+    mc.on("pinch", onPinch)
 mc.on("tap", function onTap(ev) {
-  if( ev.pointerType === "touch"){
+        if( ev.pointerType === "touch"){
 
-            console.log(ev.pointerType);
-            
-            x1 = ev.pointers[0].clientX;
-            y1 = ev.pointers[0].clientY;
-     
-            console.log("tap: " + x1 + " " + y1);
-            checkSelection(x1, y1);
+                  console.log(ev.pointerType);
+                  
+                  x1 = ev.pointers[0].clientX;
+                  y1 = ev.pointers[0].clientY;
+           
+                  console.log("tap: " + x1 + " " + y1);
+                  checkSelection(x1, y1);
 
-            document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
-  }
-            
-       
-// console.log(ev.gesture);
-//       x1 = ev.gesture.touches[0].pageX;
-//       y1 = ev.gesture.touches[0].pageY;
-   
-// document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
+                  document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
+        }
+                  
 
     });
 
     mc.on("doubletap", onDoubleTap);
-    
-
-    // var whatever = function(){
-
-    //     var element = document.getElementById('ThreeJS');
-    //     $(element).hammer().on("pan", function(e){
-            
-    //     });
-    // }
-
 
     function onPan(ev) {
-      // console.log(ev);
 
-            // x1 = ev.gesture.center.pageX;
-            // y1 = ev.gesture.center.pageY;
+       if( ev.pointerType === "touch"){
 
-            // document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
-       
-      // console.log(ev.gesture);
-       
-      //  document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
-    
-    }
+                  console.log(ev.pointerType);
+                  
+                  x1 = ev.pointers[0].clientX;
+                  y1 = ev.pointers[0].clientY;
+           
+                  console.log("pan: " + x1 + " " + y1);
+                  checkSelection(x1, y1);
 
-    
-
-
-
-    function onPinch(ev) {
-
-
-        if(ev.type == 'pinchout') {
-            ev.preventDefault();
-            addOcta();
         }
+                  
 
 
     }
+
+
 
    function onSwipe(ev) {
     
-      // x1 = ev.gesture.touches[0].pageX;
-      // y1 = ev.gesture.touches[0].pageY;
-      // console.log(ev.gesture);
-      // document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
-       // checkSelection();
-    //     var angle = 50;
-    //     transform.ry = (ev.direction & Hammer.DIRECTION_HORIZONTAL) ? 1 : 0;
-    //     transform.rx = (ev.direction & Hammer.DIRECTION_VERTICAL) ? 1 : 0;
-    //     transform.angle = (ev.direction & (Hammer.DIRECTION_RIGHT | Hammer.DIRECTION_UP)) ? angle : -angle;
-
-    //     clearTimeout(timer);
-    //     timer = setTimeout(function () {
-    //         resetElement();
-    //     }, 300);
-    //     requestElementUpdate();
-    //     logEvent(ev.type);
    }
 
+    function onPinch(ev) {
+    if(ev.type == 'pinchout') {
+
+            addOcta();
+        }
+
+    }
 
 
     function onDoubleTap(ev) {
