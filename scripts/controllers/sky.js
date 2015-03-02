@@ -221,6 +221,7 @@ function ColorSelected(){
 function checkSelection(x1, y1){
   // find intersections
 var vector = new THREE.Vector3( x1, y1, 1 ); 
+console.log("check selection: " + x1 + " " + y1);
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
   
