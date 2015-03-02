@@ -29,6 +29,10 @@ var selectedColor=new THREE.Color( 0x4466dd );
 var mouseSphereCoords = null;
 var mouseSphere=[];
 
+var x1, y1;
+x1 = null;
+y1 = null;
+
 init();
 animate();
 
@@ -158,9 +162,10 @@ mc.on("tap", function(ev) {
         ev.preventDefault();
 
     var x1 = e.gesture.center.pageX;
+
     var y1 = e.gesture.center.pageY;
   checkSelection(); 
-
+console.log(x1 + ' ' y1);
 
 });
 
@@ -248,7 +253,7 @@ function checkHighlight(){
 
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
-  var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
+  var vector = new THREE.Vector3( x1, y1, 1 );
   projector.unprojectVector( vector, camera );
   var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
