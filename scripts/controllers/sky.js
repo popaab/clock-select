@@ -164,7 +164,7 @@ var mc = new Hammer.Manager(document.body);
       y1 = ev.gesture.center.pageY;
 
        checkSelection();
-        var vector = new THREE.Vector3( x1, y1, 1 ); 
+       
        document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
     
     }
@@ -198,7 +198,7 @@ var mc = new Hammer.Manager(document.body);
       
       x1 = ev.gesture.center.pageX;
       y1 = ev.gesture.center.pageY;
-      var vector = new THREE.Vector3( x1, y1, 1 ); 
+      
       document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
        checkSelection();
     //     var angle = 50;
@@ -272,7 +272,7 @@ function ColorSelected(){
 
 function checkSelection(){
   // find intersections
-
+var vector = new THREE.Vector3( x1, y1, 1 ); 
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
   
