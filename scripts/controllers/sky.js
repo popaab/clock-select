@@ -160,7 +160,7 @@ document.addEventListener( 'touchmove', onDocumentTouchMove, false );
               
           });
 
-          object = new THREE.Mesh(new THREE.TetrahedronGeometry(40, 3), shiny);
+          object = new THREE.Mesh(new THREE.TetrahedronGeometry(10, 3), shiny);
 
           object.position.x = 0;
           object.position.y = 0;
