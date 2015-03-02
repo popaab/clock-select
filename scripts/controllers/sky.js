@@ -188,8 +188,8 @@ var mc = new Hammer.Manager(document.body);
     function onTouch(ev) {
       console.log(ev);
 
-            x1 = ev.gesture.center.pageX;
-            y1 = ev.gesture.center.pageY;
+            x1 = ev.gesture.pageX;
+            y1 = ev.gesture.pageY;
 
             document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
        
