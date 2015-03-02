@@ -168,7 +168,7 @@ function addOcta(x,y,z){
   var wireOcta = new THREE.Mesh(octaGeom, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
   
 
-  if( amountNow <= maxAlarms){
+  // if( amountNow <= maxAlarms){
 
         scene.add(octa);
   // wireMesh object is added to the original as a sub-object
@@ -177,7 +177,7 @@ function addOcta(x,y,z){
   targetList.push(octa);
   amountNow++;
     
-  }
+
 
 }
 
