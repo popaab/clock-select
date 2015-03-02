@@ -123,10 +123,10 @@ function init()
 
   addOcta();
   
-  var newSphereGeom= new THREE.SphereGeometry(5,5,5);
-  var sphere= new THREE.Mesh(newSphereGeom, new THREE.MeshBasicMaterial({ color: 0x2266dd }));
-  scene.add(sphere);
-  mouseSphere.push(sphere);
+  // var newSphereGeom= new THREE.SphereGeometry(5,5,5);
+  // var sphere= new THREE.Mesh(newSphereGeom, new THREE.MeshBasicMaterial({ color: 0x2266dd }));
+  // scene.add(sphere);
+  // mouseSphere.push(sphere);
 
   //////////////////////////////////////////////////////////////////////
   
@@ -286,17 +286,17 @@ function checkHighlight(){
 }
 
 function CheckMouseSphere(){
-  // if the coordinates exist, make the sphere visible
-  if(mouseSphereCoords != null){
-    //console.log(mouseSphereCoords[0].toString()+","+mouseSphereCoords[1].toString()+","+mouseSphereCoords[2].toString());
-    mouseSphere[0].position.set(mouseSphereCoords[0],mouseSphereCoords[1],mouseSphereCoords[2]);
-    mouseSphere[0].visible = true;
-  }
-  else{ // otherwise hide the sphere
+//   // if the coordinates exist, make the sphere visible
+//   if(mouseSphereCoords != null){
+//     //console.log(mouseSphereCoords[0].toString()+","+mouseSphereCoords[1].toString()+","+mouseSphereCoords[2].toString());
+//     mouseSphere[0].position.set(mouseSphereCoords[0],mouseSphereCoords[1],mouseSphereCoords[2]);
+//     mouseSphere[0].visible = true;
+//   }
+//   else{ // otherwise hide the sphere
 
-    // console.log('gone');
-  }
-}
+//     // console.log('gone');
+//   }
+// }
 function toString(v) { return "[ " + v.x + ", " + v.y + ", " + v.z + " ]"; }
 
 
@@ -316,7 +316,7 @@ var element = document.getElementById("ThreeJS");
                   var pany = ev.pointers[0].clientY;
            
                   console.log("paning : " + panx + " " + pany);
-                  // checkSelection(panx1, pany1)
+                  checkSelection(panx, pany);
       
 }
     });
