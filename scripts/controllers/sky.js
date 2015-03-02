@@ -311,10 +311,10 @@ var element = document.getElementById("ThreeJS");
         
                   console.log(ev);
                   
-                  panx1 = ev.pointers[0].clientX;
-                  pany1 = ev.pointers[0].clientY;
+                  // panx1 = ev.pointers[0].clientX;
+                  // pany1 = ev.pointers[0].clientY;
            
-                  console.log("paning : " + x1 + " " + y1);
+                  console.log("paning : " + pointers[0]);
                   // checkSelection(panx1, pany1);
       
 
