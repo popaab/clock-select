@@ -141,7 +141,7 @@ function addOcta()
 }
 var mc = new Hammer.Manager(document.body);
 var element = document.getElementById("ThreeJS");
-    mc.add(new Hammer.Pan({ threshold: 0, pointersType: ['touch']}));
+    mc.add(new Hammer.Pan({ threshold: 0, pointerType: ['touch']}));
 
 
     mc.add(new Hammer.Swipe()).recognizeWith(mc.get('pan'));
@@ -160,8 +160,8 @@ mc.on("tap", function onTap(ev) {
 
             console.log(ev);
 
-            x1 = this.ev.pointers[0].x;
-            y1 = this.ev.pointers[0].y;
+            x1 = ev.pointers[0].x;
+            y1 = ev.pointers[0].y;
      
 
             console.log(x1 + " " + y1 );
