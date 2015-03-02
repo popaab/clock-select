@@ -136,7 +136,7 @@ function addOcta()
   
   targetList.push(octa);
 }
-var mc = new Hammer.Manager('.ThreeJS');
+var mc = new Hammer.Manager(document.body);
 
     mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
 
