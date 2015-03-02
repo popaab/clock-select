@@ -158,12 +158,12 @@ addOcta();
 
 });
 
-mc.on("pan", function(ev) {
+mc.on("touch", function(ev) {
         ev.preventDefault();
 
-    var x1 = ev.gesture.x;
+    x1 = ev.gesture.touches[0].pageX;
+    y1 = ev.gesture.touches[0].pageY;
 
-    var y1 = ev.gesture.y;
     console.log(ev);
   
 
