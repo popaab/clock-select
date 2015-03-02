@@ -162,9 +162,9 @@ mc.on("tap", function onTap(ev) {
             x1 = ev.gersture.pointers[0].x
             y1 = ev.gersture.pointers[0].y
      
-            console.log("tap: "x1 + " " + y1);
+            console.log("tap: " + x1 + " " + y1);
 
-            document.getElementById("resultDIV").innerHTML = "tap: "x1 + " " + y1;
+            document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
   }
             
        
