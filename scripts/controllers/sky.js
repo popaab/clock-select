@@ -163,7 +163,7 @@ mc.on("tap", function onTap(ev) {
             y1 = ev.pointers[0].clientY;
      
             console.log("tap: " + x1 + " " + y1);
-            checkSelection();
+            checkSelection(x1, y1);
 
             document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
   }
@@ -287,7 +287,7 @@ function ColorSelected(){
     });
 }
 
-function checkSelection(){
+function checkSelection(x1, y1){
   // find intersections
 var vector = new THREE.Vector3( x1, y1, 1 ); 
   // create a Ray with origin at the mouse position
@@ -328,7 +328,7 @@ var vector = new THREE.Vector3( x1, y1, 1 );
     intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
   }
 }
-function checkHighlight(){
+function checkHighlight(x1, y1){
   // find intersections
 
   // create a Ray with origin at the mouse position
@@ -403,7 +403,7 @@ function animate()
 function update()
 {
 
-  checkHighlight();
+  checkHighlight(x1, y1);
   CheckMouseSphere();
   keyboard.update();
   
