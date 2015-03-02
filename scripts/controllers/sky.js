@@ -226,6 +226,8 @@ var mc = new Hammer.Manager(document.body);
             x1 = ev.gesture.center.pageX;
             y1 = ev.gesture.center.pageY;
 
+            console.log(x1 + " " + y1);
+
             document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
        
 // console.log(ev.gesture);
