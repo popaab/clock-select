@@ -140,10 +140,10 @@ function addOcta()
 var mc = new Hammer.Manager(document.body);
 var count = 0;
 var pinch = new Hammer.Pinch();
-var touch = new Hammer.TouchMove();
+
 // add to the Manager
 mc.add([pinch]);
-mc.add([touch]);
+
 
 
 
