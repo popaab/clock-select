@@ -30,6 +30,8 @@ var mouseSphereCoords = null;
 var mouseSphere=[];
 var mainTime;
 
+var maxAlarms = 10;
+var amountNow = 0;
 var x1, y1;
 x1 = null;
 y1 = null;
@@ -135,6 +137,9 @@ function init()
 }
 function addOcta()
 {
+
+
+
   var position = new Array();
   var notAboveGround = true;
   var face;
@@ -164,11 +169,18 @@ function addOcta()
   // creates a wireMesh object
   var wireOcta = new THREE.Mesh(octaGeom, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
   
-  scene.add(octa);
+
+  if( amountNow <= maxAlarms){
+
+        scene.add(octa);
   // wireMesh object is added to the original as a sub-object
   octa.add(wireOcta );
   
   targetList.push(octa);
+  amountNow++;
+    
+  }
+
 }
 
 
@@ -258,7 +270,7 @@ console.log("check selection: " + x1 + " " + y1);
     intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
   }
 }
-function checkHighlight(){
+function checkHighlight(x1, y1){
   // find intersections
 
   // create a Ray with origin at the mouse position
@@ -317,7 +329,7 @@ function CheckMouseSphere(){
   }
   else{ // otherwise hide the sphere
 
-    console.log('gone');
+    // console.log('gone');
   }
 }
 function toString(v) { return "[ " + v.x + ", " + v.y + ", " + v.z + " ]"; }
@@ -333,14 +345,14 @@ function animate()
 function update()
 {
 
-  checkHighlight();
+  checkHighlight(x1, y1);
   CheckMouseSphere();
   keyboard.update();
   
-  if ( keyboard.down("up") ) 
-  {   
-    addOcta();
-  }
+  // if ( keyboard.down("up") ) 
+  // {   
+  //   addOcta();
+  // }
   ColorSelected();
   //intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
   controls.update();
