@@ -156,7 +156,23 @@ var mc = new Hammer.Manager(document.body);
     mc.on("pinchout", onPinch);
 
     
-    mc.on("tap", onTap);
+    mc.on("tap", function onTap(ev) {
+            console.log(ev);
+
+            x1 = ev.gesture.center.pageX;
+            y1 = ev.gesture.center.pageY;
+
+            console.log(x1 + " " + y1);
+
+            document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
+       
+// console.log(ev.gesture);
+//       x1 = ev.gesture.touches[0].pageX;
+//       y1 = ev.gesture.touches[0].pageY;
+   
+// document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
+
+    });
     mc.on("doubletap", onDoubleTap);
     
 
@@ -220,23 +236,7 @@ var mc = new Hammer.Manager(document.body);
     //     logEvent(ev.type);
    }
 
-    function onTap(ev) {
-            console.log(ev);
 
-            x1 = ev.gesture.center.pageX;
-            y1 = ev.gesture.center.pageY;
-
-            console.log(x1 + " " + y1);
-
-            document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
-       
-// console.log(ev.gesture);
-//       x1 = ev.gesture.touches[0].pageX;
-//       y1 = ev.gesture.touches[0].pageY;
-   
-// document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
-
-    }
 
     function onDoubleTap(ev) {
 
