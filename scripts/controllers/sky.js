@@ -160,9 +160,9 @@ var mc = new Hammer.Manager(document.body);
     
     function onPan(ev) {
        
-      // console.log(ev.gesture);
+      console.log(ev.gesture);
        
-       // document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
+       document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
     
     }
 
@@ -192,10 +192,10 @@ var mc = new Hammer.Manager(document.body);
 
    function onSwipe(ev) {
     
-      // x1 = ev.gesture.touches[0].pageX;
-      // y1 = ev.gesture.touches[0].pageY;
-      // console.log(ev.gesture);
-      // document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
+      x1 = ev.gesture.touches[0].pageX;
+      y1 = ev.gesture.touches[0].pageY;
+      console.log(ev.gesture);
+      document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
        // checkSelection();
     //     var angle = 50;
     //     transform.ry = (ev.direction & Hammer.DIRECTION_HORIZONTAL) ? 1 : 0;
