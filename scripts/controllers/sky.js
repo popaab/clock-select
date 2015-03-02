@@ -106,6 +106,7 @@ function addOcta()
 {
   var position = new Array();
   var notAboveGround = true;
+  var face;
   while(notAboveGround){
     position[0]=Math.random()*floorSide-floorSide/2;
     position[1]=Math.random()*floorSide-floorSide/2;
@@ -158,7 +159,7 @@ var mc = new Hammer.Manager(document.body);
 
 
     var whatever = function(){
-        'use strict';
+
         var x1, y1;
         var element = document.getElementById("ThreeJS");
         $(element).hammer().on("pan", function(e){
