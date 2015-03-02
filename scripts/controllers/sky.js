@@ -11,7 +11,7 @@
 
 
 
-                var windowHalfX = window.innerWidth / 2;
+      var windowHalfX = window.innerWidth / 2;
       var windowHalfY = window.innerHeight / 2;
 
 
@@ -190,7 +190,7 @@ document.addEventListener( 'touchmove', onDocumentTouchMove, false );
         // var z = camera.position.z;
         // camera.position.x = x * Math.cos(0.00031) + z * Math.sin(0.00031);
         // camera.position.z = z * Math.cos(0.00031) - x * Math.sin(0.00031);
-        // camera.lookAt(scene.position);
+        camera.lookAt(scene.position);
 
         camera.rotation.y += ( targetRotation - camera.rotation.y ) * 0.05;
 
