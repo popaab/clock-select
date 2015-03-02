@@ -331,9 +331,10 @@ var element = document.getElementById("ThreeJS");
                   
                   x1 = ev.pointers[0].clientX;
                   y1 = ev.pointers[0].clientY;
+                  addOcta(pinchx,pinchy,20);
            
                   console.log("tap: " + x1 + " " + y1);
-                  checkSelection(x1, y1);
+                  // checkSelection(x1, y1);
 
                   document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
         }
@@ -351,7 +352,7 @@ var element = document.getElementById("ThreeJS");
             
             var pinchx = ev.pointers[0].clientX;
             var pinchy = ev.pointers[0].clientY;
-            addOcta(pinchx,pinchy,20);
+            
         // }
         }
  
