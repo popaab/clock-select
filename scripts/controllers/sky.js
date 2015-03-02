@@ -149,7 +149,7 @@ var element = document.getElementById("ThreeJS");
     mc.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mc.get('pan'), mc.get('rotate')]);
 
     mc.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
-    mc.add(new Hammer.Tap({pointersType: ['touch']}));
+    mc.add(new Hammer.Tap({pointerType: ["touch"]}));
 
     mc.on("panstart panmove", onPan);
     mc.on("swipe", onSwipe);
