@@ -159,8 +159,8 @@ mc.on("tap", function onTap(ev) {
 
             console.log(ev);
             
-            x1 = ev.pointers[0].x
-            y1 = ev.pointers[0].y
+            x1 = ev.pointers[0].clientX;
+            y1 = ev.pointers[0].clientY;
      
             console.log("tap: " + x1 + " " + y1);
 
