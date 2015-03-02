@@ -22,10 +22,10 @@ var keyboard = new KeyboardState();
 var targetList = [];
 var projector, mouse = { x: 0, y: 0 },INTERSECTED;
 var selectedFaces = [];
-var floorSide=500;
-var baseColor=new THREE.Color( 0x44dd66 );
-var highlightedColor=new THREE.Color( 0xddaa00 );
-var selectedColor=new THREE.Color( 0x4466dd );
+var floorSide=1000;
+var baseColor=new THREE.Color( 'white' );
+var highlightedColor=new THREE.Color( 'red' );
+var selectedColor=new THREE.Color( 'green' );
 var mouseSphereCoords = null;
 var mouseSphere=[];
 
