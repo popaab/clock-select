@@ -28,6 +28,7 @@ var highlightedColor=new THREE.Color( 0xddaa00 );
 var selectedColor=new THREE.Color( 0x4466dd );
 var mouseSphereCoords = null;
 var mouseSphere=[];
+var mainTime;
 
 var x1, y1;
 x1 = null;
@@ -92,7 +93,7 @@ function init()
               
           });
 
-          mainTime = new THREE.Mesh(new THREE.TetrahedronGeometry(40, 3), shiny);
+    var mainTime = new THREE.Mesh(new THREE.TetrahedronGeometry(40, 3), shiny);
 
           mainTime.position.x = 0;
           mainTime.position.y = 0;
