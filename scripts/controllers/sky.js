@@ -23,7 +23,7 @@ var targetList = [];
 var projector, mouse = { x: 0, y: 0 },INTERSECTED;
 var selectedFaces = [];
 var floorSide=1000;
-var baseColor=new THREE.Color( 0x44dd66 );
+var baseColor=new THREE.Color( 'white' );
 var highlightedColor=new THREE.Color( 0xddaa00 );
 var selectedColor=new THREE.Color( 0x4466dd );
 var mouseSphereCoords = null;
@@ -170,6 +170,8 @@ function addOcta()
   
   targetList.push(octa);
 }
+
+
 var mc = new Hammer.Manager(document.body);
 var element = document.getElementById("ThreeJS");
 
