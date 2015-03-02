@@ -161,9 +161,9 @@ addOcta();
 mc.on("tap", function(ev) {
         ev.preventDefault();
 
-    var x1  = mouse.x = ev.center.pageX;
+    var x1 = ev.center.pageX;
 
-    var y1 = mouse.y = ev.center.pageY;
+    var y1 = ev.center.pageY;
   checkSelection(); 
 
 
