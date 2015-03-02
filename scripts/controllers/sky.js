@@ -154,15 +154,18 @@ var mc = new Hammer.Manager(document.body);
     mc.on("tap", onTap);
     mc.on("doubletap", onDoubleTap);
     
-    var x1, y1 = null;
+    var x1, y1;
     var vector;
+    
     function onPan(ev) {
        
- var vector = new THREE.Vector3( x1, y1, 1 ); 
+
       x1 = ev.pageX,
       y1 = ev.pageY
 
        checkSelection();
+        var vector = new THREE.Vector3( x1, y1, 1 ); 
+       document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
     
     }
 
@@ -191,10 +194,12 @@ var mc = new Hammer.Manager(document.body);
     // }
 
    function onSwipe(ev) {
-var vector = new THREE.Vector3( x1, y1, 1 ); 
+    
+      
       x1 = ev.pageX,
       y1 = ev.pageY
-
+      var vector = new THREE.Vector3( x1, y1, 1 ); 
+      document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
        checkSelection();
     //     var angle = 50;
     //     transform.ry = (ev.direction & Hammer.DIRECTION_HORIZONTAL) ? 1 : 0;
@@ -210,19 +215,21 @@ var vector = new THREE.Vector3( x1, y1, 1 );
    }
 
     function onTap(ev) {
-      var vector = new THREE.Vector3( x1, y1, 1 );  
+      
+
       x1 = ev.deltaX;
       y1 = ev.delta;
-       checkSelection();
-
+   
+document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
 
     }
 
     function onDoubleTap(ev) {
-      var vector = new THREE.Vector3( x1, y1, 1 ); 
+      
+      
        x1 = ev.deltaX;
       y1 = ev.delta;
-       checkSelection();
+     document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
 
     }
 
