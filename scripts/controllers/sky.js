@@ -72,10 +72,10 @@ function init()
   // scene.add(floor);
   
   // SKYBOX
-  var skyBoxGeometry = new THREE.CubeGeometry( 10000, 10000, 10000 );
-  var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 'blue', side: THREE.BackSide } );
-  var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
-  scene.add(skyBox);
+  // var skyBoxGeometry = new THREE.CubeGeometry( 10000, 10000, 10000 );
+  // var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 'blue', side: THREE.BackSide } );
+  // var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
+  // scene.add(skyBox);
   
   ////////////
   // CUSTOM //
