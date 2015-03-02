@@ -248,7 +248,7 @@ function checkHighlight(){
 
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
-  var vector = new THREE.Vector3( x1, y1, 1 );
+  var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
   projector.unprojectVector( vector, camera );
   var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
