@@ -92,7 +92,7 @@ document.addEventListener( 'touchstart', onDocumentTouchStart, false );
 document.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
         // //select controls
-        EventsControls = new EventsControls( camera, renderer.domElement );
+        // EventsControls = new EventsControls( camera, renderer.domElement );
 
         // EventsControls.attachEvent( 'mouseOver', function () {
 
@@ -116,8 +116,9 @@ document.addEventListener( 'touchmove', onDocumentTouchMove, false );
           return Math.random() * (max - min) + min;
         }
         
-        var geometry = new THREE.OctahedronGeometry( getRandom(10, 30), 0 );
+        var geometry = new THREE.TetrahedronGeometry(40, 3);
 
+        var shapes 
        
         for ( var i = 0; i < 7; i ++ ) {
 
@@ -167,8 +168,6 @@ document.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
           scene.add(object);
           // EventsControls.attach( object );
-
-          var material = this.object.MeshBasicMaterial;
 
     }
 
@@ -226,12 +225,6 @@ document.addEventListener( 'touchmove', onDocumentTouchMove, false );
         mouseXOnMouseDown = event.clientX - windowHalfX;
         targetRotationOnMouseDown = targetRotation;
 
-          this.mouseXOnMouseDown.currentHex = this.mouseXOnMouseDown.material.color.getHex();
-          this.mouseXOnMouseDown.material.color.setHex( 'red' );
-
-          console.log( 'the box at number ' + this.event.item + ' is select' );
-
-
       }
 
       function onDocumentMouseMove( event ) {
@@ -268,10 +261,6 @@ document.addEventListener( 'touchmove', onDocumentTouchMove, false );
           targetRotationOnMouseDown = targetRotation;
 
 
-          this.mouseXOnMouseDown.currentHex = this.mouseXOnMouseDown.material.color.getHex();
-          this.mouseXOnMouseDown.material.color.setHex( 'red' );
-
-          console.log( 'the box at number ' + this.event.item + ' is select' );
 
 
         }
