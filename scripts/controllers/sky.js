@@ -74,26 +74,26 @@
 
         scene.add(L3);
 
-        //select controls
-        EventsControls = new EventsControls( camera, renderer.domElement );
+        // //select controls
+        // EventsControls = new EventsControls( camera, renderer.domElement );
 
-        EventsControls.attachEvent( 'mouseOver', function () {
+        // EventsControls.attachEvent( 'mouseOver', function () {
 
-          this.container.style.cursor = 'pointer';
+        //   this.container.style.cursor = 'pointer';
 
-          this.mouseOvered.currentHex = this.mouseOvered.material.color.getHex();
-          this.mouseOvered.material.color.setHex( 'red' );
+        //   this.mouseOvered.currentHex = this.mouseOvered.material.color.getHex();
+        //   this.mouseOvered.material.color.setHex( 'red' );
 
-          console.log( 'the box at number ' + this.event.item + ' is select' );
+        //   console.log( 'the box at number ' + this.event.item + ' is select' );
 
-        });
+        // });
 
-        EventsControls.attachEvent( 'mouseOut', function () {
+        // EventsControls.attachEvent( 'mouseOut', function () {
 
-          this.container.style.cursor = 'auto';
-          this.mouseOvered.material.color.setHex( this.mouseOvered.currentHex );
+        //   this.container.style.cursor = 'auto';
+        //   this.mouseOvered.material.color.setHex( this.mouseOvered.currentHex );
 
-        });
+        // });
 
         function getRandom(min, max) {
           return Math.random() * (max - min) + min;
@@ -118,7 +118,7 @@
           object.position.z = getRandom(-80, 50) + 70;
 
           scene.add( object );
-          EventsControls.attach( object );
+          // EventsControls.attach( object );
 
           var wireobj = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial({
               color: 'black', 
@@ -149,7 +149,7 @@
           object.position.z = 0;
 
           scene.add(object);
-          EventsControls.attach( object );
+          // EventsControls.attach( object );
 
     }
 
@@ -175,7 +175,7 @@
         camera.position.z = z * Math.cos(0.00001) - x * Math.sin(0.00001);
         camera.lookAt(scene.position);
 
-        EventsControls.update();
+        // EventsControls.update();
 
         renderer.render( scene, camera );
 
@@ -223,6 +223,7 @@ function onDocumentMouseDown( event ) {
                     mouseXOnMouseDown = event.touches[ 0 ].pageX - windowHalfX;
                     targetRotationOnMouseDown = targetRotation;
 
+
                 }
             }
 
@@ -239,7 +240,7 @@ function onDocumentMouseDown( event ) {
             }
 
 
-            
+
       function resize() {
           camera.aspect = window.innerWidth/ window.innerHeight;
           camera.updateProjectionMatrix();
