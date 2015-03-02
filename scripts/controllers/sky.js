@@ -131,7 +131,7 @@ function addOcta()
   var octa= new THREE.Mesh( octaGeom, faceColorMaterial );
   octa.position.set(position[0], position[2], position[1]);
   // creates a wireMesh object
-  wireOcta = new THREE.Mesh(octaGeom, new THREE.MeshBasicMaterial({ color: 0x116611, wireframe: true }));
+  var wireOcta = new THREE.Mesh(octaGeom, new THREE.MeshBasicMaterial({ color: 0x116611, wireframe: true }));
   
   scene.add(octa);
   // wireMesh object is added to the original as a sub-object
