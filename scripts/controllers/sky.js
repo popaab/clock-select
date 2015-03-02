@@ -121,7 +121,7 @@ function init()
   // CUSTOM //
   ////////////
 
-  addOcta(100,100,100);
+  addOcta();
   
   var newSphereGeom= new THREE.SphereGeometry(5,5,5);
   var sphere= new THREE.Mesh(newSphereGeom, new THREE.MeshBasicMaterial({ color: 0x2266dd }));
@@ -135,21 +135,19 @@ function init()
   
 
 }
-function addOcta(x,y,z)
+function addOcta()
 {
 
 
-  var posx = x;
-  var posy = y;
-  var posz = z;
+
   var position = new Array();
   var notAboveGround = true;
   var face;
   var faces = [];
   while(notAboveGround){
-    position[0]= posx*floorSide-floorSide/2;
-    position[1]= posy*floorSide-floorSide/2;
-    position[2]= posz*floorSide/5;
+    position[0]=Math.random()*floorSide-floorSide/2;
+    position[1]=Math.random()*floorSide-floorSide/2;
+    position[2]=Math.random()*floorSide/5;
     var cubeSide = Math.random()*floorSide/12+floorSide/50;
     //alert("cubeSide="+cubeSide);
     if(position[2]-cubeSide>0){
@@ -345,10 +343,12 @@ var element = document.getElementById("ThreeJS");
     // if(ev.type == 'pinchout') {
 
        if( ev.pointerType === "touch"){
+
+            console.log(ev.pointerType);
             
             var pinchx = ev.pointers[0].clientX;
             var pinchy = ev.pointers[0].clientY;
-            addOcta(pinchx,pinchy, 100);
+            addOcta();
         // }
         }
  
