@@ -29,7 +29,7 @@ var selectedColor=new THREE.Color( 0x4466dd );
 var mouseSphereCoords = null;
 var mouseSphere=[];
 var mainTime;
-// var x,y,z;
+
 var maxAlarms = 10;
 var amountNow = 0;
 var x1, y1;
@@ -73,19 +73,19 @@ function init()
   light.position.set(-300,1000,-300);
   // scene.add(light);
   //lights red and blue
-  var L1 = new THREE.PointLight(0xff0000, 1);
-  L1.position.x = -1000;
-  L1.position.y = 500;
-  L1.position.z = 500;
+        var L1 = new THREE.PointLight(0xff0000, 1);
+        L1.position.x = -1000;
+        L1.position.y = 500;
+        L1.position.z = 500;
 
-  scene.add(L1);
+        scene.add(L1);
 
-  var L3 = new THREE.PointLight(0x0000ff, 0.4);
-  L3.position.z = -500;
-  L3.position.x = 1000;
-  L3.position.y = 500;
+        var L3 = new THREE.PointLight(0x0000ff, 0.4);
+        L3.position.z = -500;
+        L3.position.x = 1000;
+        L3.position.y = 500;
 
-  scene.add(L3);  
+        scene.add(L3);  
 
   //main time sphere 
    var shiny = new THREE.MeshPhongMaterial({
@@ -104,11 +104,11 @@ function init()
           scene.add(mainTime);
 
   // FLOOR
-  // var faceMat = new THREE.MeshBasicMaterial({color: 0x888888,side: THREE.DoubleSide});
+  var faceMat = new THREE.MeshBasicMaterial({color: 0x888888,side: THREE.DoubleSide});
 
-  // var floor= THREE.SceneUtils.createMultiMaterialObject(new THREE.PlaneGeometry(floorSide, floorSide, 10, 10), faceMat);
+  var floor= THREE.SceneUtils.createMultiMaterialObject(new THREE.PlaneGeometry(floorSide, floorSide, 10, 10), faceMat);
   
-  // floor.rotation.x = Math.PI / 2;
+  floor.rotation.x = Math.PI / 2;
   // scene.add(floor);
   
   // SKYBOX
@@ -121,7 +121,7 @@ function init()
   // CUSTOM //
   ////////////
 
-  addOcta(100,50,-100);
+  addOcta(100,100,100);
   
   var newSphereGeom= new THREE.SphereGeometry(5,5,5);
   var sphere= new THREE.Mesh(newSphereGeom, new THREE.MeshBasicMaterial({ color: 0x2266dd }));
@@ -176,10 +176,10 @@ function addOcta(x,y,z)
 
         scene.add(octa);
   // wireMesh object is added to the original as a sub-object
-        octa.add(wireOcta );
+  octa.add(wireOcta );
   
-        targetList.push(octa);
-        amountNow++;
+  targetList.push(octa);
+  amountNow++;
     
   }
 
@@ -237,7 +237,6 @@ console.log("check selection: " + x1 + " " + y1);
     intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
   }
 }
-
 function checkHighlight(){
   // find intersections
 
@@ -349,7 +348,7 @@ var element = document.getElementById("ThreeJS");
             
             var pinchx = ev.pointers[0].clientX;
             var pinchy = ev.pointers[0].clientY;
-            addOcta(pinchx, pinchy, 50);
+            addOcta(pinchx,pinchy, 100);
         // }
         }
  
