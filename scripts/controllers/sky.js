@@ -46,7 +46,7 @@ function init()
   camera.lookAt(scene.position);  
   // RENDERER
   if ( Detector.webgl )
-    renderer = new THREE.WebGLRenderer( {antialias:true} );
+    renderer = new THREE.WebGLRenderer( {antialias:true, alpha:true} );
   else
     renderer = new THREE.CanvasRenderer(); 
   renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
