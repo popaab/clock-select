@@ -224,6 +224,12 @@ document.addEventListener( 'touchmove', onDocumentTouchMove, false );
         mouseXOnMouseDown = event.clientX - windowHalfX;
         targetRotationOnMouseDown = targetRotation;
 
+          this.mouseXOnMouseDown.currentHex = this.mouseXOnMouseDown.material.color.getHex();
+          this.mouseXOnMouseDown.material.color.setHex( 'red' );
+
+          console.log( 'the box at number ' + this.event.item + ' is select' );
+
+
       }
 
       function onDocumentMouseMove( event ) {
