@@ -306,8 +306,10 @@ function render()
 var mc = new Hammer.Manager(document.body);
 var count = 0;
 var pinch = new Hammer.Pinch();
+var tap = new Hammer.Tap();
 // add to the Manager
 mc.add([pinch]);
+mc.add([tap]);
 
 
 
@@ -318,6 +320,13 @@ addOcta();
     count = 0;
 
   }, 2000);
+
+
+});
+
+mc.on("tap", function(ev) {
+        ev.preventDefault();
+  checkSelection(); 
 
 
 });
