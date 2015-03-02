@@ -74,6 +74,10 @@
 
         scene.add(L3);
 
+document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+
         // //select controls
         // EventsControls = new EventsControls( camera, renderer.domElement );
 
@@ -175,14 +179,89 @@
         camera.position.z = z * Math.cos(0.00031) - x * Math.sin(0.00031);
         camera.lookAt(scene.position);
 
+        object.rotation.y += ( targetRotation - object.rotation.y ) * 0.05;
+
         // EventsControls.update();
 
         renderer.render( scene, camera );
 
       }
+      function onWindowResize() {
 
-    
+        windowHalfX = window.innerWidth / 2;
+        windowHalfY = window.innerHeight / 2;
 
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize( window.innerWidth, window.innerHeight );
+
+      }
+
+      //
+
+      function onDocumentMouseDown( event ) {
+
+        event.preventDefault();
+
+        document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+        document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+        document.addEventListener( 'mouseout', onDocumentMouseOut, false );
+
+        mouseXOnMouseDown = event.clientX - windowHalfX;
+        targetRotationOnMouseDown = targetRotation;
+
+      }
+
+      function onDocumentMouseMove( event ) {
+
+        mouseX = event.clientX - windowHalfX;
+
+        targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.02;
+
+      }
+
+      function onDocumentMouseUp( event ) {
+
+        document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+        document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+        document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
+
+      }
+
+      function onDocumentMouseOut( event ) {
+
+        document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+        document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+        document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
+
+      }
+
+      function onDocumentTouchStart( event ) {
+
+        if ( event.touches.length === 1 ) {
+
+          event.preventDefault();
+
+          mouseXOnMouseDown = event.touches[ 0 ].pageX - windowHalfX;
+          targetRotationOnMouseDown = targetRotation;
+
+        }
+
+      }
+
+      function onDocumentTouchMove( event ) {
+
+        if ( event.touches.length === 1 ) {
+
+          event.preventDefault();
+
+          mouseX = event.touches[ 0 ].pageX - windowHalfX;
+          targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.05;
+
+        }
+
+      }
 
       function resize() {
           camera.aspect = window.innerWidth/ window.innerHeight;
@@ -203,28 +282,28 @@ mc.add([pinch]);
 
 
 
-mc.on("pinch", function(ev) {
-        ev.preventDefault();
+// mc.on("pinch", function(ev) {
+//         ev.preventDefault();
 
 
-        if( count == 0){
-            var shape = THREE.SceneUtils.createMultiMaterialObject( 
-            new THREE.OctahedronGeometry( 40, 0 ), 
-            multiMaterial );
-            shape.position.set(random(100, 0), random(100, 0), random(100, 0));
-            scene.add( shape );
-            count = 1;
+//         if( count == 0){
+//             var shape = THREE.SceneUtils.createMultiMaterialObject( 
+//             new THREE.OctahedronGeometry( 40, 0 ), 
+//             multiMaterial );
+//             shape.position.set(random(100, 0), random(100, 0), random(100, 0));
+//             scene.add( shape );
+//             count = 1;
 
        
-        }
+//         }
 
-          setInterval(function(){
-    count = 0;
+//           setInterval(function(){
+//     count = 0;
 
-  }, 2000);
+//   }, 2000);
 
 
-});
+// });
 
 
 
