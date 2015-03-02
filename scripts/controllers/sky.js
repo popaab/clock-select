@@ -141,7 +141,7 @@ function addOcta()
 }
 var mc = new Hammer.Manager(document.body);
 var element = document.getElementById("ThreeJS");
-    mc.add(new Hammer.Pan({ threshold: 0, pointersType: ['touch']}));
+    mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
 
 
     mc.add(new Hammer.Swipe()).recognizeWith(mc.get('pan'));
@@ -149,7 +149,7 @@ var element = document.getElementById("ThreeJS");
     mc.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mc.get('pan'), mc.get('rotate')]);
 
     mc.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
-    mc.add(new Hammer.Tap({pointerType: ["touch"]}));
+    mc.add(new Hammer.Tap());
 
     mc.on("panstart panmove", onPan);
     mc.on("swipe", onSwipe);
@@ -157,14 +157,13 @@ var element = document.getElementById("ThreeJS");
 
     
 mc.on("tap", function onTap(ev) {
-
             console.log(ev);
 
-            x1 = this.ev.pointers[0].x;
-            y1 = this.ev.pointers[0].y;
-     
+            x1 = ev.posx;
+            y1 = ev.posy;
+            var z1 = ev.posz;
 
-            console.log(x1 + " " + y1 );
+            console.log(x1 + " " + y1 + " " + z1);
 
             document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
        
@@ -274,7 +273,7 @@ function onDocumentMouseDown( event )
   mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
   mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
   
- // checkSelection();
+ checkSelection();
 
 }
 
@@ -288,7 +287,7 @@ function ColorSelected(){
 
 function checkSelection(){
   // find intersections
-var vector = new THREE.Vector3( x1, y1, 1 ); 
+var vector = new THREE.Vector3( mouse.x, mouse.y, 1 ); 
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
   
@@ -332,7 +331,7 @@ function checkHighlight(){
 
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
-  var vector = new THREE.Vector3( x1, y1, 1 );
+  var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
   projector.unprojectVector( vector, camera );
   var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
@@ -402,6 +401,19 @@ function animate()
 function update()
 {
 
+  document.addEventListener('touchstart', function(e){
+
+
+
+startX = e.targetTouches[0].pageX;
+startY = e.targetTouches[0].pageY;
+
+  this.addEventListener('touchmove', function(e){
+    moveX = e.targetTouches[0].pageX;
+    moveY = e.targetTouches[0].pageY;
+    console.log(moveX + ' ' + moveY);
+  }, false);
+}, false);
 
   checkHighlight();
   CheckMouseSphere();
