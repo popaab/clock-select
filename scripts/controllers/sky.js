@@ -22,7 +22,7 @@ var keyboard = new KeyboardState();
 var targetList = [];
 var projector, mouse = { x: 0, y: 0 },INTERSECTED;
 var selectedFaces = [];
-var floorSide=500;
+var floorSide=1000;
 var baseColor=new THREE.Color( 0x44dd66 );
 var highlightedColor=new THREE.Color( 0xddaa00 );
 var selectedColor=new THREE.Color( 0x4466dd );
@@ -68,11 +68,11 @@ function init()
   light.position.set(-300,1000,-300);
   scene.add(light);
   // FLOOR
-  // var faceMat = new THREE.MeshBasicMaterial({color: 0x888888,side: THREE.DoubleSide});
+  var faceMat = new THREE.MeshBasicMaterial({color: 0x888888,side: THREE.DoubleSide});
 
-  // var floor= THREE.SceneUtils.createMultiMaterialObject(new THREE.PlaneGeometry(floorSide, floorSide, 10, 10), faceMat);
+  var floor= THREE.SceneUtils.createMultiMaterialObject(new THREE.PlaneGeometry(floorSide, floorSide, 10, 10), faceMat);
   
-  // floor.rotation.x = Math.PI / 2;
+  floor.rotation.x = Math.PI / 2;
   // scene.add(floor);
   
   // SKYBOX
@@ -101,8 +101,6 @@ function init()
   document.addEventListener( 'mousedown', onDocumentMouseDown, false );
   document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 }
-
-
 function addOcta()
 {
   var position = new Array();
@@ -119,18 +117,18 @@ function addOcta()
   }
   
   var faceColorMaterial = new THREE.MeshLambertMaterial( 
-  { color: 'white', vertexColors: THREE.FaceColors,shading:THREE.FlatShading,polygonOffset: true,polygonOffsetUnits: 1,polygonOffsetFactor: 1} );
+  { color: 0xffffff, vertexColors: THREE.FaceColors,shading:THREE.FlatShading,polygonOffset: true,polygonOffsetUnits: 1,polygonOffsetFactor: 1} );
   
   var octaGeom= new THREE.OctahedronGeometry(cubeSide,0);
-  // for ( var i = 0; i < octaGeom.faces.length; i++ ) 
-  // {
-  //   face = octaGeom.faces[ i ]; 
-  //   face.color= baseColor;    
-  // }
+  for ( var i = 0; i < octaGeom.faces.length; i++ ) 
+  {
+    face = octaGeom.faces[ i ]; 
+    face.color= baseColor;    
+  }
   var octa= new THREE.Mesh( octaGeom, faceColorMaterial );
   octa.position.set(position[0], position[2], position[1]);
   // creates a wireMesh object
-  wireOcta = new THREE.Mesh(octaGeom, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
+  wireOcta = new THREE.Mesh(octaGeom, new THREE.MeshBasicMaterial({ color: 0x116611, wireframe: true }));
   
   scene.add(octa);
   // wireMesh object is added to the original as a sub-object
@@ -142,10 +140,10 @@ function addOcta()
 var mc = new Hammer.Manager(document.body);
 var count = 0;
 var pinch = new Hammer.Pinch();
-var touch = new Hammer.Touch();
+var tap = new Hammer.Tap();
 // add to the Manager
 mc.add([pinch]);
-mc.add([touch]);
+mc.add([tap]);
 
 
 
@@ -160,11 +158,12 @@ addOcta();
 
 });
 
-mc.on("touch", function(ev) {
+mc.on("tap", function(ev) {
         ev.preventDefault();
 
-    x1 = e.gesture.center.pageX;
-    y1 = e.gesture.center.pageY;
+    var x1 = ev.center.pageX;
+
+    var y1 = ev.center.pageY;
   
 checkSelection();
 
@@ -197,9 +196,10 @@ function onDocumentMouseDown( event )
   // update the mouse variable
   mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
   mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+  
+  checkSelection(); 
 
 }
-
 
 function ColorSelected(){
   selectedFaces.forEach( function(arrayItem)
