@@ -149,7 +149,7 @@ var mc = new Hammer.Manager(document.body);
 
     mc.on("panstart panmove", onPan);
     
-    mc.on("pinchstart pinchmove", onPinch);
+    mc.on("pinchout", onPinch);
     
     mc.on("tap", onTap);
     mc.on("doubletap", onDoubleTap);
@@ -168,7 +168,7 @@ var mc = new Hammer.Manager(document.body);
 
 
     function onPinch(ev) {
-        if(ev.type == 'pinchstart') {
+        if(ev.type == 'pinchout') {
             ev.preventDefault();
             addOcta();
         }
