@@ -171,8 +171,8 @@
         
         var x = camera.position.x;
         var z = camera.position.z;
-        camera.position.x = x * Math.cos(0.00001) + z * Math.sin(0.00001);
-        camera.position.z = z * Math.cos(0.00001) - x * Math.sin(0.00001);
+        camera.position.x = x * Math.cos(0.00031) + z * Math.sin(0.00031);
+        camera.position.z = z * Math.cos(0.00031) - x * Math.sin(0.00031);
         camera.lookAt(scene.position);
 
         // EventsControls.update();
