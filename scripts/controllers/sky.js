@@ -10,6 +10,12 @@
           fov = 75;
 
 
+
+                var windowHalfX = window.innerWidth / 2;
+      var windowHalfY = window.innerHeight / 2;
+
+
+
                 var targetRotation = 0;
       var targetRotationOnMouseDown = 0;
 
