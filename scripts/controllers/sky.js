@@ -186,13 +186,12 @@ document.addEventListener( 'touchmove', onDocumentTouchMove, false );
         // particleSystem.rotation.y += deltaTime/40;
 
         
-        // var x = camera.position.x;
-        // var z = camera.position.z;
-        // camera.position.x = x * Math.cos(0.00031) + z * Math.sin(0.00031);
-        // camera.position.z = z * Math.cos(0.00031) - x * Math.sin(0.00031);
+        var x = camera.position.x;
+        var z = camera.position.z;
+        camera.position.x += (targetRotation - x)* Math.cos(0.00031) + (targetRotation - z) * Math.sin(0.00031);
+        camera.position.z += (targetRotation - z) * Math.cos(0.00031) - (targetRotation - x) * Math.sin(0.00031);
         camera.lookAt(scene.position);
 
-        camera.rotation.y += ( targetRotation - camera.rotation.y ) * 0.05;
 
         // EventsControls.update();
 
