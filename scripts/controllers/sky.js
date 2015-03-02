@@ -312,12 +312,12 @@ var element = document.getElementById("ThreeJS");
 
                   console.log(ev);
                   
-                  var panx = ev.pointers[0].clientX;
+                  var panx = ev.gesture.deltaX;
                   // pany1 = ev.pointers[0].clientY;
            
                   console.log("paning : " + panX);
                   // checkSelection(panx1, pany1)
-      }
+      
 
     });
     mc.on("pinchout", onPinch);
