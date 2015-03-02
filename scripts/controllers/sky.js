@@ -146,7 +146,7 @@ var element = document.getElementById("ThreeJS");
 
     mc.add(new Hammer.Swipe()).recognizeWith(mc.get('pan'));
     mc.add(new Hammer.Rotate({ threshold: 0 })).recognizeWith(mc.get('pan'));
-    mc.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mc.get('pan'), mc.get('rotate')]);
+    mc.add(new Hammer.Pinch({ threshold: 0,  pointerType: "touch", pointer: 0 })).recognizeWith([mc.get('pan'), mc.get('rotate')]);
 
     mc.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
     mc.add(new Hammer.Tap());
@@ -163,6 +163,7 @@ mc.on("tap", function onTap(ev) {
             y1 = ev.pointers[0].clientY;
      
             console.log("tap: " + x1 + " " + y1);
+            checkSelection();
 
             document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
   }
@@ -274,7 +275,7 @@ function onDocumentMouseDown( event )
   mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
   mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
   
- checkSelection();
+
 
 }
 
