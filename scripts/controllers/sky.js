@@ -158,7 +158,7 @@ addOcta();
 
 });
 
-mc.on("touch", function(ev) {
+mc.on("tap", function(ev) {
         ev.preventDefault();
 
     x1 = ev.gesture.touches[0].pageX;
