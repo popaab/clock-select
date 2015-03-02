@@ -142,9 +142,9 @@ function addOcta(x,y,z){
   var face;
   var faces = [];
   while(notAboveGround){
-    position[0]= posx*floorSide-floorSide/2;
-    position[1]= posy*floorSide-floorSide/2;
-    position[2]= posz*floorSide/5;
+    position[0]= posx;
+    position[1]= posy;
+    position[2]= posz;
     var cubeSide = Math.random()*floorSide/12+floorSide/50;
     //alert("cubeSide="+cubeSide);
     if(position[2]-cubeSide>0){
