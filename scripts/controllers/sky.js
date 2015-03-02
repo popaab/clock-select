@@ -164,6 +164,7 @@ mc.on("pan", function(ev) {
     var x1 = ev.gesture.center.pageX;
 
     var y1 = ev.gesture.center.pageY;
+    consloe.log(x1);
   
 
     var vector = new THREE.Vector3( x1, y1, 1 );
