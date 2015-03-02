@@ -145,7 +145,7 @@ function addOcta(x,y,z){
     position[0]= posx;
     position[1]= posy;
     position[2]= posz;
-    var cubeSide = 0;
+    var cubeSide = 200;
     //alert("cubeSide="+cubeSide);
     if(position[1]-cubeSide>0){
       notAboveGround = false;
