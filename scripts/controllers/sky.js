@@ -154,14 +154,17 @@ var element = document.getElementById("ThreeJS");
     mc.on("panstart panmove", onPan);
     mc.on("swipe", onSwipe);
     mc.on("pinchout", onPinch);
+window.addEventListener("pointerdown", detectInputType, false);
 
-    
-mc.on("tap", function onTap(ev) {
+function detectInputType(event) {
+    if (event.pointerType == "touch") {
 
-            console.log(ev);
+      // mc.on("tap", function onTap(ev) {
 
-            x1 = ev.pointers[0].x;
-            y1 = ev.pointers[0].y;
+            console.log(event);
+
+            x1 = event.clientX;
+            y1 = event.clientY;
      
 
             console.log(x1 + " " + y1 );
@@ -174,7 +177,11 @@ mc.on("tap", function onTap(ev) {
    
 // document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
 
-    });
+    // });
+
+}
+    
+
 
     mc.on("doubletap", onDoubleTap);
     
