@@ -148,19 +148,19 @@ var mc = new Hammer.Manager(document.body);
     mc.add(new Hammer.Tap());
 
     mc.on("panstart panmove", onPan);
-    
+    mc.on("swipe", onSwipe);
     mc.on("pinchout", onPinch);
     
     mc.on("tap", onTap);
     mc.on("doubletap", onDoubleTap);
     
     var x1, y1 = null;
-
+    var vector;
     function onPan(ev) {
        
- 
-      x1 = ev.deltaX,
-      y1 = ev.deltaY
+ var vector = new THREE.Vector3( x1, y1, 1 ); 
+      x1 = ev.pageX,
+      y1 = ev.pageY
 
        checkSelection();
     
@@ -168,6 +168,8 @@ var mc = new Hammer.Manager(document.body);
 
 
     function onPinch(ev) {
+
+
         if(ev.type == 'pinchout') {
             ev.preventDefault();
             addOcta();
@@ -188,7 +190,12 @@ var mc = new Hammer.Manager(document.body);
     //     logEvent(ev.type);
     // }
 
-    // function onSwipe(ev) {
+   function onSwipe(ev) {
+var vector = new THREE.Vector3( x1, y1, 1 ); 
+      x1 = ev.pageX,
+      y1 = ev.pageY
+
+       checkSelection();
     //     var angle = 50;
     //     transform.ry = (ev.direction & Hammer.DIRECTION_HORIZONTAL) ? 1 : 0;
     //     transform.rx = (ev.direction & Hammer.DIRECTION_VERTICAL) ? 1 : 0;
@@ -200,10 +207,10 @@ var mc = new Hammer.Manager(document.body);
     //     }, 300);
     //     requestElementUpdate();
     //     logEvent(ev.type);
-    // }
+   }
 
     function onTap(ev) {
-         
+      var vector = new THREE.Vector3( x1, y1, 1 );  
       x1 = ev.deltaX;
       y1 = ev.delta;
        checkSelection();
@@ -212,7 +219,7 @@ var mc = new Hammer.Manager(document.body);
     }
 
     function onDoubleTap(ev) {
-        
+      var vector = new THREE.Vector3( x1, y1, 1 ); 
        x1 = ev.deltaX;
       y1 = ev.delta;
        checkSelection();
@@ -261,7 +268,7 @@ function checkSelection(){
 
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
-  var vector = new THREE.Vector3( x1, y1, 1 );
+  
   projector.unprojectVector( vector, camera );
   var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
