@@ -204,8 +204,8 @@ var mc = new Hammer.Manager(document.body);
 
     function onTap(ev) {
          
-      x1 = ev.deltaX,
-      y1 = ev.deltaY
+      x1 = ev.deltaX;
+      y1 = ev.delta;
        checkSelection();
 
 
@@ -213,9 +213,8 @@ var mc = new Hammer.Manager(document.body);
 
     function onDoubleTap(ev) {
         
-      x1 = ev.deltaX,
-      y1 = ev.deltaY
-
+       x1 = ev.deltaX;
+      y1 = ev.delta;
        checkSelection();
 
     }
