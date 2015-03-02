@@ -153,32 +153,20 @@ var element = document.getElementById("ThreeJS");
 
     mc.on("panstart panmove", onPan);
     mc.on("swipe", onSwipe);
-    mc.on("pinchout", onPinch);
 
-    function getGesturePointFromEvent(evt) {
-          var point = {};
-
-          if(evt.targetTouches) {
-            // Prefer Touch Events
-            point.x = evt.targetTouches[0].clientX;
-            point.y = evt.targetTouches[0].clientY;
-          } else {
-            // Either Mouse event or Pointer Event
-            point.x = evt.clientX;
-            point.y = evt.clientY;
-          }
-
-          return point;
-        }
 mc.on("tap", function onTap(ev) {
-            console.log(ev);
-            var point = getGesturePointFromEvent(ev);
-            x1 = point.x;
-            y1 = point.x;
-     
-            console.log(x1 + " " + y1);
+  if( ev.gesture.pointerType === "touch"){
 
-            document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
+            console.log(ev);
+            
+            x1 = ev.gersture.pointers[0].x
+            y1 = ev.gersture.pointers[0].y
+     
+            console.log("tap: "x1 + " " + y1);
+
+            document.getElementById("resultDIV").innerHTML = "tap: "x1 + " " + y1;
+  }
+            
        
 // console.log(ev.gesture);
 //       x1 = ev.gesture.touches[0].pageX;
@@ -201,7 +189,7 @@ mc.on("tap", function onTap(ev) {
 
 
     function onPan(ev) {
-      console.log(ev);
+      // console.log(ev);
 
             // x1 = ev.gesture.center.pageX;
             // y1 = ev.gesture.center.pageY;
@@ -300,7 +288,7 @@ function ColorSelected(){
 
 function checkSelection(){
   // find intersections
-var vector = new THREE.Vector3( mouse.x, mouse.y, 1 ); 
+var vector = new THREE.Vector3( x1, y1, 1 ); 
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
   
@@ -344,7 +332,7 @@ function checkHighlight(){
 
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
-  var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
+  var vector = new THREE.Vector3( x1, y1, 1 );
   projector.unprojectVector( vector, camera );
   var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
