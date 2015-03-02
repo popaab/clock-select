@@ -138,7 +138,7 @@ function addOcta()
 }
 var mc = new Hammer.Manager(document.body);
 var element = document.getElementById("ThreeJS");
-    mc.add(new Hammer.Pan({ threshold: 0, pointerType: "touch", pointer: 0 }));
+    mc.add(new Hammer.Pan({ threshold: 0, pointer: 0 }));
 
 
     mc.add(new Hammer.Swipe()).recognizeWith(mc.get('pan'));
@@ -169,9 +169,7 @@ mc.on("tap", function onTap(ev) {
     mc.on("doubletap", onDoubleTap);
 
     function onPan(ev) {
-
-       if( ev.pointerType === "touch"){
-
+       
                   console.log(ev.pointerType);
                   
                   x1 = ev.pointers[0].clientX;
@@ -180,7 +178,7 @@ mc.on("tap", function onTap(ev) {
                   console.log("pan: " + x1 + " " + y1);
                   checkSelection(x1, y1);
 
-        }
+      
                   
 
 
@@ -235,6 +233,7 @@ console.log("check selection: " + x1 + " " + y1);
   if ( intersects.length > 0 )
   {
     console.log("Hit @ " + toString( intersects[0].point ) );
+
     
     //test items in selected faces array
     var test=-1; 
@@ -260,7 +259,7 @@ console.log("check selection: " + x1 + " " + y1);
     intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
   }
 }
-function checkHighlight(x1, y1){
+function checkHighlight(){
   // find intersections
 
   // create a Ray with origin at the mouse position
@@ -335,7 +334,7 @@ function animate()
 function update()
 {
 
-  checkHighlight(x1, y1);
+  checkHighlight();
   CheckMouseSphere();
   keyboard.update();
   
