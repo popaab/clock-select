@@ -311,7 +311,7 @@ var element = document.getElementById("ThreeJS");
         
                   console.log(ev);
                   
-                  var panx1 = ev.pointers[0];
+                  var panx1 = ev.pointers[0].deltaX;
                   // pany1 = ev.pointers[0].clientY;
            
                   console.log("paning : " + panX);
