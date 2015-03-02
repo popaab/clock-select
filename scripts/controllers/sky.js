@@ -141,7 +141,7 @@ function addOcta()
 }
 var mc = new Hammer.Manager(document.body);
 var element = document.getElementById("ThreeJS");
-    mc.add(new Hammer.Pan({ threshold: 0, pointers: 1 }));
+    mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
 
 
     mc.add(new Hammer.Swipe()).recognizeWith(mc.get('pan'));
@@ -159,11 +159,11 @@ var element = document.getElementById("ThreeJS");
 mc.on("tap", function onTap(ev) {
             console.log(ev);
 
-            x1 = ev.posx;
-            y1 = ev.posy;
-            var z1 = ev.posz;
+            x1 = ev.pointers[0].x;
+            y1 = ev.pointers[0].y;
+     
 
-            console.log(x1 + " " + y1 + " " + z1);
+            console.log(x1 + " " + y1 );
 
             document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
        
@@ -174,10 +174,9 @@ mc.on("tap", function onTap(ev) {
 // document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
 
     });
+
     mc.on("doubletap", onDoubleTap);
     
-
-    var x1, y1;
 
     // var whatever = function(){
 
@@ -247,7 +246,7 @@ mc.on("tap", function onTap(ev) {
      // document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
 
     }
-var startX, startY, moveY, moveX = null;
+
 
 
 function onDocumentMouseMove( event ) 
@@ -288,7 +287,7 @@ function ColorSelected(){
 
 function checkSelection(){
   // find intersections
-var vector = new THREE.Vector3( mouse.x, mouse.y, 1 ); 
+var vector = new THREE.Vector3( x1, y1, 1 ); 
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
   
@@ -332,7 +331,7 @@ function checkHighlight(){
 
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
-  var vector = new THREE.Vector3( x1, y1, 1 );
+  var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
   projector.unprojectVector( vector, camera );
   var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
