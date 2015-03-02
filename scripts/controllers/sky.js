@@ -307,16 +307,16 @@ var element = document.getElementById("ThreeJS");
 
     mc.add(new Hammer.Tap());
     mc.add(new Hammer.Pan());
-    mc.on("panstart", function onPan(ev) {
+    mc.on("pan", function onPan(ev) {
         if( ev.pointerType === "touch"){
 
                   console.log(ev);
                   
-                  panx1 = ev.pointers[0].clientX;
-                  pany1 = ev.pointers[0].clientY;
+                  // panx1 = ev.pointers[0].clientX;
+                  // pany1 = ev.pointers[0].clientY;
            
-                  console.log("paning : " + x1 + " " + y1);
-                  checkSelection(panx1, pany1);
+                  // console.log("paning : " + x1 + " " + y1);
+                  // checkSelection(panx1, pany1);
 
                   // document.getElementById("resultDIV").innerHTML = "pann: "+ x1 + " " + y1;
         }
