@@ -22,10 +22,10 @@ var keyboard = new KeyboardState();
 var targetList = [];
 var projector, mouse = { x: 0, y: 0 },INTERSECTED;
 var selectedFaces = [];
-var floorSide=1000;
-var baseColor=new THREE.Color( 'white' );
-var highlightedColor=new THREE.Color( 'red' );
-var selectedColor=new THREE.Color( 'green' );
+var floorSide=500;
+var baseColor=new THREE.Color( 0x44dd66 );
+var highlightedColor=new THREE.Color( 0xddaa00 );
+var selectedColor=new THREE.Color( 0x4466dd );
 var mouseSphereCoords = null;
 var mouseSphere=[];
 
@@ -122,11 +122,11 @@ function addOcta()
   { color: 'white', vertexColors: THREE.FaceColors,shading:THREE.FlatShading,polygonOffset: true,polygonOffsetUnits: 1,polygonOffsetFactor: 1} );
   
   var octaGeom= new THREE.OctahedronGeometry(cubeSide,0);
-  for ( var i = 0; i < octaGeom.faces.length; i++ ) 
-  {
-    face = octaGeom.faces[ i ]; 
-    face.color= baseColor;    
-  }
+  // for ( var i = 0; i < octaGeom.faces.length; i++ ) 
+  // {
+  //   face = octaGeom.faces[ i ]; 
+  //   face.color= baseColor;    
+  // }
   var octa= new THREE.Mesh( octaGeom, faceColorMaterial );
   octa.position.set(position[0], position[2], position[1]);
   // creates a wireMesh object
@@ -160,12 +160,12 @@ addOcta();
 
 });
 
-mc.on("touch", function(e) {
-        e.preventDefault();
+mc.on("touch", function(ev) {
+        ev.preventDefault();
 
-    x1 = ( e.gesture.center.pageX /  window.innerWidth ) * 2 - 1;
-    y1 = ( e.gesture.center.pageY / window.innerHeight ) * 2 + 1;
-
+    x1 = e.gesture.center.pageX;
+    y1 = e.gesture.center.pageY;
+  
 checkSelection();
 
 
@@ -214,7 +214,7 @@ function checkSelection(){
 
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
-  var vector = new THREE.Vector3( x1, y1, 1 );
+  var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
   projector.unprojectVector( vector, camera );
   var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
@@ -239,11 +239,11 @@ function checkSelection(){
     
     // if is a previously selected face, change the color back to green, otherswise change to blue
     if(test>=0){
-      intersects[ 0 ].object.color=new THREE.Color( 0x44dd66 ); 
+      intersects[ 0 ].face.color=new THREE.Color( 0x44dd66 ); 
       selectedFaces.splice(test, 1);
     }
     else{
-      intersects[ 0 ].object.color=new THREE.Color( 0x222288 ); 
+      intersects[ 0 ].face.color=new THREE.Color( 0x222288 ); 
       selectedFaces.push(intersects[0]);
     }
     
