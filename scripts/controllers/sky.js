@@ -155,12 +155,12 @@ var element = document.getElementById("ThreeJS");
     mc.on("swipe", onSwipe);
 
 mc.on("tap", function onTap(ev) {
-  if( ev.gesture.pointerType === "touch"){
+  if( ev.pointerType === "touch"){
 
             console.log(ev);
             
-            x1 = ev.gersture.pointers[0].x
-            y1 = ev.gersture.pointers[0].y
+            x1 = ev.pointers[0].x
+            y1 = ev.pointers[0].y
      
             console.log("tap: " + x1 + " " + y1);
 
