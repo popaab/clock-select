@@ -179,7 +179,7 @@ document.addEventListener( 'touchmove', onDocumentTouchMove, false );
         // camera.position.z = z * Math.cos(0.00031) - x * Math.sin(0.00031);
         // camera.lookAt(scene.position);
 
-        object.rotation.y += ( targetRotation - object.rotation.y ) * 0.05;
+        camera.rotation.y += ( targetRotation - camera.rotation.y ) * 0.05;
 
         // EventsControls.update();
 
