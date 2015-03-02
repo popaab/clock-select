@@ -141,8 +141,8 @@ function addOcta()
 }
 var mc = new Hammer.Manager(document.body);
 
-    mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
-    mc.add(new Hammer.Touch());
+    mc.add(new Hammer.Pan({ threshold: 0, pointers: 1 }));
+
 
     mc.add(new Hammer.Swipe()).recognizeWith(mc.get('pan'));
     mc.add(new Hammer.Rotate({ threshold: 0 })).recognizeWith(mc.get('pan'));
@@ -154,7 +154,7 @@ var mc = new Hammer.Manager(document.body);
     mc.on("panstart panmove", onPan);
     mc.on("swipe", onSwipe);
     mc.on("pinchout", onPinch);
-    mc.on("touch", onTouch);
+
     
     mc.on("tap", onTap);
     mc.on("doubletap", onDoubleTap);
@@ -185,19 +185,8 @@ var mc = new Hammer.Manager(document.body);
     
     }
 
-    function onTouch(ev) {
-      console.log(ev);
-
-            x1 = ev.gesture.pageX;
-            y1 = ev.gesture.pageY;
-
-            document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
-       
-      // console.log(ev.gesture);
-       
-      //  document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
     
-    }
+
 
 
     function onPinch(ev) {
@@ -232,7 +221,13 @@ var mc = new Hammer.Manager(document.body);
    }
 
     function onTap(ev) {
-      
+      console.log(ev);
+
+            x1 = ev.gesture.pageX;
+            y1 = ev.gesture.pageY;
+
+            document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
+       
 // console.log(ev.gesture);
 //       x1 = ev.gesture.touches[0].pageX;
 //       y1 = ev.gesture.touches[0].pageY;
