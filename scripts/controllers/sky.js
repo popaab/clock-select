@@ -92,7 +92,7 @@ document.addEventListener( 'touchstart', onDocumentTouchStart, false );
 document.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
         // //select controls
-        // EventsControls = new EventsControls( camera, renderer.domElement );
+        EventsControls = new EventsControls( camera, renderer.domElement );
 
         // EventsControls.attachEvent( 'mouseOver', function () {
 
@@ -167,6 +167,8 @@ document.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
           scene.add(object);
           // EventsControls.attach( object );
+
+          var material = this.object.MeshBasicMaterial;
 
     }
 
@@ -264,6 +266,7 @@ document.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
           mouseXOnMouseDown = event.touches[ 0 ].pageX - windowHalfX;
           targetRotationOnMouseDown = targetRotation;
+
 
           this.mouseXOnMouseDown.currentHex = this.mouseXOnMouseDown.material.color.getHex();
           this.mouseXOnMouseDown.material.color.setHex( 'red' );
