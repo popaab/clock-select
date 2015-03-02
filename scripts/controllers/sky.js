@@ -184,57 +184,6 @@ function addOcta()
 }
 
 
-var mc = new Hammer.Manager(document.body);
-var element = document.getElementById("ThreeJS");
-
-    mc.add(new Hammer.Pinch({ threshold: 0}));
-
-    mc.add(new Hammer.Tap());
-    mc.add(new Hammer.Pan());
-    mc.on("panstart panmove", function onPan(ev) {
-        if( ev.pointerType === "touch"){
-
-                  console.log(ev.pointerType);
-                  
-                  panx1 = ev.pointers[0].clientX;
-                  pany1 = ev.pointers[0].clientY;
-           
-                  console.log("paning : " + x1 + " " + y1);
-                  checkSelection(x1, y1);
-
-                  // document.getElementById("resultDIV").innerHTML = "pann: "+ x1 + " " + y1;
-        }
-                  
-
-    });
-    mc.on("pinchout", onPinch);
-    mc.on("tap", function onTap(ev) {
-        if( ev.pointerType === "touch"){
-
-                  console.log(ev.pointerType);
-                  
-                  x1 = ev.pointers[0].clientX;
-                  y1 = ev.pointers[0].clientY;
-           
-                  console.log("tap: " + x1 + " " + y1);
-                  checkSelection(x1, y1);
-
-                  document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
-        }
-                  
-
-    });
-
-
-    function onPinch(ev) {
-    // if(ev.type == 'pinchout') {
-          console.log("pinch");
-            addOcta();
-        // }
-
-    }
-
-
 function ColorSelected(){
   selectedFaces.forEach( function(arrayItem)
     {
@@ -286,7 +235,7 @@ console.log("check selection: " + x1 + " " + y1);
     intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
   }
 }
-function checkHighlight(x1, y1){
+function checkHighlight(){
   // find intersections
 
   // create a Ray with origin at the mouse position
@@ -351,6 +300,57 @@ function CheckMouseSphere(){
 function toString(v) { return "[ " + v.x + ", " + v.y + ", " + v.z + " ]"; }
 
 
+var mc = new Hammer.Manager(document.body);
+var element = document.getElementById("ThreeJS");
+
+    mc.add(new Hammer.Pinch({ threshold: 0}));
+
+    mc.add(new Hammer.Tap());
+    mc.add(new Hammer.Pan());
+    mc.on("panstart panmove", function onPan(ev) {
+        if( ev.pointerType === "touch"){
+
+                  console.log(ev.pointerType);
+                  
+                  panx1 = ev.pointers[0].clientX;
+                  pany1 = ev.pointers[0].clientY;
+           
+                  console.log("paning : " + x1 + " " + y1);
+                  checkSelection(panx1, pany1);
+
+                  // document.getElementById("resultDIV").innerHTML = "pann: "+ x1 + " " + y1;
+        }
+                  
+
+    });
+    mc.on("pinchout", onPinch);
+    mc.on("tap", function onTap(ev) {
+        if( ev.pointerType === "touch"){
+
+                  console.log(ev.pointerType);
+                  
+                  x1 = ev.pointers[0].clientX;
+                  y1 = ev.pointers[0].clientY;
+           
+                  console.log("tap: " + x1 + " " + y1);
+                  checkSelection(x1, y1);
+
+                  document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
+        }
+                  
+
+    });
+
+
+    function onPinch(ev) {
+    // if(ev.type == 'pinchout') {
+          console.log("pinch");
+            addOcta();
+        // }
+
+    }
+
+
 function animate() 
 {
     requestAnimationFrame( animate );
@@ -361,7 +361,7 @@ function animate()
 function update()
 {
 
-  checkHighlight(x1, y1);
+  checkHighlight();
   CheckMouseSphere();
   keyboard.update();
   
