@@ -206,7 +206,7 @@ var element = document.getElementById("ThreeJS");
         }
                   
 
-    }););
+    });
     mc.on("pinch", onPinch);
     mc.on("tap", function onTap(ev) {
         if( ev.pointerType === "touch"){
