@@ -136,55 +136,89 @@ function addOcta()
   
   targetList.push(octa);
 }
+var mc = new Hammer.Manager(el);
 
-var mc = new Hammer.Manager(document.body);
-var count = 0;
-var pinch = new Hammer.Pinch();
-var drag = new Hammer.Drag();
+    mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
 
-// add to the Manager
-mc.add([pinch]);
-mc.add([drag]);
+    mc.add(new Hammer.Swipe()).recognizeWith(mc.get('pan'));
+    mc.add(new Hammer.Rotate({ threshold: 0 })).recognizeWith(mc.get('pan'));
+    mc.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mc.get('pan'), mc.get('rotate')]);
 
+    mc.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+    mc.add(new Hammer.Tap());
 
-mc.on("drag", function(event) {
-        x1= event.gesture.touches[0].pageX;
-        y1 = event.gesture.touches[0].pageY;
-    });
+    mc.on("panstart panmove", onPan);
+    mc.on("rotatestart rotatemove", onRotate);
+    mc.on("pinchstart pinchmove", onPinch);
+    mc.on("swipe", onSwipe);
+    mc.on("tap", onTap);
+    mc.on("doubletap", onDoubleTap);
+    
+    var x1, y1 = null;
 
-
-mc.on("pinch", function(ev) {
-        ev.preventDefault();
-addOcta();
-  setInterval(function(){
-    count = 0;
-
-  }, 2000);
-
-
-});
-
-// mc.on("touchmove", function(ev) {
-//         ev.preventDefault();
-
-//   x1 = touch.pageX;
-//   y1 = touch.pageY;
-// checkSelection();
-
-
-
-// });
-
-document.addEventListener('touchmove', function(event) {
-    var touch = event.targetTouches[0];
+    function onPan(ev) {
+       
  
-    // Place element where the finger is
-    x1 = touch.pageX;
-    y1 = touch.pageY;
-    event.preventDefault();
+      x1 = ev.deltaX,
+      y1 = ev.deltaY
 
-    checkSelection();
-  }, false);
+       checkSelection();
+    
+    }
+
+
+    function onPinch(ev) {
+        if(ev.type == 'pinchstart') {
+            ev.preventDefault();
+            addOcta();
+        }
+
+
+    }
+
+    // function onRotate(ev) {
+    //     if(ev.type == 'rotatestart') {
+    //         initAngle = transform.angle || 0;
+    //     }
+
+    //     el.className = '';
+    //     transform.rz = 1;
+    //     transform.angle = initAngle + ev.rotation;
+    //     requestElementUpdate();
+    //     logEvent(ev.type);
+    // }
+
+    // function onSwipe(ev) {
+    //     var angle = 50;
+    //     transform.ry = (ev.direction & Hammer.DIRECTION_HORIZONTAL) ? 1 : 0;
+    //     transform.rx = (ev.direction & Hammer.DIRECTION_VERTICAL) ? 1 : 0;
+    //     transform.angle = (ev.direction & (Hammer.DIRECTION_RIGHT | Hammer.DIRECTION_UP)) ? angle : -angle;
+
+    //     clearTimeout(timer);
+    //     timer = setTimeout(function () {
+    //         resetElement();
+    //     }, 300);
+    //     requestElementUpdate();
+    //     logEvent(ev.type);
+    // }
+
+    function onTap(ev) {
+         
+      x1 = ev.deltaX,
+      y1 = ev.deltaY
+       checkSelection();
+
+
+    }
+
+    function onDoubleTap(ev) {
+        
+      x1 = ev.deltaX,
+      y1 = ev.deltaY
+
+       checkSelection();
+
+    }
 
 
 function onDocumentMouseMove( event ) 
