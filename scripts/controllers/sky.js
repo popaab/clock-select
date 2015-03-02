@@ -29,7 +29,7 @@ var selectedColor=new THREE.Color( 0x4466dd );
 var mouseSphereCoords = null;
 var mouseSphere=[];
 var mainTime;
-var x,y,z;
+// var x,y,z;
 var maxAlarms = 10;
 var amountNow = 0;
 var x1, y1;
@@ -349,7 +349,7 @@ var element = document.getElementById("ThreeJS");
             
             var pinchx = ev.pointers[0].clientX;
             var pinchy = ev.pointers[0].clientY;
-            addOcta(pinchx,pinchy, 50);
+            addOcta(pinchx, pinchy, 50);
         // }
         }
  
