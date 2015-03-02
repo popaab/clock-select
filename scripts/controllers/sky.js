@@ -73,7 +73,7 @@ function init()
   //lights red and blue
         var L1 = new THREE.PointLight(0xff0000, 1);
         L1.position.x = -1000;
-        L1.position.y = 400;
+        L1.position.y = 500;
         L1.position.z = 500;
 
         scene.add(L1);
@@ -81,19 +81,19 @@ function init()
         var L3 = new THREE.PointLight(0x0000ff, 0.4);
         L3.position.z = -500;
         L3.position.x = 1000;
-        L3.position.y = -400;
+        L3.position.y = 500;
 
         scene.add(L3);  
 
   //main time sphere 
    var shiny = new THREE.MeshPhongMaterial({
-              color: 'pink',
+              color: 'white',
               shading: THREE.FlatShading,
               fog: false
               
           });
 
-    var mainTime = new THREE.Mesh(new THREE.TetrahedronGeometry(40, 3), shiny);
+    var mainTime = new THREE.Mesh(new THREE.TetrahedronGeometry(60, 3), shiny);
 
           mainTime.position.x = 0;
           mainTime.position.y = 0;
@@ -151,7 +151,7 @@ function addOcta()
   }
   
   var faceColorMaterial = new THREE.MeshLambertMaterial( 
-  { color: 0xffffff, vertexColors: THREE.FaceColors,shading:THREE.FlatShading,polygonOffset: true,polygonOffsetUnits: 1,polygonOffsetFactor: 1} );
+  { color: 'white', vertexColors: THREE.FaceColors,shading:THREE.FlatShading,polygonOffset: true,polygonOffsetUnits: 1,polygonOffsetFactor: 1} );
   
   var octaGeom= new THREE.OctahedronGeometry(cubeSide,0);
   for ( var i = 0; i < octaGeom.faces.length; i++ ) 
@@ -162,7 +162,7 @@ function addOcta()
   var octa= new THREE.Mesh( octaGeom, faceColorMaterial );
   octa.position.set(position[0], position[2], position[1]);
   // creates a wireMesh object
-  var wireOcta = new THREE.Mesh(octaGeom, new THREE.MeshBasicMaterial({ color: 0x116611, wireframe: true }));
+  var wireOcta = new THREE.Mesh(octaGeom, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
   
   scene.add(octa);
   // wireMesh object is added to the original as a sub-object
