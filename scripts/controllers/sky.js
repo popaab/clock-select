@@ -8,6 +8,13 @@
           clock = new THREE.Clock(),
           deltaTime = 0,
           fov = 75;
+
+
+                var targetRotation = 0;
+      var targetRotationOnMouseDown = 0;
+
+      var mouseX = 0;
+      var mouseXOnMouseDown = 0;
           
  
 
