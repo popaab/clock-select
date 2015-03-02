@@ -181,68 +181,7 @@
 
       }
 
-      document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-document.addEventListener( 'touchstart', onDocumentTouchStart, false );
-document.addEventListener( 'touchmove', onDocumentTouchMove, false );
-function onDocumentMouseDown( event ) {
-
-                event.preventDefault();
-
-                document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-                document.addEventListener( 'mouseup', onDocumentMouseUp, false );
-                document.addEventListener( 'mouseout', onDocumentMouseOut, false );
-
-                mouseXOnMouseDown = event.clientX - windowHalfX;
-                targetRotationOnMouseDown = targetRotation;
-            }
-
-            function onDocumentMouseMove( event ) {
-
-                mouseX = event.clientX - windowHalfX;
-                mouseY = event.clientY - windowHalfY;
-
-                targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.02;
-            }
-
-            function onDocumentMouseUp( event ) {
-
-                document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
-                document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
-                document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
-            }
-
-            function onDocumentMouseOut( event ) {
-
-                document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
-                document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
-                document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
-            }
-
-            function onDocumentTouchStart( event ) {
-
-                if ( event.touches.length == 1 ) {
-
-                    event.preventDefault();
-
-                    mouseXOnMouseDown = event.touches[ 0 ].pageX - windowHalfX;
-                    targetRotationOnMouseDown = targetRotation;
-
-
-                }
-            }
-
-            function onDocumentTouchMove( event ) {
-
-                if ( event.touches.length == 1 ) {
-
-                    event.preventDefault();
-
-                    mouseX = event.touches[ 0 ].pageX - windowHalfX;
-                    targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.05;
-
-                }
-            }
-
+    
 
 
       function resize() {
@@ -264,28 +203,28 @@ mc.add([pinch]);
 
 
 
-// mc.on("pinch", function(ev) {
-//         ev.preventDefault();
+mc.on("pinch", function(ev) {
+        ev.preventDefault();
 
 
-//         if( count == 0){
-//             var shape = THREE.SceneUtils.createMultiMaterialObject( 
-//             new THREE.OctahedronGeometry( 40, 0 ), 
-//             multiMaterial );
-//             shape.position.set(random(100, 0), random(100, 0), random(100, 0));
-//             scene.add( shape );
-//             count = 1;
+        if( count == 0){
+            var shape = THREE.SceneUtils.createMultiMaterialObject( 
+            new THREE.OctahedronGeometry( 40, 0 ), 
+            multiMaterial );
+            shape.position.set(random(100, 0), random(100, 0), random(100, 0));
+            scene.add( shape );
+            count = 1;
 
        
-//         }
+        }
 
-//           setInterval(function(){
-//     count = 0;
+          setInterval(function(){
+    count = 0;
 
-//   }, 2000);
+  }, 2000);
 
 
-// });
+});
 
 
 
