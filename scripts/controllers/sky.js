@@ -149,9 +149,10 @@ function addOcta(x,y,z){
     //alert("cubeSide="+cubeSide);
     if(position[1]-cubeSide>0){
       notAboveGround = false;
-    }else{ position[1]= cubeSide;
-
+      position[1]= cubeSide;
     }
+
+    
   }
   
   var faceColorMaterial = new THREE.MeshBasicMaterial( 
