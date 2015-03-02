@@ -188,10 +188,11 @@ document.addEventListener( 'touchmove', onDocumentTouchMove, false );
         
         var x = camera.position.x;
         var z = camera.position.z;
-        camera.position.x += (targetRotation - x)* Math.cos(0.00031) + (targetRotation - z) * Math.sin(0.00031);
-        camera.position.z += (targetRotation - z) * Math.cos(0.00031) - (targetRotation - x) * Math.sin(0.00031);
+        camera.position.x += x * Math.cos(0.00031) + z * Math.sin(0.00031);
+        camera.position.z += z * Math.cos(0.00031) - x * Math.sin(0.00031);
         camera.lookAt(scene.position);
 
+        
 
         // EventsControls.update();
 
@@ -257,6 +258,12 @@ document.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
           mouseXOnMouseDown = event.touches[ 0 ].pageX - windowHalfX;
           targetRotationOnMouseDown = targetRotation;
+
+          this.mouseXOnMouseDown.currentHex = this.mouseXOnMouseDown.material.color.getHex();
+          this.mouseXOnMouseDown.material.color.setHex( 'red' );
+
+          console.log( 'the box at number ' + this.event.item + ' is select' );
+
 
         }
 
