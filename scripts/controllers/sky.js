@@ -207,7 +207,7 @@ var element = document.getElementById("ThreeJS");
                   
 
     });
-    mc.on("pinch", onPinch);
+    mc.on("pinchout", onPinch);
     mc.on("tap", function onTap(ev) {
         if( ev.pointerType === "touch"){
 
@@ -227,10 +227,10 @@ var element = document.getElementById("ThreeJS");
 
 
     function onPinch(ev) {
-    if(ev.type == 'pinchout') {
+    // if(ev.type == 'pinchout') {
           console.log("pinch");
             addOcta();
-        }
+        // }
 
     }
 
