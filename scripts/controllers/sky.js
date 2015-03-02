@@ -22,7 +22,7 @@ var keyboard = new KeyboardState();
 var targetList = [];
 var projector, mouse = { x: 0, y: 0 },INTERSECTED;
 var selectedFaces = [];
-var floorSide=1000;
+var floorSide=500;
 var baseColor=new THREE.Color( 0x44dd66 );
 var highlightedColor=new THREE.Color( 0xddaa00 );
 var selectedColor=new THREE.Color( 0x4466dd );
@@ -68,11 +68,11 @@ function init()
   light.position.set(-300,1000,-300);
   scene.add(light);
   // FLOOR
-  var faceMat = new THREE.MeshBasicMaterial({color: 0x888888,side: THREE.DoubleSide});
+  // var faceMat = new THREE.MeshBasicMaterial({color: 0x888888,side: THREE.DoubleSide});
 
-  var floor= THREE.SceneUtils.createMultiMaterialObject(new THREE.PlaneGeometry(floorSide, floorSide, 10, 10), faceMat);
+  // var floor= THREE.SceneUtils.createMultiMaterialObject(new THREE.PlaneGeometry(floorSide, floorSide, 10, 10), faceMat);
   
-  floor.rotation.x = Math.PI / 2;
+  // floor.rotation.x = Math.PI / 2;
   // scene.add(floor);
   
   // SKYBOX
@@ -101,6 +101,8 @@ function init()
   document.addEventListener( 'mousedown', onDocumentMouseDown, false );
   document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 }
+
+
 function addOcta()
 {
   var position = new Array();
@@ -117,18 +119,18 @@ function addOcta()
   }
   
   var faceColorMaterial = new THREE.MeshLambertMaterial( 
-  { color: 0xffffff, vertexColors: THREE.FaceColors,shading:THREE.FlatShading,polygonOffset: true,polygonOffsetUnits: 1,polygonOffsetFactor: 1} );
+  { color: 'white', vertexColors: THREE.FaceColors,shading:THREE.FlatShading,polygonOffset: true,polygonOffsetUnits: 1,polygonOffsetFactor: 1} );
   
   var octaGeom= new THREE.OctahedronGeometry(cubeSide,0);
-  for ( var i = 0; i < octaGeom.faces.length; i++ ) 
-  {
-    face = octaGeom.faces[ i ]; 
-    face.color= baseColor;    
-  }
+  // for ( var i = 0; i < octaGeom.faces.length; i++ ) 
+  // {
+  //   face = octaGeom.faces[ i ]; 
+  //   face.color= baseColor;    
+  // }
   var octa= new THREE.Mesh( octaGeom, faceColorMaterial );
   octa.position.set(position[0], position[2], position[1]);
   // creates a wireMesh object
-  wireOcta = new THREE.Mesh(octaGeom, new THREE.MeshBasicMaterial({ color: 0x116611, wireframe: true }));
+  wireOcta = new THREE.Mesh(octaGeom, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
   
   scene.add(octa);
   // wireMesh object is added to the original as a sub-object
@@ -140,10 +142,10 @@ function addOcta()
 var mc = new Hammer.Manager(document.body);
 var count = 0;
 var pinch = new Hammer.Pinch();
-var tap = new Hammer.Tap();
+var touch = new Hammer.Touch();
 // add to the Manager
 mc.add([pinch]);
-mc.add([tap]);
+mc.add([touch]);
 
 
 
@@ -158,13 +160,12 @@ addOcta();
 
 });
 
-mc.on("tap", function(ev) {
-        ev.preventDefault();
+mc.on("touch", function(e) {
+        e.preventDefault();
 
-    var x1 = ev.center.pageX;
+    x1 = ( e.gesture.center.pageX /  window.innerWidth ) * 2 - 1;
+    y1 = ( e.gesture.center.pageY / window.innerHeight ) * 2 + 1;
 
-    var y1 = ev.center.pageY;
-  
 checkSelection();
 
 
@@ -196,10 +197,9 @@ function onDocumentMouseDown( event )
   // update the mouse variable
   mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
   mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-  
-  checkSelection(); 
 
 }
+
 
 function ColorSelected(){
   selectedFaces.forEach( function(arrayItem)
@@ -214,7 +214,7 @@ function checkSelection(){
 
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
-  var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
+  var vector = new THREE.Vector3( x1, y1, 1 );
   projector.unprojectVector( vector, camera );
   var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
@@ -239,11 +239,11 @@ function checkSelection(){
     
     // if is a previously selected face, change the color back to green, otherswise change to blue
     if(test>=0){
-      intersects[ 0 ].face.color=new THREE.Color( 0x44dd66 ); 
+      intersects[ 0 ].object.geometry.color=new THREE.Color( 0x44dd66 ); 
       selectedFaces.splice(test, 1);
     }
     else{
-      intersects[ 0 ].face.color=new THREE.Color( 0x222288 ); 
+      intersects[ 0 ].object.geometry.color=new THREE.Color( 0x222288 ); 
       selectedFaces.push(intersects[0]);
     }
     
@@ -270,13 +270,13 @@ function checkHighlight(){
   { // case if mouse is not currently over an object
     if(INTERSECTED==null){
       INTERSECTED = intersects[ 0 ];
-      INTERSECTED.object.color = highlightedColor;
+      INTERSECTED.object.geometry.color = highlightedColor;
     }
     else{ // if thse mouse is over an object
-      INTERSECTED.object.color= baseColor;
+      INTERSECTED.object.geometry.color= baseColor;
       INTERSECTED.object.geometry.colorsNeedUpdate=true;
       INTERSECTED = intersects[ 0 ];
-      INTERSECTED.object.color = highlightedColor;      
+      INTERSECTED.object.geometry.color = highlightedColor;      
     }
     // upsdate mouseSphere coordinates and update colors
     mouseSphereCoords = [INTERSECTED.point.x,INTERSECTED.point.y,INTERSECTED.point.z];
@@ -287,7 +287,7 @@ function checkHighlight(){
   {
     // restore previous intersection object (if it exists) to its original color
     if ( INTERSECTED ){
-      INTERSECTED.object.color = baseColor;
+      INTERSECTED.object.geometry.color = baseColor;
       INTERSECTED.object.geometry.colorsNeedUpdate=true;
     }
     // remove previous intersection object reference
