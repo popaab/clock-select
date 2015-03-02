@@ -140,16 +140,14 @@ var mc = new Hammer.Manager(document.body);
 var element = document.getElementById("ThreeJS");
     mc.add(new Hammer.Pan({ threshold: 0, pointer: 0 }));
 
-
-    mc.add(new Hammer.Swipe()).recognizeWith(mc.get('pan'));
     mc.add(new Hammer.Pinch({ threshold: 0}));
-    mc.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+
     mc.add(new Hammer.Tap());
 
     mc.on("panstart panmove", onPan);
-    mc.on("swipe", onSwipe);
+
     mc.on("pinch", onPinch)
-mc.on("tap", function onTap(ev) {
+    mc.on("tap", function onTap(ev) {
         if( ev.pointerType === "touch"){
 
                   console.log(ev.pointerType);
@@ -166,8 +164,6 @@ mc.on("tap", function onTap(ev) {
 
     });
 
-    mc.on("doubletap", onDoubleTap);
-
     function onPan(ev) {
        
                   console.log(ev.pointerType);
@@ -177,36 +173,17 @@ mc.on("tap", function onTap(ev) {
            
                   console.log("pan: " + x1 + " " + y1);
                   checkSelection(x1, y1);
-
-      
-                  
-
-
     }
 
 
-
-   function onSwipe(ev) {
-    
-   }
-
     function onPinch(ev) {
     if(ev.type == 'pinchout') {
-          document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1 + " pinch";
+          console.log("pinch");
             addOcta();
         }
 
     }
 
-
-    function onDoubleTap(ev) {
-
-      // console.log(ev.gesture);
-     //  x1 = ev.gesture.touches[0].pageX;
-     //  y1 = ev.gesture.touches[0].pageY;
-     // document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
-
-    }
 
 function ColorSelected(){
   selectedFaces.forEach( function(arrayItem)
