@@ -141,7 +141,7 @@ function addOcta()
 }
 var mc = new Hammer.Manager(document.body);
 var element = document.getElementById("ThreeJS");
-    mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
+    mc.add(new Hammer.Pan({ threshold: 0, pointerType: "touch", pointer: 0 }));
 
 
     mc.add(new Hammer.Swipe()).recognizeWith(mc.get('pan'));
@@ -400,20 +400,6 @@ function animate()
 
 function update()
 {
-
-  document.addEventListener('touchstart', function(e){
-
-
-
-startX = e.targetTouches[0].pageX;
-startY = e.targetTouches[0].pageY;
-
-  this.addEventListener('touchmove', function(e){
-    moveX = e.targetTouches[0].pageX;
-    moveY = e.targetTouches[0].pageY;
-    console.log(moveX + ' ' + moveY);
-  }, false);
-}, false);
 
   checkHighlight();
   CheckMouseSphere();
