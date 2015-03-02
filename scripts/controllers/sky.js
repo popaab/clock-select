@@ -161,8 +161,9 @@ mc.on("tap", function onTap(ev) {
 
             x1 = ev.posx;
             y1 = ev.posy;
+            var z1 = ev.posz;
 
-            console.log(x1 + " " + y1);
+            console.log(x1 + " " + y1 + " " + z1);
 
             document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
        
