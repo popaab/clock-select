@@ -133,19 +133,18 @@ function init()
   
 
 }
-function addOcta(x,y,z)
-{
+function addOcta(x,y,z){
 
 
-
+  var posx = x, posy = y, posz = z;
   var position = new Array();
   var notAboveGround = true;
   var face;
   var faces = [];
   while(notAboveGround){
-    position[0]=x*floorSide-floorSide/2;
-    position[1]=y*floorSide-floorSide/2;
-    position[2]=z*floorSide/5;
+    position[0]= posx*floorSide-floorSide/2;
+    position[1]= posy*floorSide-floorSide/2;
+    position[2]= posz*floorSide/5;
     var cubeSide = Math.random()*floorSide/12+floorSide/50;
     //alert("cubeSide="+cubeSide);
     if(position[2]-cubeSide>0){
@@ -190,7 +189,7 @@ function ColorSelected(){
     });
 }
 
-function checkSelection(x1, y1){
+function checkSelection(){
   // find intersections
 var vector = new THREE.Vector3( x1, y1, 1 ); 
 console.log("check selection: " + x1 + " " + y1);
