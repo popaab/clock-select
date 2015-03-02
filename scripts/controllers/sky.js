@@ -305,6 +305,9 @@ var element = document.getElementById("ThreeJS");
 
     mc.add(new Hammer.Tap());
     mc.add(new Hammer.Pan());
+
+
+    mc.on("pinchout", onPinch);
     mc.on("panmove", function onPan(ev) {
          if( ev.pointerType === "touch"){
 
@@ -318,7 +321,9 @@ var element = document.getElementById("ThreeJS");
       
 }
     });
-    mc.on("pinchout", onPinch);
+  
+
+
     mc.on("tap", function onTap(ev) {
         if( ev.pointerType === "touch"){
 
