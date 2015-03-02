@@ -160,7 +160,7 @@ var mc = new Hammer.Manager(document.body);
     var whatever = function(){
         'use strict';
         var x1, y1;
-        var element = document.getElementById("myDIV");
+        var element = document.getElementById("ThreeJS");
         $(element).hammer().on("pan", function(e){
             console.log(e);
 
