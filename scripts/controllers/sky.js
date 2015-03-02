@@ -133,6 +133,39 @@ function addOcta()
   targetList.push(octa);
 }
 
+var mc = new Hammer.Manager(document.body);
+var count = 0;
+var pinch = new Hammer.Pinch();
+var tap = new Hammer.Tap();
+// add to the Manager
+mc.add([pinch]);
+mc.add([tap]);
+
+
+
+mc.on("pinch", function(ev) {
+        ev.preventDefault();
+addOcta();
+  setInterval(function(){
+    count = 0;
+
+  }, 2000);
+
+
+});
+
+mc.on("tap", function(ev) {
+        ev.preventDefault();
+
+    var x1 = e.gesture.center.pageX;
+    var y1 = e.gesture.center.pageY;
+  checkSelection(); 
+
+
+});
+
+
+
 function onDocumentMouseMove( event ) 
 {
   // the following line would stop any other event handler from firing
@@ -215,7 +248,7 @@ function checkHighlight(){
 
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
-  var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
+  var vector = new THREE.Vector3( x1, y1, 1 );
   projector.unprojectVector( vector, camera );
   var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
@@ -302,34 +335,6 @@ function render()
   renderer.render( scene, camera );
 }
 
-
-var mc = new Hammer.Manager(document.body);
-var count = 0;
-var pinch = new Hammer.Pinch();
-var tap = new Hammer.Tap();
-// add to the Manager
-mc.add([pinch]);
-mc.add([tap]);
-
-
-
-mc.on("pinch", function(ev) {
-        ev.preventDefault();
-addOcta();
-  setInterval(function(){
-    count = 0;
-
-  }, 2000);
-
-
-});
-
-mc.on("tap", function(ev) {
-        ev.preventDefault();
-  checkSelection(); 
-
-
-});
 
 
 
