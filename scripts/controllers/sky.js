@@ -273,10 +273,10 @@ function checkHighlight(){
       INTERSECTED.object.color = highlightedColor;
     }
     else{ // if thse mouse is over an object
-      INTERSECTED.object.color= baseColor;
+      INTERSECTED.face.color= baseColor;
       INTERSECTED.object.geometry.colorsNeedUpdate=true;
       INTERSECTED = intersects[ 0 ];
-      INTERSECTED.object.color = highlightedColor;      
+      INTERSECTED.face.color = highlightedColor;      
     }
     // upsdate mouseSphere coordinates and update colors
     mouseSphereCoords = [INTERSECTED.point.x,INTERSECTED.point.y,INTERSECTED.point.z];
@@ -287,7 +287,7 @@ function checkHighlight(){
   {
     // restore previous intersection object (if it exists) to its original color
     if ( INTERSECTED ){
-      INTERSECTED.object.color = baseColor;
+      INTERSECTED.face.color = baseColor;
       INTERSECTED.object.geometry.colorsNeedUpdate=true;
     }
     // remove previous intersection object reference
@@ -328,7 +328,10 @@ function update()
   CheckMouseSphere();
   keyboard.update();
   
-
+  if ( keyboard.down("up") ) 
+  {   
+    addOcta();
+  }
   ColorSelected();
   //intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
   controls.update();
