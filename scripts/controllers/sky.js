@@ -140,10 +140,10 @@ function addOcta()
 var mc = new Hammer.Manager(document.body);
 var count = 0;
 var pinch = new Hammer.Pinch();
-var tap = new Hammer.Tap();
+var pan = new Hammer.Pan();
 // add to the Manager
 mc.add([pinch]);
-mc.add([tap]);
+mc.add([pan]);
 
 
 
@@ -158,7 +158,7 @@ addOcta();
 
 });
 
-mc.on("tap", function(ev) {
+mc.on("pan", function(ev) {
         ev.preventDefault();
 
     var x1 = ev.gesture.center.pageX;
