@@ -140,7 +140,7 @@ function addOcta()
   targetList.push(octa);
 }
 var mc = new Hammer.Manager(document.body);
-
+var element = document.getElementById("ThreeJS");
     mc.add(new Hammer.Pan({ threshold: 0, pointers: 1 }));
 
 
@@ -156,7 +156,7 @@ var mc = new Hammer.Manager(document.body);
     mc.on("pinchout", onPinch);
 
     
-    $(mc).hammer().on("tap", function onTap(ev) {
+    $(element).hammer().on("tap", function onTap(ev) {
             console.log(ev);
 
             x1 = ev.gesture.center.pageX;
