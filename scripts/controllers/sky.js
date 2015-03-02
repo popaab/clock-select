@@ -27,7 +27,6 @@ var baseColor=new THREE.Color( 0x44dd66 );
 var highlightedColor=new THREE.Color( 0xddaa00 );
 var selectedColor=new THREE.Color( 0x4466dd );
 var mouseSphereCoords = null;
-var mouseSphere=[];
 
 init();
 animate();
@@ -71,7 +70,7 @@ function init()
   var floor= THREE.SceneUtils.createMultiMaterialObject(new THREE.PlaneGeometry(floorSide, floorSide, 10, 10),multiMat);
   
   floor.rotation.x = Math.PI / 2;
-  scene.add(floor);
+  // scene.add(floor);
   
   // SKYBOX
   var skyBoxGeometry = new THREE.CubeGeometry( 10000, 10000, 10000 );
