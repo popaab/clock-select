@@ -48,11 +48,11 @@ THREE.OrbitControls = function ( object, domElement ) {
 	this.maxDistance = Infinity;
 
 	// Set to true to disable this control
-	this.noRotate = false;
+	this.noRotate = true;
 	this.rotateSpeed = 0.7;
 
 	// Set to true to disable this control
-	this.noPan = false;
+	this.noPan = true;
 	this.keyPanSpeed = 7.0;	// pixels moved per arrow key push
 
 	// Set to true to automatically rotate around the target
