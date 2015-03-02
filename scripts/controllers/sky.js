@@ -120,36 +120,36 @@
           scene.add( object );
           EventsControls.attach( object );
 
-          // var wireobj = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial({
-          //     color: 'black', 
-          //     wireframe: true, 
-          //     transparent: true
-          // }));
+          var wireobj = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial({
+              color: 'black', 
+              wireframe: true, 
+              transparent: true
+          }));
           
-          // wireobj.position.x = object.position.x;
-          // wireobj.position.y = object.position.y;
-          // wireobj.position.z = object.position.z;
-          // scene.add( wireobj );
+          wireobj.position.x = object.position.x;
+          wireobj.position.y = object.position.y;
+          wireobj.position.z = object.position.z;
+          scene.add( wireobj );
 
         
 
       }
 
-          // var shiny = new THREE.MeshPhongMaterial({
-          //     color: 'pink',
-          //     shading: THREE.FlatShading,
-          //     fog: false
+          var shiny = new THREE.MeshPhongMaterial({
+              color: 'pink',
+              shading: THREE.FlatShading,
+              fog: false
               
-          // });
+          });
 
-          // object = new THREE.Mesh(new THREE.TetrahedronGeometry(40, 3), shiny);
+          object = new THREE.Mesh(new THREE.TetrahedronGeometry(40, 3), shiny);
 
-          // object.position.x = 0;
-          // object.position.y = 0;
-          // object.position.z = 0;
+          object.position.x = 0;
+          object.position.y = 0;
+          object.position.z = 0;
 
-          // scene.add(object);
-          // EventsControls.attach( object );
+          scene.add(object);
+          EventsControls.attach( object );
 
     }
 
@@ -180,7 +180,66 @@
         renderer.render( scene, camera );
 
       }
+function onDocumentMouseDown( event ) {
 
+                event.preventDefault();
+
+                document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+                document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+                document.addEventListener( 'mouseout', onDocumentMouseOut, false );
+
+                mouseXOnMouseDown = event.clientX - windowHalfX;
+                targetRotationOnMouseDown = targetRotation;
+            }
+
+            function onDocumentMouseMove( event ) {
+
+                mouseX = event.clientX - windowHalfX;
+                mouseY = event.clientY - windowHalfY;
+
+                targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.02;
+            }
+
+            function onDocumentMouseUp( event ) {
+
+                document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+                document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+                document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
+            }
+
+            function onDocumentMouseOut( event ) {
+
+                document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+                document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+                document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
+            }
+
+            function onDocumentTouchStart( event ) {
+
+                if ( event.touches.length == 1 ) {
+
+                    event.preventDefault();
+
+                    mouseXOnMouseDown = event.touches[ 0 ].pageX - windowHalfX;
+                    targetRotationOnMouseDown = targetRotation;
+
+                }
+            }
+
+            function onDocumentTouchMove( event ) {
+
+                if ( event.touches.length == 1 ) {
+
+                    event.preventDefault();
+
+                    mouseX = event.touches[ 0 ].pageX - windowHalfX;
+                    targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.05;
+
+                }
+            }
+
+
+            
       function resize() {
           camera.aspect = window.innerWidth/ window.innerHeight;
           camera.updateProjectionMatrix();
