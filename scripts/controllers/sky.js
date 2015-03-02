@@ -161,9 +161,9 @@ addOcta();
 mc.on("tap", function(ev) {
         ev.preventDefault();
 
-    var x1 = e.gesture.center.pageX;
+    var x1 = ev.gesture.center.pageX;
 
-    var y1 = e.gesture.center.pageY;
+    var y1 = ev.gesture.center.pageY;
   checkSelection(); 
 console.log(x1 + ' ' y1);
 
