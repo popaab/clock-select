@@ -315,8 +315,8 @@ var element = document.getElementById("ThreeJS");
                   var panx = ev.pointers[0].clientX;
                   var pany = ev.pointers[0].clientY;
            
-                  console.log("paning : " + panx + " " + pany);
-                  // checkSelection(panx, pany);
+                  console.log("paning : " + panx);
+                  // checkSelection(panx1, pany1)
       
 }
     });
