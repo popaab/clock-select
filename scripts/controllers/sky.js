@@ -142,6 +142,7 @@ function addOcta()
 var mc = new Hammer.Manager(document.body);
 
     mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
+    mc.add(new Hammer.Touch());
 
     mc.add(new Hammer.Swipe()).recognizeWith(mc.get('pan'));
     mc.add(new Hammer.Rotate({ threshold: 0 })).recognizeWith(mc.get('pan'));
@@ -153,6 +154,7 @@ var mc = new Hammer.Manager(document.body);
     mc.on("panstart panmove", onPan);
     mc.on("swipe", onSwipe);
     mc.on("pinchout", onPinch);
+    mc.on("touch", onTouch);
     
     mc.on("tap", onTap);
     mc.on("doubletap", onDoubleTap);
@@ -170,6 +172,20 @@ var mc = new Hammer.Manager(document.body);
 
 
     function onPan(ev) {
+      console.log(ev);
+
+            // x1 = ev.gesture.center.pageX;
+            // y1 = ev.gesture.center.pageY;
+
+            // document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
+       
+      // console.log(ev.gesture);
+       
+      //  document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
+    
+    }
+
+    function onTouch(ev) {
       console.log(ev);
 
             x1 = ev.gesture.center.pageX;
