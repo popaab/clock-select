@@ -138,13 +138,10 @@ function addOcta()
 }
 var mc = new Hammer.Manager(document.body);
 var element = document.getElementById("ThreeJS");
-    mc.add(new Hammer.Pan({ threshold: 0, pointer: 0 }));
 
     mc.add(new Hammer.Pinch({ threshold: 0}));
 
     mc.add(new Hammer.Tap());
-
-    mc.on("panstart panmove", onPan);
 
     mc.on("pinch", onPinch)
     mc.on("tap", function onTap(ev) {
@@ -164,23 +161,12 @@ var element = document.getElementById("ThreeJS");
 
     });
 
-    function onPan(ev) {
-       
-                  console.log(ev.pointerType);
-                  
-                  x1 = ev.pointers[0].clientX;
-                  y1 = ev.pointers[0].clientY;
-           
-                  console.log("pan: " + x1 + " " + y1);
-                  checkSelection(x1, y1);
-    }
-
 
     function onPinch(ev) {
-    if(ev.type == 'pinchout') {
+    // if(ev.type == 'pinchout') {
           console.log("pinch");
             addOcta();
-        }
+        // }
 
     }
 

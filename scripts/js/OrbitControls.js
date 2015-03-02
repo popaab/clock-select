@@ -48,8 +48,8 @@ THREE.OrbitControls = function ( object, domElement ) {
 	this.maxDistance = Infinity;
 
 	// Set to true to disable this control
-	this.noRotate = true;
-	this.rotateSpeed = 1.0;
+	this.noRotate = false;
+	this.rotateSpeed = 0.03;
 
 	// Set to true to disable this control
 	this.noPan = false;
