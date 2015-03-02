@@ -221,10 +221,10 @@ var mc = new Hammer.Manager(document.body);
    }
 
     function onTap(ev) {
-      console.log(ev);
+            console.log(ev);
 
-            x1 = ev.gesture.pageX;
-            y1 = ev.gesture.pageY;
+            x1 = ev.gesture.center.pageX;
+            y1 = ev.gesture.center.pageY;
 
             document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
        
