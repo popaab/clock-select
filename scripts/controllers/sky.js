@@ -318,7 +318,7 @@ var element = document.getElementById("ThreeJS");
                   console.log("paning : " + panx);
                   // checkSelection(panx1, pany1)
       
-
+}
     });
     mc.on("pinchout", onPinch);
     mc.on("tap", function onTap(ev) {
