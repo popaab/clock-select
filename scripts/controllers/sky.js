@@ -122,11 +122,11 @@ function addOcta()
   { color: 'white', vertexColors: THREE.FaceColors,shading:THREE.FlatShading,polygonOffset: true,polygonOffsetUnits: 1,polygonOffsetFactor: 1} );
   
   var octaGeom= new THREE.OctahedronGeometry(cubeSide,0);
-  // for ( var i = 0; i < octaGeom.faces.length; i++ ) 
-  // {
-  //   face = octaGeom.faces[ i ]; 
-  //   face.color= baseColor;    
-  // }
+  for ( var i = 0; i < octaGeom.faces.length; i++ ) 
+  {
+    face = octaGeom.faces[ i ]; 
+    face.color= baseColor;    
+  }
   var octa= new THREE.Mesh( octaGeom, faceColorMaterial );
   octa.position.set(position[0], position[2], position[1]);
   // creates a wireMesh object
