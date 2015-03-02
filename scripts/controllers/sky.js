@@ -312,7 +312,7 @@ var element = document.getElementById("ThreeJS");
 
                   console.log(ev);
                   
-                  var panx = ev.pointers[0]clientX;
+                  var panx = ev.pointers[0].clientX;
                   // pany1 = ev.pointers[0].clientY;
            
                   console.log("paning : " + panx);
