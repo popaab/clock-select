@@ -315,7 +315,7 @@ var element = document.getElementById("ThreeJS");
                   var panx = ev.gesture.deltaX;
                   // pany1 = ev.pointers[0].clientY;
            
-                  console.log("paning : " + panX);
+                  console.log("paning : " + panx);
                   // checkSelection(panx1, pany1)
       
 
