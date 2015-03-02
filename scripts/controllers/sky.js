@@ -262,15 +262,15 @@ function checkHighlight(){
 
 function CheckMouseSphere(){
   // if the coordinates exist, make the sphere visible
-  // if(mouseSphereCoords != null){
-  //   //console.log(mouseSphereCoords[0].toString()+","+mouseSphereCoords[1].toString()+","+mouseSphereCoords[2].toString());
-  //   mouseSphere[0].position.set(mouseSphereCoords[0],mouseSphereCoords[1],mouseSphereCoords[2]);
-  //   mouseSphere[0].visible = true;
-  // }
-  // else{ // otherwise hide the sphere
+  if(mouseSphereCoords != null){
+    //console.log(mouseSphereCoords[0].toString()+","+mouseSphereCoords[1].toString()+","+mouseSphereCoords[2].toString());
+    mouseSphere[0].position.set(mouseSphereCoords[0],mouseSphereCoords[1],mouseSphereCoords[2]);
+    mouseSphere[0].visible = true;
+  }
+  else{ // otherwise hide the sphere
     mouseSphere[0].visible = false;
     console.log('gone');
-  // }
+  }
 }
 function toString(v) { return "[ " + v.x + ", " + v.y + ", " + v.z + " ]"; }
 
