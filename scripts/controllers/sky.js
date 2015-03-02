@@ -269,6 +269,7 @@ function CheckMouseSphere(){
   // }
   // else{ // otherwise hide the sphere
     mouseSphere[0].visible = false;
+    console.log('gone');
   // }
 }
 function toString(v) { return "[ " + v.x + ", " + v.y + ", " + v.z + " ]"; }
