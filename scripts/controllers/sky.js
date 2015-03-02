@@ -27,6 +27,7 @@ var baseColor=new THREE.Color( 0x44dd66 );
 var highlightedColor=new THREE.Color( 0xddaa00 );
 var selectedColor=new THREE.Color( 0x4466dd );
 var mouseSphereCoords = null;
+var mouseSphere=[];
 
 init();
 animate();
@@ -64,12 +65,12 @@ function init()
   scene.add(light);
   // FLOOR
   var faceMat = new THREE.MeshBasicMaterial({color: 0x888888,side: THREE.DoubleSide});
+  var wireMat = new THREE.MeshBasicMaterial({color:0xaaaaaa,wireframe:true,transparent:true});
+  var multiMat = [faceMat ,wireMat];
 
- 
-
-  var floor= THREE.SceneUtils.createMultiMaterialObject(new THREE.PlaneGeometry(floorSide, floorSide, 10, 10), faceMat);
+  var floor= THREE.SceneUtils.createMultiMaterialObject(new THREE.PlaneGeometry(floorSide, floorSide, 10, 10),multiMat);
   
-  // floor.rotation.x = Math.PI / 2;
+  floor.rotation.x = Math.PI / 2;
   // scene.add(floor);
   
   // SKYBOX
