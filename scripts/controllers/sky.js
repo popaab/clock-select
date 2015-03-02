@@ -161,9 +161,9 @@ addOcta();
 mc.on("pan", function(ev) {
         ev.preventDefault();
 
-    var x1 = ev.gesture.pageX;
+    var x1 = ev.gesture.x;
 
-    var y1 = ev.gesture.pageY;
+    var y1 = ev.gesture.y;
     console.log(ev);
   
 
