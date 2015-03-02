@@ -268,7 +268,7 @@ function CheckMouseSphere(){
     mouseSphere[0].visible = true;
   }
   else{ // otherwise hide the sphere
-    mouseSphere[0].visible = false;
+
     console.log('gone');
   }
 }
