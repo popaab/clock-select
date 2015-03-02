@@ -156,7 +156,7 @@ var mc = new Hammer.Manager(document.body);
     mc.on("pinchout", onPinch);
 
     
-    mc.on("tap", function onTap(ev) {
+    $(mc).hammer().on("tap", function onTap(ev) {
             console.log(ev);
 
             x1 = ev.gesture.center.pageX;
