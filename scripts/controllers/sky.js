@@ -100,6 +100,7 @@ function init()
   // when the mouse moves, call the given function
   document.addEventListener( 'mousedown', onDocumentMouseDown, false );
   document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
 }
 function addOcta()
 {
@@ -228,19 +229,7 @@ var mc = new Hammer.Manager(document.body);
 
     }
 var startX, startY, moveY, moveX = null;
-document.addEventListener('touchstart', function(e){
 
-
-
-startX = e.targetTouches[0].pageX;
-startY = e.targetTouches[0].pageY;
-
-  this.addEventListener('touchmove', function(e){
-    moveX = e.targetTouches[0].pageX;
-    moveY = e.targetTouches[0].pageY;
-    console.log(moveX + ' ' + moveY);
-  }, false);
-}, false);
 
 function onDocumentMouseMove( event ) 
 {
@@ -393,6 +382,21 @@ function animate()
 
 function update()
 {
+
+  document.addEventListener('touchstart', function(e){
+
+
+
+startX = e.targetTouches[0].pageX;
+startY = e.targetTouches[0].pageY;
+
+  this.addEventListener('touchmove', function(e){
+    moveX = e.targetTouches[0].pageX;
+    moveY = e.targetTouches[0].pageY;
+    console.log(moveX + ' ' + moveY);
+  }, false);
+}, false);
+
   checkHighlight();
   CheckMouseSphere();
   keyboard.update();
