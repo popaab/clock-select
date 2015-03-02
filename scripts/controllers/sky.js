@@ -147,9 +147,9 @@ function addOcta(x,y,z){
     position[2]= posz;
     var cubeSide = 0;
     //alert("cubeSide="+cubeSide);
-    if(position[2]-cubeSide>0){
+    if(position[1]-cubeSide>0){
       notAboveGround = false;
-    }else{ position[2]= cubeSide;
+    }else{ position[1]= cubeSide;
 
     }
   }
@@ -164,8 +164,8 @@ function addOcta(x,y,z){
     face.color= baseColor;    
   }
   var octa= new THREE.Mesh( octaGeom, faceColorMaterial );
-  octa.position.set(position[0], position[2], position[1]);
-  console.log(position[0] + " " + position[2] + " " + position[1]);
+  octa.position.set(position[0], position[1], position[2]);
+  console.log(position[0] + " " + position[1] + " " + position[2]);
   // creates a wireMesh object
   var wireOcta = new THREE.Mesh(octaGeom, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
   
