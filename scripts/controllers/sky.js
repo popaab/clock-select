@@ -161,10 +161,46 @@ addOcta();
 mc.on("tap", function(ev) {
         ev.preventDefault();
 
-    var x1 = ev.center.pageX;
+    var x1 = ev.gesture.center.pageX;
 
-    var y1 = ev.center.pageY;
-  checkSelection(); 
+    var y1 = ev.gesture.center.pageY;
+  
+
+    var vector = new THREE.Vector3( x1, y1, 1 );
+  projector.unprojectVector( vector, camera );
+  var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
+
+  // create an array containing all objects in the scene with which the ray intersects
+  var intersects = ray.intersectObjects( targetList );
+
+  //if an intersection is detected
+  if ( intersects.length > 0 )
+  {
+    console.log("Hit @ " + toString( intersects[0].point ) );
+    
+    //test items in selected faces array
+    var test=-1; 
+    selectedFaces.forEach( function(arrayItem)
+    {
+      // if the faceIndex and object ID are the same between the intersect and selected faces ,
+      // the face index is recorded
+      if(intersects[0].faceIndex==arrayItem.faceIndex && intersects[0].object.id==arrayItem.object.id){
+        test=selectedFaces.indexOf(arrayItem);
+      }
+    });
+    
+    // if is a previously selected face, change the color back to green, otherswise change to blue
+    if(test>=0){
+      intersects[ 0 ].face.color=new THREE.Color( 0x44dd66 ); 
+      selectedFaces.splice(test, 1);
+    }
+    else{
+      intersects[ 0 ].face.color=new THREE.Color( 0x222288 ); 
+      selectedFaces.push(intersects[0]);
+    }
+    
+    intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
+  }
 
 
 });
@@ -212,7 +248,7 @@ function checkSelection(){
 
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
-  var vector = new THREE.Vector3( x1, y1, 1 );
+  var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
   projector.unprojectVector( vector, camera );
   var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
