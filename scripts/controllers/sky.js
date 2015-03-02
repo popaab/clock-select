@@ -307,15 +307,15 @@ var element = document.getElementById("ThreeJS");
 
     mc.add(new Hammer.Tap());
     mc.add(new Hammer.Pan());
-    mc.on("pan", function onPan(ev) {
+    mc.on("panmove", function onPan(ev) {
          if( ev.pointerType === "touch"){
 
                   console.log(ev);
                   
                   var panx = ev.pointers[0].clientX;
-                  // pany1 = ev.pointers[0].clientY;
+                  var pany = ev.pointers[0].clientY;
            
-                  console.log("paning : " + panx);
+                  console.log("paning : " + panx + " " + pany);
                   // checkSelection(panx1, pany1)
       
 }
