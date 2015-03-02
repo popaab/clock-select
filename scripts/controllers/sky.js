@@ -185,7 +185,7 @@ function onDocumentMouseMove( event )
 {
   // the following line would stop any other event handler from firing
   // (such as the mouse's TrackballControls)
-  //event.preventDefault();
+  event.preventDefault();
   
   // update the mouse variable
   mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
@@ -197,7 +197,7 @@ function onDocumentMouseDown( event )
 {
   // the following line would stop any other event handler from firing
   // (such as the mouse's TrackballControls)
-  // event.preventDefault();
+  event.preventDefault();
   
   //console.log("Click.");
   
@@ -205,7 +205,7 @@ function onDocumentMouseDown( event )
   mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
   mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
   
-
+ checkSelection();
 
 }
 
