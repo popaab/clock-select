@@ -303,3 +303,24 @@ function render()
 }
 
 
+var mc = new Hammer.Manager(document.body);
+var count = 0;
+var pinch = new Hammer.Pinch();
+// add to the Manager
+mc.add([pinch]);
+
+
+
+mc.on("pinch", function(ev) {
+        ev.preventDefault();
+addOcta();
+  setInterval(function(){
+    count = 0;
+
+  }, 2000);
+
+
+});
+
+
+
