@@ -140,10 +140,10 @@ function addOcta()
 var mc = new Hammer.Manager(document.body);
 var count = 0;
 var pinch = new Hammer.Pinch();
-var tap = new Hammer.Tap();
+var touch = new Hammer.TouchMove();
 // add to the Manager
 mc.add([pinch]);
-mc.add([tap]);
+mc.add([touch]);
 
 
 
@@ -158,19 +158,27 @@ addOcta();
 
 });
 
-mc.on("tap", function(ev) {
-        ev.preventDefault();
+// mc.on("touchmove", function(ev) {
+//         ev.preventDefault();
 
-    var x1 = ev.center.pageX;
-
-    var y1 = ev.center.pageY;
-  
-checkSelection();
+//   x1 = touch.pageX;
+//   y1 = touch.pageY;
+// checkSelection();
 
 
 
-});
+// });
 
+document.addEventListener('touchmove', function(event) {
+    var touch = event.targetTouches[0];
+ 
+    // Place element where the finger is
+    x1 = touch.pageX;
+    y1 = touch.pageY;
+    event.preventDefault();
+
+    checkSelection();
+  }, false);
 
 
 function onDocumentMouseMove( event ) 
@@ -185,21 +193,21 @@ function onDocumentMouseMove( event )
 }
 
 
-function onDocumentMouseDown( event ) 
-{
-  // the following line would stop any other event handler from firing
-  // (such as the mouse's TrackballControls)
-  // event.preventDefault();
+// function onDocumentMouseDown( event ) 
+// {
+//   // the following line would stop any other event handler from firing
+//   // (such as the mouse's TrackballControls)
+//   // event.preventDefault();
   
-  //console.log("Click.");
+//   //console.log("Click.");
   
-  // update the mouse variable
-  mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-  mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+//   // update the mouse variable
+//   mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+//   mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
   
-  checkSelection(); 
 
-}
+
+// }
 
 function ColorSelected(){
   selectedFaces.forEach( function(arrayItem)
@@ -214,7 +222,7 @@ function checkSelection(){
 
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
-  var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
+  var vector = new THREE.Vector3( x1, y1, 1 );
   projector.unprojectVector( vector, camera );
   var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
