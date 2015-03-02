@@ -136,7 +136,7 @@ function addOcta()
   
   targetList.push(octa);
 }
-var mc = new Hammer.Manager(document.body);
+var mc = new Hammer.Manager('.ThreeJS');
 
     mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
 
@@ -159,13 +159,9 @@ var mc = new Hammer.Manager(document.body);
     
     function onPan(ev) {
        
-
-      x1 = ev.gesture.touches[0].pageX;
-      y1 = ev.gesture.touches[0].pageY;
-
-       checkSelection();
+      console.log(ev.gesture);
        
-       document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
+       // document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
     
     }
 
@@ -195,11 +191,11 @@ var mc = new Hammer.Manager(document.body);
 
    function onSwipe(ev) {
     
-      x1 = ev.gesture.touches[0].pageX;
-      y1 = ev.gesture.touches[0].pageY;
-      
-      document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
-       checkSelection();
+      // x1 = ev.gesture.touches[0].pageX;
+      // y1 = ev.gesture.touches[0].pageY;
+      console.log(ev.gesture);
+      // document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
+       // checkSelection();
     //     var angle = 50;
     //     transform.ry = (ev.direction & Hammer.DIRECTION_HORIZONTAL) ? 1 : 0;
     //     transform.rx = (ev.direction & Hammer.DIRECTION_VERTICAL) ? 1 : 0;
@@ -215,18 +211,20 @@ var mc = new Hammer.Manager(document.body);
 
     function onTap(ev) {
       
-
-      x1 = ev.gesture.touches[0].pageX;
-      y1 = ev.gesture.touches[0].pageY;
+console.log(ev.gesture);
+//       x1 = ev.gesture.touches[0].pageX;
+//       y1 = ev.gesture.touches[0].pageY;
    
-document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
+// document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
 
     }
 
     function onDoubleTap(ev) {
-      x1 = ev.gesture.touches[0].pageX;
-      y1 = ev.gesture.touches[0].pageY;
-     document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
+
+      console.log(ev.gesture);
+     //  x1 = ev.gesture.touches[0].pageX;
+     //  y1 = ev.gesture.touches[0].pageY;
+     // document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
 
     }
 
@@ -269,7 +267,7 @@ function ColorSelected(){
 
 function checkSelection(){
   // find intersections
-var vector = new THREE.Vector3( x1, y1, 1 ); 
+var vector = new THREE.Vector3( mouse.x, mouse.y, 1 ); 
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
   
