@@ -162,8 +162,7 @@ var mc = new Hammer.Manager(document.body);
     var whatever = function(){
 
         var x1, y1;
-        var element = document.getElementById("ThreeJS");
-        $(element).hammer().on("pan", function(e){
+      
             console.log(e);
 
             x1 = e.gesture.center.pageX;
