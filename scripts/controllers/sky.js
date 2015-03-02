@@ -65,17 +65,15 @@ function init()
   scene.add(light);
   // FLOOR
   var faceMat = new THREE.MeshBasicMaterial({color: 0x888888,side: THREE.DoubleSide});
-  var wireMat = new THREE.MeshBasicMaterial({color:0xaaaaaa,wireframe:true,transparent:true});
-  var multiMat = [faceMat ,wireMat];
 
-  var floor= THREE.SceneUtils.createMultiMaterialObject(new THREE.PlaneGeometry(floorSide, floorSide, 10, 10),multiMat);
+  var floor= THREE.SceneUtils.createMultiMaterialObject(new THREE.PlaneGeometry(floorSide, floorSide, 10, 10), faceMat);
   
   floor.rotation.x = Math.PI / 2;
   // scene.add(floor);
   
   // SKYBOX
   var skyBoxGeometry = new THREE.CubeGeometry( 10000, 10000, 10000 );
-  var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 0xdddddd, side: THREE.BackSide } );
+  var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 'blue', side: THREE.BackSide } );
   var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
   scene.add(skyBox);
   
@@ -264,14 +262,14 @@ function checkHighlight(){
 
 function CheckMouseSphere(){
   // if the coordinates exist, make the sphere visible
-  if(mouseSphereCoords != null){
-    //console.log(mouseSphereCoords[0].toString()+","+mouseSphereCoords[1].toString()+","+mouseSphereCoords[2].toString());
-    mouseSphere[0].position.set(mouseSphereCoords[0],mouseSphereCoords[1],mouseSphereCoords[2]);
-    mouseSphere[0].visible = true;
-  }
-  else{ // otherwise hide the sphere
+  // if(mouseSphereCoords != null){
+  //   //console.log(mouseSphereCoords[0].toString()+","+mouseSphereCoords[1].toString()+","+mouseSphereCoords[2].toString());
+  //   mouseSphere[0].position.set(mouseSphereCoords[0],mouseSphereCoords[1],mouseSphereCoords[2]);
+  //   mouseSphere[0].visible = true;
+  // }
+  // else{ // otherwise hide the sphere
     mouseSphere[0].visible = false;
-  }
+  // }
 }
 function toString(v) { return "[ " + v.x + ", " + v.y + ", " + v.z + " ]"; }
 
