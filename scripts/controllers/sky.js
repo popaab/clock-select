@@ -138,11 +138,18 @@ function addOcta()
   
   targetList.push(octa);
 }
-var x1, y1;
-var mc = document.getElementById("ThreeJS");
+
+var mc = new Hammer.Manager(document.body);
+var count = 0;
+var pinch = new Hammer.Pinch();
+var touch = new Hammer.Touch();
+// add to the Manager
+mc.add([pinch]);
+mc.add([touch]);
 
 
-$(mc).hammer().on("pinch", function(ev) {
+
+mc.on("pinch", function(ev) {
         ev.preventDefault();
 addOcta();
   setInterval(function(){
@@ -153,7 +160,7 @@ addOcta();
 
 });
 
-$(mc).hammer().on("touch", function(e) {
+mc.on("touch", function(e) {
         e.preventDefault();
 
     x1 = ( e.gesture.center.pageX /  window.innerWidth ) * 2 - 1;
@@ -232,11 +239,11 @@ function checkSelection(){
     
     // if is a previously selected face, change the color back to green, otherswise change to blue
     if(test>=0){
-      intersects[ 0 ].object.geometry.color=new THREE.Color( 0x44dd66 ); 
+      intersects[ 0 ].object.color=new THREE.Color( 0x44dd66 ); 
       selectedFaces.splice(test, 1);
     }
     else{
-      intersects[ 0 ].object.geometry.color=new THREE.Color( 0x222288 ); 
+      intersects[ 0 ].object.color=new THREE.Color( 0x222288 ); 
       selectedFaces.push(intersects[0]);
     }
     
@@ -263,13 +270,13 @@ function checkHighlight(){
   { // case if mouse is not currently over an object
     if(INTERSECTED==null){
       INTERSECTED = intersects[ 0 ];
-      INTERSECTED.object.geometry.color = highlightedColor;
+      INTERSECTED.object.color = highlightedColor;
     }
     else{ // if thse mouse is over an object
-      INTERSECTED.object.geometry.color= baseColor;
+      INTERSECTED.object.color= baseColor;
       INTERSECTED.object.geometry.colorsNeedUpdate=true;
       INTERSECTED = intersects[ 0 ];
-      INTERSECTED.object.geometry.color = highlightedColor;      
+      INTERSECTED.object.color = highlightedColor;      
     }
     // upsdate mouseSphere coordinates and update colors
     mouseSphereCoords = [INTERSECTED.point.x,INTERSECTED.point.y,INTERSECTED.point.z];
@@ -280,7 +287,7 @@ function checkHighlight(){
   {
     // restore previous intersection object (if it exists) to its original color
     if ( INTERSECTED ){
-      INTERSECTED.object.geometry.color = baseColor;
+      INTERSECTED.object.color = baseColor;
       INTERSECTED.object.geometry.colorsNeedUpdate=true;
     }
     // remove previous intersection object reference
