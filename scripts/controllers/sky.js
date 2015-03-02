@@ -58,15 +58,48 @@ function init()
   container.appendChild( renderer.domElement );
   // EVENTS
   THREEx.WindowResize(renderer, camera);
-  THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
+  // THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
   // CONTROLS
   controls = new THREE.OrbitControls( camera, renderer.domElement );
+  
+
   // LIGHT
   var light = new THREE.AmbientLight( 0x333333 ); // soft white light
   scene.add( light );
   var light = new THREE.PointLight(0xffffff,1,4500);
   light.position.set(-300,1000,-300);
-  scene.add(light);
+  // scene.add(light);
+  //lights red and blue
+        var L1 = new THREE.PointLight(0xff0000, 1);
+        L1.position.x = -1000;
+        L1.position.y = 400;
+        L1.position.z = 500;
+
+        scene.add(L1);
+
+        var L3 = new THREE.PointLight(0x0000ff, 0.4);
+        L3.position.z = -500;
+        L3.position.x = 1000;
+        L3.position.y = -400;
+
+        scene.add(L3);  
+
+  //main time sphere 
+   var shiny = new THREE.MeshPhongMaterial({
+              color: 'pink',
+              shading: THREE.FlatShading,
+              fog: false
+              
+          });
+
+          mainTime = new THREE.Mesh(new THREE.TetrahedronGeometry(40, 3), shiny);
+
+          mainTime.position.x = 0;
+          mainTime.position.y = 0;
+          mainTime.position.z = 0;
+
+          scene.add(mainTime);
+
   // FLOOR
   var faceMat = new THREE.MeshBasicMaterial({color: 0x888888,side: THREE.DoubleSide});
 
