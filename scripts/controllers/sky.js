@@ -156,7 +156,7 @@ var element = document.getElementById("ThreeJS");
     mc.on("pinchout", onPinch);
 
     
-    $(element).hammer().on("tap", function onTap(ev) {
+mc.on("tap", function onTap(ev) {
             console.log(ev);
 
             x1 = ev.gesture.center.pageX;
