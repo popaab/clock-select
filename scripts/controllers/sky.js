@@ -194,7 +194,7 @@ mc.on("tap", function onTap(ev) {
 
     function onPinch(ev) {
     if(ev.type == 'pinchout') {
-
+          document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1 + " pinch";
             addOcta();
         }
 
