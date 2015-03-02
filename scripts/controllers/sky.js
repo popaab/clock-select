@@ -1,5 +1,5 @@
 
-
+'use strict';
  //  Experiment 02-05
  //  Seth Moczydlowski
  //  January 8th, 2014
@@ -155,14 +155,29 @@ var mc = new Hammer.Manager(document.body);
     mc.on("tap", onTap);
     mc.on("doubletap", onDoubleTap);
     
-    var x1, y1;
 
-    
+
+    var whatever = function(){
+        'use strict';
+        var x1, y1;
+        var element = document.getElementById("myDIV");
+        $(element).hammer().on("pan", function(e){
+            console.log(e);
+
+            x1 = e.gesture.center.pageX;
+            y1 = e.gesture.center.pageY;
+
+            document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
+        });
+    }
+
+
     function onPan(ev) {
+      whatever();
        
-      console.log(ev.gesture);
+      // console.log(ev.gesture);
        
-       document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
+      //  document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
     
     }
 
@@ -178,24 +193,12 @@ var mc = new Hammer.Manager(document.body);
 
     }
 
-    // function onRotate(ev) {
-    //     if(ev.type == 'rotatestart') {
-    //         initAngle = transform.angle || 0;
-    //     }
-
-    //     el.className = '';
-    //     transform.rz = 1;
-    //     transform.angle = initAngle + ev.rotation;
-    //     requestElementUpdate();
-    //     logEvent(ev.type);
-    // }
-
    function onSwipe(ev) {
     
-      x1 = ev.gesture.touches[0].pageX;
-      y1 = ev.gesture.touches[0].pageY;
-      console.log(ev.gesture);
-      document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
+      // x1 = ev.gesture.touches[0].pageX;
+      // y1 = ev.gesture.touches[0].pageY;
+      // console.log(ev.gesture);
+      // document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
        // checkSelection();
     //     var angle = 50;
     //     transform.ry = (ev.direction & Hammer.DIRECTION_HORIZONTAL) ? 1 : 0;
