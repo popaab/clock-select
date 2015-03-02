@@ -316,7 +316,7 @@ var element = document.getElementById("ThreeJS");
                   var pany = ev.pointers[0].clientY;
            
                   console.log("paning : " + panx + " " + pany);
-                  checkSelection(panx, pany);
+                  // checkSelection(panx, pany);
       
 }
     });
