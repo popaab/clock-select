@@ -157,10 +157,10 @@ var element = document.getElementById("ThreeJS");
 mc.on("tap", function onTap(ev) {
   if( ev.pointerType === "touch"){
 
-            console.log(ev);
+            console.log(ev.pointers);
             
-            x1 = ev.pointers[0].clientX;
-            y1 = ev.pointers[0].clientY;
+            x1 = ev.pointers[0];
+            y1 = ev.pointers[0];
      
             console.log("tap: " + x1 + " " + y1);
 
