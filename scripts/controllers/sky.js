@@ -159,7 +159,7 @@ var mc = new Hammer.Manager(document.body);
     
     function onPan(ev) {
        
-      console.log(ev.gesture);
+      // console.log(ev.gesture);
        
        // document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
     
@@ -193,7 +193,7 @@ var mc = new Hammer.Manager(document.body);
     
       // x1 = ev.gesture.touches[0].pageX;
       // y1 = ev.gesture.touches[0].pageY;
-      console.log(ev.gesture);
+      // console.log(ev.gesture);
       // document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
        // checkSelection();
     //     var angle = 50;
@@ -211,7 +211,7 @@ var mc = new Hammer.Manager(document.body);
 
     function onTap(ev) {
       
-console.log(ev.gesture);
+// console.log(ev.gesture);
 //       x1 = ev.gesture.touches[0].pageX;
 //       y1 = ev.gesture.touches[0].pageY;
    
@@ -221,13 +221,26 @@ console.log(ev.gesture);
 
     function onDoubleTap(ev) {
 
-      console.log(ev.gesture);
+      // console.log(ev.gesture);
      //  x1 = ev.gesture.touches[0].pageX;
      //  y1 = ev.gesture.touches[0].pageY;
      // document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
 
     }
+var startX, startY, moveY, moveX = null;
+document.addEventListener('touchstart', function(e){
 
+
+
+startX = e.targetTouches[0].pageX;
+startY = e.targetTouches[0].pageY;
+
+  this.addEventListener('touchmove', function(e){
+    moveX = e.targetTouches[0].pageX;
+    moveY = e.targetTouches[0].pageY;
+    console.log(moveX + ' ' + moveY);
+  }, false);
+}, false);
 
 function onDocumentMouseMove( event ) 
 {
