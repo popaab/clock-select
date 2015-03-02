@@ -148,9 +148,9 @@ var mc = new Hammer.Manager(document.body);
     mc.add(new Hammer.Tap());
 
     mc.on("panstart panmove", onPan);
-    mc.on("rotatestart rotatemove", onRotate);
+    
     mc.on("pinchstart pinchmove", onPinch);
-    mc.on("swipe", onSwipe);
+    
     mc.on("tap", onTap);
     mc.on("doubletap", onDoubleTap);
     
