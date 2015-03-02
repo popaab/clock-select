@@ -307,7 +307,7 @@ var element = document.getElementById("ThreeJS");
 
     mc.add(new Hammer.Tap());
     mc.add(new Hammer.Pan());
-    mc.on("panstart panmove", function onPan(ev) {
+    mc.on("panstart", function onPan(ev) {
         // if( ev.pointerType === "touch"){
 
                   console.log(ev);
