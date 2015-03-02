@@ -151,7 +151,7 @@ function addOcta()
   }
   
   var faceColorMaterial = new THREE.MeshBasicMaterial( 
-  { color: 'white', opacity: 0.5, transparent: true, vertexColors: THREE.FaceColors,shading:THREE.FlatShading,polygonOffset: true,polygonOffsetUnits: 1,polygonOffsetFactor: 1} );
+  { color: 'white', opacity: 0.1, transparent: true, vertexColors: THREE.FaceColors,shading:THREE.FlatShading,polygonOffset: true,polygonOffsetUnits: 1,polygonOffsetFactor: 1} );
   
   var octaGeom= new THREE.OctahedronGeometry(cubeSide,0);
   for ( var i = 0; i < octaGeom.faces.length; i++ ) 
