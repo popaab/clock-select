@@ -107,6 +107,7 @@ function addOcta()
   var position = new Array();
   var notAboveGround = true;
   var face;
+  var faces = [];
   while(notAboveGround){
     position[0]=Math.random()*floorSide-floorSide/2;
     position[1]=Math.random()*floorSide-floorSide/2;
