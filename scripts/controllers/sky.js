@@ -141,20 +141,17 @@ function addOcta(x,y,z){
   var notAboveGround = true;
   var face;
   var faces = [];
-  while(notAboveGround){
+ 
     position[0]= posx;
     position[1]= posy;
     position[2]= posz;
-    var cubeSide = 200;
-    //alert("cubeSide="+cubeSide);
-    if(position[1]-cubeSide>0){
-      notAboveGround = false;
-      position[1]= cubeSide;
-    }
+    // var cubeSide = 200;
+    // //alert("cubeSide="+cubeSide);
+    // if(position[1]-cubeSide>0){
+    //   notAboveGround = false;
+    //   position[1]= cubeSide;
+    // }
 
-    
-  }
-  
   var faceColorMaterial = new THREE.MeshBasicMaterial( 
   { color: 'white', opacity: 0.5, transparent: true, vertexColors: THREE.FaceColors,shading:THREE.FlatShading,polygonOffset: true,polygonOffsetUnits: 1,polygonOffsetFactor: 1} );
   
