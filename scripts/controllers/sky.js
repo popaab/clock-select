@@ -158,24 +158,24 @@ var mc = new Hammer.Manager(document.body);
     mc.on("doubletap", onDoubleTap);
     
 
+    var x1, y1;
 
-    var whatever = function(){
+    // var whatever = function(){
 
-        var x1, y1;
-        var element = document.getElementById('ThreeJS');
-        $(element).hammer().on("pan", function(e){
-            console.log(e);
-
-            x1 = e.gesture.center.pageX;
-            y1 = e.gesture.center.pageY;
-
-            document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
-        });
-    }
+    //     var element = document.getElementById('ThreeJS');
+    //     $(element).hammer().on("pan", function(e){
+            
+    //     });
+    // }
 
 
     function onPan(ev) {
-      whatever();
+      console.log(ev);
+
+            x1 = ev.gesture.center.pageX;
+            y1 = ev.gesture.center.pageY;
+
+            document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
        
       // console.log(ev.gesture);
        
