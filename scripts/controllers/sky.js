@@ -119,7 +119,7 @@ function init()
   // CUSTOM //
   ////////////
 
-  addOcta(50,50,50);
+  addOcta(200,0,50);
   
   var newSphereGeom= new THREE.SphereGeometry(5,5,5);
   var sphere= new THREE.Mesh(newSphereGeom, new THREE.MeshBasicMaterial({ color: 0x2266dd }));
