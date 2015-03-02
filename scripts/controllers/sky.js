@@ -1,16 +1,16 @@
 
 
-  Experiment 02-05
-  Seth Moczydlowski
-  January 8th, 2014
-  http://www.moczys.com
+ //  Experiment 02-05
+ //  Seth Moczydlowski
+ //  January 8th, 2014
+ //  http://www.moczys.com
   
-  Code architecture adapted from:
-  http://stemkoski.github.io/Three.js/Template.html
+ //  Code architecture adapted from:
+ //  http://stemkoski.github.io/Three.js/Template.html
   
-  Three.js "tutorials by example"
-  Author: Lee Stemkoski
- */
+ //  Three.js "tutorials by example"
+ //  Author: Lee Stemkoski
+ // */
 
 // MAIN
 
