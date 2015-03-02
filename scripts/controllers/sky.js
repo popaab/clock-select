@@ -155,15 +155,28 @@ var element = document.getElementById("ThreeJS");
     mc.on("swipe", onSwipe);
     mc.on("pinchout", onPinch);
 
-    
+    function getGesturePointFromEvent(evt) {
+          var point = {};
+
+          if(evt.targetTouches) {
+            // Prefer Touch Events
+            point.x = evt.targetTouches[0].clientX;
+            point.y = evt.targetTouches[0].clientY;
+          } else {
+            // Either Mouse event or Pointer Event
+            point.x = evt.clientX;
+            point.y = evt.clientY;
+          }
+
+          return point;
+        }
 mc.on("tap", function onTap(ev) {
             console.log(ev);
-
-            x1 = ev.posx;
-            y1 = ev.posy;
-            var z1 = ev.posz;
-
-            console.log(x1 + " " + y1 + " " + z1);
+            var point = getGesturePointFromEvent(ev);
+            x1 = point.x;
+            y1 = point.x;
+     
+            console.log(x1 + " " + y1);
 
             document.getElementById("resultDIV").innerHTML = x1 + " " + y1;
        
