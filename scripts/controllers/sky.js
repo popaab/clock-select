@@ -165,7 +165,7 @@ mc.on("tap", function(ev) {
 
     var y1 = mouse.y = ev.center.pageY;
   checkSelection(); 
-console.log(x1 + ' ' y1);
+
 
 });
 
