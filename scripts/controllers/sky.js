@@ -131,7 +131,7 @@ function addOcta()
   var octa= new THREE.Mesh( octaGeom, faceColorMaterial );
   octa.position.set(position[0], position[2], position[1]);
   // creates a wireMesh object
-  var wireOcta = new THREE.Mesh(octaGeom, new THREE.MeshBasicMaterial({ color: 0x116611, wireframe: true }));
+  varwireOcta = new THREE.Mesh(octaGeom, new THREE.MeshBasicMaterial({ color: 0x116611, wireframe: true }));
   
   scene.add(octa);
   // wireMesh object is added to the original as a sub-object
@@ -162,7 +162,8 @@ var mc = new Hammer.Manager(document.body);
     var whatever = function(){
 
         var x1, y1;
-      
+        var element = document.getElementById('ThreeJS');
+        $(element).hammer().on("pan", function(e){
             console.log(e);
 
             x1 = e.gesture.center.pageX;
