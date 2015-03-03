@@ -119,7 +119,7 @@ function init()
   // CUSTOM //
   ////////////
 
-  addOcta(200,0,50);
+  addOcta(180,0,0);
   
   var newSphereGeom= new THREE.SphereGeometry(5,5,5);
   var sphere= new THREE.Mesh(newSphereGeom, new THREE.MeshBasicMaterial({ color: 0x2266dd }));
@@ -145,7 +145,7 @@ function addOcta(x,y,z){
     position[0]= posx;
     position[1]= posy;
     position[2]= posz;
-    var cubeSide = 20;
+    var cubeSide = 40;
     // //alert("cubeSide="+cubeSide);
     // if(position[1]-cubeSide>0){
     //   notAboveGround = false;
