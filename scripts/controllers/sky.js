@@ -312,7 +312,7 @@ var mc = new Hammer.Manager(document.body);
     function manageMultitouch(ev){
     switch(ev.type) {
 
-            var selected;
+            
             case 'tap':
                if( event.pointerType === "touch"){
 
