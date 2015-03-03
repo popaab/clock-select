@@ -237,7 +237,7 @@ var element = document.getElementById("ThreeJS");
 
           var square = new THREE.Mesh(new THREE.OctahedronGeometry( 10, 0 ), new THREE.MeshBasicMaterial({ color: 'green', wireframe: false }));
           square.position.copy( intersects[ 0 ].point );
-          square.scale.x = particle.scale.y = 2;
+          
           scene.add( square );
 
         }
