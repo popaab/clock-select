@@ -230,14 +230,22 @@ var element = document.getElementById("ThreeJS");
            
                   console.log("tap: " + x1 + " " + y1);
 
-
+                var cartesianx = scalefactor*x1- windowHalfX
+                var cartesiany = -scalefactor*y1+ windowHalfY
                 
-raycaster.setFromCamera( touchPos, camera );
-                touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1 * 200;
-                touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 200;
+                raycaster.setFromCamera( touchPos, camera );
+                touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1 * 2;
+                touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 1;
 
-          addOcta(touchPos.x,touchPos.y,0);
-    console.log("object: " + touchPos.x + " " + touchPos.y + " " + 0);
+                addOcta(cartesianx,cartesiany,0);
+        
+
+          // var square = new THREE.Mesh(new THREE.OctahedronGeometry( 10, 0 ), new THREE.MeshBasicMaterial({ color: 'green', wireframe: false }));
+          // square.position.x = touchPos.x;
+          // square.position.y = touchPos.y;
+          // square.position.z = 10;
+          
+          // scene.add( square );
 
         var intersects = raycaster.intersectObjects( targetList );
 
