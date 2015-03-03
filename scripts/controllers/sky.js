@@ -146,10 +146,10 @@ function init()
             {
 
 
-                var worldPos = {x: 0, y:0};
-                worldPos.x = touchPos.x / windowHalfX - 1;
-                worldPos.y = - touchPos.y / windowHalfY + 1;
-;
+                var worldPos = touchPos.clone();
+                worldPos.x = worldPos.x / windowHalfX - 1;
+                worldPos.y = - worldPos.y / windowHalfY + 1;
+                projector.unprojectVector( worldPos, camera );
                 return worldPos;                    
             }
 
@@ -229,26 +229,29 @@ var element = document.getElementById("ThreeJS");
                   
            
                   console.log("tap: " + x1 + " " + y1);
-                  var newPos = {};
-                  var newPos = screenToWorld(touchPos);
 
-                  addOcta(newPos.x,newPos.y,0);
-                  console.log(newPos);
-        // raycaster.setFromCamera( touchPos, camera );
 
-        // var intersects = raycaster.intersectObjects( targetList );
+                
 
-        // if ( intersects.length > 0 ) {
+                touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1;
+                touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 1;
 
-        //   intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
-        //   console.log("changed color");
+                // addOcta(touchPos.x,touchPos.y,0);
+        raycaster.setFromCamera( touchPos, camera );
 
-        //   var square = new THREE.Mesh(new THREE.OctahedronGeometry( 10, 0 ), new THREE.MeshBasicMaterial({ color: 'green', wireframe: false }));
-        //   square.position.copy( intersects[ 0 ].point );
+          var square = new THREE.Mesh(new THREE.OctahedronGeometry( 10, 0 ), new THREE.MeshBasicMaterial({ color: 'green', wireframe: false }));
+          square.position.copy( intersects[ 0 ].point );
           
-        //   scene.add( square );
+          scene.add( square );
 
-        // }
+        var intersects = raycaster.intersectObjects( targetList );
+
+        if ( intersects.length > 0 ) {
+
+          intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+          console.log("changed color");
+
+        }
                   // checkSelection(x1, y1);
 
                   document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
