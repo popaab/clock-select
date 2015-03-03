@@ -257,7 +257,7 @@ var mc = new Hammer.Manager(document.body);
     if(event.type === 'tap'){
       editMode = true;
        if( event.pointerType === "touch"){
-
+        controls.rotate = false;
                   
                   touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
                   touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
@@ -286,6 +286,7 @@ var mc = new Hammer.Manager(document.body);
 
     }if(event.type === 'swiperight'){
       editMode = true;
+      controls.rotate = false;
       if( event.pointerType === "touch"){
 
                       
