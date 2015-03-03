@@ -322,7 +322,7 @@ editMode = false;
 
     function onPinch(ev) {
     // if(ev.type == 'pinchout') {
-
+      editMode = false;
        if( ev.pointerType === "touch" && editMode === false){
 
             console.log(ev.pointerType);
