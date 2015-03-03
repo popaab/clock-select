@@ -279,7 +279,7 @@ var mc = new Hammer.Manager(document.body);
 
                   }      
                 }
-            break;
+            
  
             case 'pinin':
                 if( event.pointerType === "touch"){
