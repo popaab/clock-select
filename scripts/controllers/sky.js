@@ -100,6 +100,7 @@ function init()
           mainTime.position.z = 0;
 
           scene.add(mainTime);
+          targetList.push(mainTime);
 
   // // FLOOR
   // var faceMat = new THREE.MeshBasicMaterial({color: 0x888888,side: THREE.DoubleSide});
@@ -120,6 +121,7 @@ function init()
   ////////////
 
   addOcta(180,0,0);
+
   
   // var newSphereGeom= new THREE.SphereGeometry(5,5,5);
   // var sphere= new THREE.Mesh(newSphereGeom, new THREE.MeshBasicMaterial({ color: 0x2266dd }));
@@ -218,8 +220,8 @@ var element = document.getElementById("ThreeJS");
 
                 
 
-                touchPos.x = ( x1 / SCREEN_WIDTH) * 2 - 1;
-                touchPos.y = - ( y1 / SCREEN_HEIGHT ) * 2 + 1;
+                touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1;
+                touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 1;
 
                 // addOcta(touchPos.x,touchPos.y,0);
         raycaster.setFromCamera( touchPos, camera );
@@ -227,7 +229,7 @@ var element = document.getElementById("ThreeJS");
         var intersects = raycaster.intersectObjects( targetList );
 
         if ( intersects.length > 0 ) {
-            
+
           intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
           console.log("changed color");
 
