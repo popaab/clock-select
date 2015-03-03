@@ -201,7 +201,7 @@ function animate()
 function update()
 {
 
-
+state();
   controls.update();
   controls2.update();
 }
@@ -211,7 +211,7 @@ function render()
 
   deltaTime = clock.getDelta();
   particleSystem.rotation.y += deltaTime/40;
-  state();
+  
   renderer.render( scene, camera );
 }
 
