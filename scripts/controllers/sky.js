@@ -30,7 +30,8 @@ var highlightedColor=new THREE.Color( 0xddaa00 );
 var selectedColor=new THREE.Color( 0x4466dd );
 
 var mainTime;
-
+var particleMaterial;
+var particle;
 var maxAlarms = 10;
 var amountNow = 0;
 var x1, y1;
