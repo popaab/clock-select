@@ -80,7 +80,10 @@ body {
 }
 
 a {
-    color:#0078ff;
+    color: blue;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    vertical-align: center;
 }
 
 canvas {
