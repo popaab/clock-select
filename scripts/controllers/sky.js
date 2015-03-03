@@ -101,12 +101,12 @@ function init()
 
           scene.add(mainTime);
 
-  // FLOOR
-  var faceMat = new THREE.MeshBasicMaterial({color: 0x888888,side: THREE.DoubleSide});
+  // // FLOOR
+  // var faceMat = new THREE.MeshBasicMaterial({color: 0x888888,side: THREE.DoubleSide});
 
-  var floor= THREE.SceneUtils.createMultiMaterialObject(new THREE.PlaneGeometry(floorSide, floorSide, 10, 10), faceMat);
+  // var floor= THREE.SceneUtils.createMultiMaterialObject(new THREE.PlaneGeometry(floorSide, floorSide, 10, 10), faceMat);
   
-  floor.rotation.x = Math.PI / 2;
+  // floor.rotation.x = Math.PI / 2;
   // scene.add(floor);
   
   // SKYBOX
