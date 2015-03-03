@@ -181,6 +181,8 @@ particles = new THREE.Geometry();
         if ( intersects.length > 0 ) {
 
           intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+          console.log("intersected and selected");
+
 
         }
 
@@ -289,24 +291,24 @@ var element = document.getElementById("ThreeJS");
                   y1 = ev.pointers[0].clientY;
                   
            
-                console.log("tap: " + x1 + " " + y1);
-                touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1 * 2;
-                touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 1;
+        //         console.log("tap: " + x1 + " " + y1);
+        //         touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1 * 2;
+        //         touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 1;
                 
-                raycaster.setFromCamera( touchPos, camera );
+        //         raycaster.setFromCamera( touchPos, camera );
 
-        var intersects = raycaster.intersectObjects( targetList );
+        // var intersects = raycaster.intersectObjects( targetList );
 
-        if ( intersects.length > 0 ) {
+        // if ( intersects.length > 0 ) {
 
-          intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
-          console.log("changed color");
+        //   intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+        //   console.log("changed color");
 
-        }
-                  // checkSelection(x1, y1);
+        // }
+        //           // checkSelection(x1, y1);
 
-                  document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
-        }
+        //           document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
+        // }
                   
 
     });
