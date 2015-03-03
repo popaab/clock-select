@@ -57,7 +57,7 @@ html{
   transform: translate3d(0,0,0);
 }
 
-.clock .flip:before {
+.clock.flip:before {
   transform: translate3d(0,102.5%,0);
 }
 
@@ -67,7 +67,7 @@ html{
   transform: translate3d(0,-102.5%,0);
 }
 
-.clock .flip:after {
+.clock.flip:after {
   transform: translate3d(0,0,0);
 }/* Space out content a bit */
 
