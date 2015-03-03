@@ -101,7 +101,7 @@ function init()
         particleSystem.sortParticles = true;
         particles = new THREE.Geometry();
         for (var i = 0; i < maxParticles; i++) {
-          var particle = new THREE.Vector3(random(-100, 100), random(-100, 100), random(-100, 100));
+          var particle = new THREE.Vector3(getRandom(-100, 100), getRandom(-100, 100), getRandom(-100, 100));
           particleSystem.vertices.push(particle);
         }
         
