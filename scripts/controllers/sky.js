@@ -230,8 +230,8 @@ var element = document.getElementById("ThreeJS");
            
                   console.log("tap: " + x1 + " " + y1);
                 var scalefactor = 2;
-                var cartesianx = scalefactor*x1- windowHalfX
-                var cartesiany = -scalefactor*y1+ windowHalfY
+                var cartesianx = x1- windowHalfX
+                var cartesiany = -y1+ windowHalfY
 
                 console.log("world cord: " + cartesianx + " " + cartesiany);
                 
