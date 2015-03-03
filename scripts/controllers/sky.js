@@ -45,7 +45,7 @@ particles,
 particleMaterial,
 particleSystem;
 
-var state = 0, world = true, local = false;
+var state = 0, world = true, selectedOnce = false;
 init();
 animate();
 
@@ -213,11 +213,13 @@ var mc = new Hammer.Manager(document.body);
 
     mc.add(new Hammer.Pinch({ threshold: 0}));
 
+
     mc.add(new Hammer.Tap({ taps: 1}));
     mc.add(new Hammer.Pan());
 
 
     mc.on("pinchout pinchstart", onPinch);
+    mc.on("pinchin pinchend", onPinchIn);
     mc.on("panmove", function onPan(ev) {
          if( ev.pointerType === "touch"){
 
@@ -232,7 +234,7 @@ var mc = new Hammer.Manager(document.body);
     }});
 
     function alarm(){
-    while (local === true){
+    if(selectedOnce === true){
 
 
 
@@ -254,6 +256,7 @@ var mc = new Hammer.Manager(document.body);
         if ( intersects.length > 0 ) {
 
           intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+          console.log(this.object.postion.x + " " + this.object.postion.y + " " this.object.postion.z);
 
           // document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
 
@@ -297,6 +300,30 @@ var mc = new Hammer.Manager(document.body);
  
 
     }
+
+
+    function onPinchIn(ev) {
+    // if(ev.type == 'pinchout') {
+
+
+
+            // console.log(ev.pointerType);
+            
+            // var pinchx = ev.pointers[0].clientX;
+            // var pinchy = ev.pointers[0].clientY;
+
+                
+            // var cartesianx = pinchx- windowHalfX
+            // var cartesiany = - pinchy+ windowHalfY
+
+            // console.log("world cord: " + cartesianx + " " + cartesiany);
+        
+
+            // addOcta(cartesianx,cartesiany, getRandom(-400, 300));
+
+
+    }
+
 
 
 
