@@ -292,20 +292,21 @@ var mc = new Hammer.Manager(document.body);
                   
 
     });
-
+  
+    var editMode = false;
     var transforming = false;
     var transformTimer = null;
-    mc.on('tap pinch pinchout transform', function(ev) {
+    mc.on('tap pinchout ', function(ev) {
       manageMultitouch(ev);
     });
     mc.on("transformstart", function(evt) {                    
-        transforming = true;
+        // transforming = true;
     });
 
     mc.on("transformend", function(evt) {
-        setTimeout(function () {       
-            transforming = false;
-        }, 1000);
+        // setTimeout(function () {       
+        //     transforming = false;
+        // }, 1000);
     });
     
     function manageMultitouch(ev){
@@ -313,6 +314,7 @@ var mc = new Hammer.Manager(document.body);
             case 'tap':
                if( event.pointerType === "touch"){
 
+                  editMode = true;
                   touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
                   touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
 
@@ -335,20 +337,51 @@ var mc = new Hammer.Manager(document.body);
                      document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
 
                   }      
-        }
+                }
  
-            case '':
+            // case '':
                  
-                break;
+            //     break;
  
-            case 'transform':
+            // case '':
 
-                break;
+            //     break;
  
-            case 'pinchout':
+            case 'pinin':
+            if( event.pointerType === "touch"){
+
+                  editMode = true;
+                  touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
+                  touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
+
+                  raycaster.setFromCamera( touchPos, camera );
+
+                  var intersects = raycaster.intersectObjects( targetList );
+                
+                  if ( intersects.length > 0 ) {
+
+                    intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+                    console.log(intersects[0].object.id);
+                    var k = targetList.indexOf(intersects[0].object.id);
+                    selected = intersects[0].object;
+                    var cameraX = selected.position.x;
+                    var cameraY = selected.position.y;
+
+                    var cameraZ = -selected.position.z + 200;
+                    removeEntity(selected);
+
+                    console.log(cameraX,cameraY,cameraZ);
+
+                     document.getElementById("resultDIV").innerHTML = ("deleted: "+ intersects[0].object.id);
+
+                  }      
+                }
 
         break;
         }
+
+
+
  
 
  
@@ -358,7 +391,7 @@ var mc = new Hammer.Manager(document.body);
     function onPinch(ev) {
     // if(ev.type == 'pinchout') {
 
-       if( ev.pointerType === "touch"){
+       if( ev.pointerType === "touch" && editMode === false){
 
             console.log(ev.pointerType);
             
@@ -378,11 +411,11 @@ var mc = new Hammer.Manager(document.body);
  
 
     }
-// function removeEntity(object) {
-//     var selectedObject = scene.getObjectByName(object.name);
-//     scene.remove( selectedObject );
+function removeEntity(object) {
+    var selectedObject = scene.getObjectByName(object.name);
+    scene.remove( selectedObject );
     
-// }
+}
 
     function onPinchIn(ev) {
     // if(ev.type == 'pinchout') {
