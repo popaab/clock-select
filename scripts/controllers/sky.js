@@ -41,10 +41,10 @@ var maxAlarms = 10;
 var amountNow = 0;
 var x1, y1;
 
-    var maxParticles = 100,
-          particles = [],
-          particleMaterial,
-          particleSystem;
+    var maxParticles = 200,
+    particles,
+    particleMaterial,
+    particleSystem;
 
 init();
 animate();
@@ -98,16 +98,16 @@ function init()
 
 
         // particles
-        particleMaterial = new THREE.ParticleBasicMaterial({ color: 'white', size: 2 });
-        particleSystem = new THREE.ParticleSystem(particles, particleMaterial);
-        particleSystem.sortParticles = true;
-        particles = new THREE.Geometry();
-        for (var i = 0; i < maxParticles; i++) {
-          var particle = new THREE.Vector3(getRandom(-100, 100), getRandom(-100, 100), getRandom(-100, 100));
-          particleSystem.vertices.push(particle);
-        }
-        
-        scene.add(particleSystem);
+particles = new THREE.Geometry();
+    for (var i = 0; i < maxParticles; i++) {
+      var particle = new THREE.Vector3(random(-400, 400), random(-200, 200), random(-1000, 100));
+      particles.vertices.push(particle);
+    }
+    particleMaterial = new THREE.ParticleBasicMaterial({ color: 0xeeeeee, size: 2 });
+    particleSystem = new THREE.ParticleSystem(particles, particleMaterial);
+    particleSystem.sortParticles = true;
+    scene.add(particleSystem);
+
 
   //main time sphere 
    var shiny = new THREE.MeshPhongMaterial({
@@ -161,7 +161,13 @@ function init()
 
 }
 
-
+ function random( min, max ) {
+      if ( isNaN(max) ) {
+        max = min;
+        min = 0;
+      }
+      return Math.random() * ( max - min ) + min;
+    }
     function screenToWorld(touchPos)
             {
 
