@@ -257,7 +257,7 @@ var mc = new Hammer.Manager(document.body);
 
           intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
           console.log(intersects[0].object.id);
-           document.getElementById("resultDIV").innerHTML = "tap: "+ intersects[0].object.id);
+           document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
 
           // document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
 
