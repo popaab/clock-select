@@ -253,11 +253,11 @@ var mc = new Hammer.Manager(document.body);
 
         
         // Parse all the faces
-        for ( var i in intersects ) {
+        // for ( var i in intersects ) {
 
-          intersects[ i ].face.material[ 0 ].color.setHex( Math.random() * 0xffffff | 0x80000000 );
+        //   intersects[ i ].face.material[ 0 ].color.setHex( Math.random() * 0xffffff | 0x80000000 );
 
-        }
+        // }
         
                   
         }
