@@ -40,7 +40,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 	// This option actually enables dollying in and out; left as "zoom" for
 	// backwards compatibility
-	this.noZoom = false;
+	this.noZoom = true;
 	this.zoomSpeed = 1.0;
 
 	// Limits to how far you can dolly in and out
@@ -48,7 +48,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 	this.maxDistance = Infinity;
 
 	// Set to true to disable this control
-	this.noRotate = false;
+	this.noRotate = true;
 	this.rotateSpeed = 0.7;
 
 	// Set to true to disable this control

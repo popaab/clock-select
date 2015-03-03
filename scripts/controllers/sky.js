@@ -230,19 +230,15 @@ var element = document.getElementById("ThreeJS");
                   y1 = ev.pointers[0].clientY;
                   
            
-                  console.log("tap: " + x1 + " " + y1);
-                var scalefactor = 2;
-                var cartesianx = 1.1 * x1- windowHalfX
-                var cartesiany = - 1.1 * y1+ windowHalfY
-
-                console.log("world cord: " + cartesianx + " " + cartesiany);
-                
-                raycaster.setFromCamera( touchPos, camera );
+                console.log("tap: " + x1 + " " + y1);
                 touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1 * 2;
                 touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 1;
+                
+                raycaster.setFromCamera( touchPos, camera );
 
-                addOcta(cartesianx,cartesiany, getRandom(-400, 400));
-        
+
+        raycaster.setFromCamera( mouse, camera );
+
 
           // var square = new THREE.Mesh(new THREE.OctahedronGeometry( 10, 0 ), new THREE.MeshBasicMaterial({ color: 'green', wireframe: false }));
           // square.position.x = touchPos.x;
@@ -277,6 +273,15 @@ var element = document.getElementById("ThreeJS");
             
             var pinchx = ev.pointers[0].clientX;
             var pinchy = ev.pointers[0].clientY;
+
+                var scalefactor = 2;
+                var cartesianx = 1.1 * pinchx- windowHalfX
+                var cartesiany = - 1.1 * pinchy+ windowHalfY
+
+                console.log("world cord: " + cartesianx + " " + cartesiany);
+            
+
+                addOcta(cartesianx,cartesiany, getRandom(-300, 300));
 
 
             
