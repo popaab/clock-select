@@ -36,7 +36,7 @@ var deltaTime = 0;
 var fov = 75;
 var mainTime;
 
-
+var mouse;
 var maxAlarms = 10;
 var amountNow = 0;
 var x1, y1;
@@ -74,17 +74,10 @@ function init()
   // CONTROLS
   controls = new THREE.OrbitControls( camera, renderer.domElement );
   controls2 = new THREE.TrackballControls( camera, renderer.domElement );
-        controls2.rotateSpeed = 0.9;
-        controls2.minDistance = 500;
-        // controls2.maxDistance = 10000;
+
         controls2.addEventListener( 'change', render );
 
-  // // LIGHT
-  // var light = new THREE.AmbientLight( 0x333333 ); // soft white light
-  // scene.add( light );
-  // var light = new THREE.PointLight(0xffffff,1,4500);
-  // light.position.set(-300,1000,-300);
-  // scene.add(light);
+
   //lights red and blue
   var L1 = new THREE.PointLight(0xff0000, 0.7);
   L1.position.x = -1000;
@@ -135,38 +128,74 @@ particles = new THREE.Geometry();
 
           scene.add(mainTime);
           targetList.push(mainTime);
-
-  // // FLOOR
-  // var faceMat = new THREE.MeshBasicMaterial({color: 0x888888,side: THREE.DoubleSide});
-
-  // var floor= THREE.SceneUtils.createMultiMaterialObject(new THREE.PlaneGeometry(floorSide, floorSide, 10, 10), faceMat);
-  
-  // floor.rotation.x = Math.PI / 2;
-  // scene.add(floor);
-  
-  // SKYBOX
-  // var skyBoxGeometry = new THREE.CubeGeometry( 10000, 10000, 10000 );
-  // var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 'blue', side: THREE.BackSide } );
-  // var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
-  // scene.add(skyBox);
-  
-  ////////////
-  // CUSTOM //
-  ////////////
-
   addOcta(180,0,0);
-  
-  // var newSphereGeom= new THREE.SphereGeometry(5,5,5);
-  // var sphere= new THREE.Mesh(newSphereGeom, new THREE.MeshBasicMaterial({ color: 0x2266dd }));
-  // scene.add(sphere);
-  // mouseSphere.push(sphere);
 
-  //////////////////////////////////////////////////////////////////////
   
   // initialize object to perform world/screen calculations
   projector = new THREE.Projector();
   raycaster = new THREE.Raycaster();
   touchPos = new THREE.Vector2();
+
+
+        var mouse = new THREE.Vector2();
+
+        document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+        document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+
+        //
+
+        window.addEventListener( 'resize', onWindowResize, false );
+
+      }
+
+      function onWindowResize() {
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize( window.innerWidth, window.innerHeight );
+
+      }
+      
+      function onDocumentTouchStart( event ) {
+        
+        event.preventDefault();
+        
+        event.clientX = event.touches[0].clientX;
+        event.clientY = event.touches[0].clientY;
+        onDocumentMouseDown( event );
+
+      } 
+
+      function onDocumentMouseDown( event ) {
+
+        event.preventDefault();
+
+        mouse.x = ( event.clientX / renderer.domElement.width ) * 2 - 1;
+        mouse.y = - ( event.clientY / renderer.domElement.height ) * 2 + 1;
+
+        raycaster.setFromCamera( mouse, camera );
+
+        var intersects = raycaster.intersectObjects( objects );
+
+        if ( intersects.length > 0 ) {
+
+          intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+
+        }
+
+        /*
+        // Parse all the faces
+        for ( var i in intersects ) {
+
+          intersects[ i ].face.material[ 0 ].color.setHex( Math.random() * 0xffffff | 0x80000000 );
+
+        }
+        */
+      }
+
+      //
+
   
 
 }
@@ -178,16 +207,6 @@ particles = new THREE.Geometry();
       }
       return Math.random() * ( max - min ) + min;
     }
-    function screenToWorld(touchPos)
-            {
-
-
-                var worldPos = touchPos.clone();
-                worldPos.x = worldPos.x / windowHalfX - 1;
-                worldPos.y = - worldPos.y / windowHalfY + 1;
-                projector.unprojectVector( worldPos, camera );
-                return worldPos;                    
-            }
 
 function addOcta(x,y,z){
 
@@ -265,7 +284,7 @@ var element = document.getElementById("ThreeJS");
 
     mc.on("tap", function onTap(ev) {
         if( ev.pointerType === "touch"){
-
+              event.preventDefault();
                   console.log(ev.pointerType);
                   
                   x1 = ev.pointers[0].clientX;
@@ -277,14 +296,6 @@ var element = document.getElementById("ThreeJS");
                 touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 1;
                 
                 raycaster.setFromCamera( touchPos, camera );
-
-
-          // var square = new THREE.Mesh(new THREE.OctahedronGeometry( 10, 0 ), new THREE.MeshBasicMaterial({ color: 'green', wireframe: false }));
-          // square.position.x = touchPos.x;
-          // square.position.y = touchPos.y;
-          // square.position.z = 10;
-          
-          // scene.add( square );
 
         var intersects = raycaster.intersectObjects( targetList );
 
@@ -322,22 +333,11 @@ var element = document.getElementById("ThreeJS");
 
                 addOcta(cartesianx,cartesiany, getRandom(-300, 300));
 
-
-            
-        // }
         }
  
 
     }
 
-// function onWindowResize() {
-
-// camera.aspect = window.innerWidth / window.innerHeight;
-// camera.updateProjectionMatrix();
-
-// renderer.setSize( window.innerWidth, window.innerHeight );
-
-// }
 function animate() 
 {
   requestAnimationFrame( animate );
