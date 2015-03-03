@@ -232,6 +232,8 @@ var element = document.getElementById("ThreeJS");
 
                 var cartesianx = scalefactor*x1- windowHalfX
                 var cartesiany = -scalefactor*y1+ windowHalfY
+
+                console.log("world cord: " + cartesianx + " " + cartesiany);
                 
                 raycaster.setFromCamera( touchPos, camera );
                 touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1 * 2;
