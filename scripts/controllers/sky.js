@@ -257,7 +257,7 @@ var mc = new Hammer.Manager(document.body);
     if(event.type === 'tap'){
       editMode = true;
        if( event.pointerType === "touch"){
-        ccontrols2.enabled = false;
+        controls2.enabled = false;
                   
                   touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
                   touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
