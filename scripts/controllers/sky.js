@@ -149,15 +149,16 @@ function addOcta(x,y,z){
     position[2]= posz;
 
 
-  var faceColorMaterial = new THREE.MeshBasicMaterial( 
-  { color: 'white', opacity: 0.5, transparent: true, vertexColors: THREE.FaceColors,shading:THREE.FlatShading,polygonOffset: true,polygonOffsetUnits: 1,polygonOffsetFactor: 1} );
+  var material = new THREE.MeshBasicMaterial( 
+  { color: 'white', opacity: 0.5, transparent: true,shading:THREE.FlatShading} );
   
+  var geometry = new THREE.OctahedronGeometry( 30, 0 );
+  var octa= new THREE.Mesh( geometry, material );
 
-  var octa= new THREE.Mesh( octaGeom, faceColorMaterial );
   octa.position.set(position[0], position[1], position[2]);
   console.log(position[0] + " " + position[1] + " " + position[2]);
   // creates a wireMesh object
-  var wireOcta = new THREE.Mesh(octaGeom, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
+  var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
   
 
   // if( amountNow <= maxAlarms){
