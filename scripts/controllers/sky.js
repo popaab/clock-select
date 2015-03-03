@@ -233,8 +233,8 @@ var element = document.getElementById("ThreeJS");
 
                 
 raycaster.setFromCamera( touchPos, camera );
-                touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1;
-                touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 1;
+                touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1 * 200;
+                touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 200;
 
                 // addOcta(touchPos.x,touchPos.y,0);
         
