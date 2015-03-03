@@ -18,7 +18,7 @@
 
 
 var  windowHalfX = window.innerWidth / 2, windowHalfY = window.innerHeight / 2
-var container, scene, camera, renderer, controls;
+var container, scene, camera, renderer, controls, controls2;
 var keyboard = new KeyboardState();
   var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
   var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
