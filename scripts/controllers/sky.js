@@ -130,7 +130,7 @@ function init()
           scene.add(mainTime);
           targetList.push(mainTime);
   addOcta(180,0,0);
-
+  
   
   // initialize object to perform world/screen calculations
   projector = new THREE.Projector();
@@ -167,8 +167,6 @@ function addOcta(x,y,z){
               fog: false
               
           });
-  var material = new THREE.MeshBasicMaterial( 
-  { color: 'white', opacity: 0.3, transparent: true, shading:THREE.FlatShading} );
   
   var geometry = new THREE.OctahedronGeometry( 60, 0 );
   var octa= new THREE.Mesh( geometry, shiny2 );
@@ -226,7 +224,7 @@ var element = document.getElementById("ThreeJS");
 
         if ( intersects.length > 0 ) {
 
-          intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+          intersects[ 0 ].object.material.color.setHex( 'black');
           document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
 
         }
