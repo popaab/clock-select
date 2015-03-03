@@ -82,7 +82,7 @@ function init()
   // light.position.set(-300,1000,-300);
   // scene.add(light);
   //lights red and blue
-  var L1 = new THREE.PointLight(0xff0000, 0.4);
+  var L1 = new THREE.PointLight(0xff0000, 0.7);
   L1.position.x = -1000;
   L1.position.y = 500;
   L1.position.z = 1000;
