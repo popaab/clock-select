@@ -133,6 +133,8 @@ function init()
   
 
 }
+
+
 function addOcta(x,y,z){
 
 
@@ -145,22 +147,12 @@ function addOcta(x,y,z){
     position[0]= posx;
     position[1]= posy;
     position[2]= posz;
-    var cubeSide = 40;
-    // //alert("cubeSide="+cubeSide);
-    // if(position[1]-cubeSide>0){
-    //   notAboveGround = false;
-    //   position[1]= cubeSide;
-    // }
+
 
   var faceColorMaterial = new THREE.MeshBasicMaterial( 
   { color: 'white', opacity: 0.5, transparent: true, vertexColors: THREE.FaceColors,shading:THREE.FlatShading,polygonOffset: true,polygonOffsetUnits: 1,polygonOffsetFactor: 1} );
   
-  var octaGeom= new THREE.OctahedronGeometry(cubeSide,0);
-  for ( var i = 0; i < octaGeom.faces.length; i++ ) 
-  {
-    face = octaGeom.faces[ i ]; 
-    face.color= baseColor;    
-  }
+
   var octa= new THREE.Mesh( octaGeom, faceColorMaterial );
   octa.position.set(position[0], position[1], position[2]);
   console.log(position[0] + " " + position[1] + " " + position[2]);
@@ -170,7 +162,7 @@ function addOcta(x,y,z){
 
   // if( amountNow <= maxAlarms){
 
-        scene.add(octa);
+  scene.add(octa);
   // wireMesh object is added to the original as a sub-object
   octa.add(wireOcta );
   
@@ -182,120 +174,6 @@ function addOcta(x,y,z){
 }
 
 
-function ColorSelected(){
-  selectedFaces.forEach( function(arrayItem)
-    {
-      arrayItem.face.color = selectedColor;
-      arrayItem.object.geometry.colorsNeedUpdate = true;
-    });
-}
-
-function checkSelection(){
-  // find intersections
-var vector = new THREE.Vector3( x1, y1, 1 ); 
-console.log("check selection: " + x1 + " " + y1);
-  // create a Ray with origin at the mouse position
-  //   and direction into the scene (camera direction)
-  
-  projector.unprojectVector( vector, camera );
-  var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
-
-  // create an array containing all objects in the scene with which the ray intersects
-  var intersects = ray.intersectObjects( targetList );
-
-  //if an intersection is detected
-  if ( intersects.length > 0 )
-  {
-    console.log("Hit @ " + toString( intersects[0].point ) );
-
-    
-    //test items in selected faces array
-    var test=-1; 
-    selectedFaces.forEach( function(arrayItem)
-    {
-      // if the faceIndex and object ID are the same between the intersect and selected faces ,
-      // the face index is recorded
-      if(intersects[0].faceIndex==arrayItem.faceIndex && intersects[0].object.id==arrayItem.object.id){
-        test=selectedFaces.indexOf(arrayItem);
-      }
-    });
-    
-    // if is a previously selected face, change the color back to green, otherswise change to blue
-    if(test>=0){
-      intersects[ 0 ].face.color=new THREE.Color( 0x44dd66 ); 
-      selectedFaces.splice(test, 1);
-    }
-    else{
-      intersects[ 0 ].face.color=new THREE.Color( 0x222288 ); 
-      selectedFaces.push(intersects[0]);
-    }
-    
-    intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
-  }
-}
-function checkHighlight(){
-  // find intersections
-
-  // create a Ray with origin at the mouse position
-  //   and direction into the scene (camera direction)
-  var vector = new THREE.Vector3( x1, y1, 1 );
-  projector.unprojectVector( vector, camera );
-  var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
-
-  // create an array containing all objects in the scene with which the ray intersects
-  var intersects = ray.intersectObjects( targetList );
-
-  // INTERSECTED = the object in the scene currently closest to the camera 
-  //    and intersected by the Ray projected from the mouse position  
-  
-  // if there is one (or more) intersections
-  if ( intersects.length > 0 )
-  { // case if mouse is not currently over an object
-    if(INTERSECTED==null){
-      INTERSECTED = intersects[ 0 ];
-      INTERSECTED.object.color = highlightedColor;
-    }
-    else{ // if thse mouse is over an object
-      INTERSECTED.face.color= baseColor;
-      INTERSECTED.object.geometry.colorsNeedUpdate=true;
-      INTERSECTED = intersects[ 0 ];
-      INTERSECTED.face.color = highlightedColor;      
-    }
-    // upsdate mouseSphere coordinates and update colors
-    mouseSphereCoords = [INTERSECTED.point.x,INTERSECTED.point.y,INTERSECTED.point.z];
-    INTERSECTED.object.geometry.colorsNeedUpdate=true;
-    
-  } 
-  else // there are no intersections
-  {
-    // restore previous intersection object (if it exists) to its original color
-    if ( INTERSECTED ){
-      INTERSECTED.face.color = baseColor;
-      INTERSECTED.object.geometry.colorsNeedUpdate=true;
-    }
-    // remove previous intersection object reference
-    //     by setting current intersection object to "nothing"
-    
-    INTERSECTED = null;
-    mouseSphereCoords = null;
-    
-    
-  }
-}
-
-function CheckMouseSphere(){
-  // if the coordinates exist, make the sphere visible
-  if(mouseSphereCoords != null){
-    //console.log(mouseSphereCoords[0].toString()+","+mouseSphereCoords[1].toString()+","+mouseSphereCoords[2].toString());
-    mouseSphere[0].position.set(mouseSphereCoords[0],mouseSphereCoords[1],mouseSphereCoords[2]);
-    mouseSphere[0].visible = true;
-  }
-  else{ // otherwise hide the sphere
-
-    // console.log('gone');
-  }
-}
-function toString(v) { return "[ " + v.x + ", " + v.y + ", " + v.z + " ]"; }
 
 
 var mc = new Hammer.Manager(document.body);
@@ -362,7 +240,7 @@ var element = document.getElementById("ThreeJS");
 
 function animate() 
 {
-    requestAnimationFrame( animate );
+  requestAnimationFrame( animate );
   render();   
   update();
 }
@@ -370,16 +248,7 @@ function animate()
 function update()
 {
 
-  checkHighlight();
-  CheckMouseSphere();
-  keyboard.update();
-  
-  // if ( keyboard.down("up") ) 
-  // {   
-  //   addOcta();
-  // }
-  ColorSelected();
-  //intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
+
   controls.update();
 }
 
