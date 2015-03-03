@@ -20,8 +20,8 @@
 var  windowHalfX = window.innerWidth / 2, windowHalfY = window.innerHeight / 2
 var container, scene, camera, renderer, controls, controls2;
 var keyboard = new KeyboardState();
-  var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
-  var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
+var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
+var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
 // custom global variables
 var targetList = [];
 var projector, touchPos = { x: 0, y: 0 },INTERSECTED;
@@ -41,14 +41,17 @@ var maxAlarms = 10;
 var amountNow = 0;
 var x1, y1;
 
-    var maxParticles = 1000,
-    particles,
-    particleMaterial,
-    particleSystem;
+var maxParticles = 1000,
+particles,
+particleMaterial,
+particleSystem;
 
 init();
 animate();
 
+function getRandom(min, max) {
+          return Math.random() * (max - min) + min;
+}
 // FUNCTIONS    
 function init() 
 {
@@ -99,9 +102,7 @@ function init()
 
   scene.add(L3);  
 
-
-        // particles
-particles = new THREE.Geometry();
+  particles = new THREE.Geometry();
     for (var i = 0; i < maxParticles; i++) {
       var particle = new THREE.Vector3(random(-800, 800), random(-400, 400), random(-1000, 1000));
       particles.vertices.push(particle);
@@ -136,77 +137,15 @@ particles = new THREE.Geometry();
   raycaster = new THREE.Raycaster();
   touchPos = new THREE.Vector2();
 
+}
 
-        // var mouse = new THREE.Vector2();
-
-        // document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-        // document.addEventListener( 'touchstart', onDocumentTouchStart, false );
-
-        //
-
-        window.addEventListener( 'resize', onWindowResize, false );
-
-      }
-
-      function onWindowResize() {
-
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-
-        renderer.setSize( window.innerWidth, window.innerHeight );
-
-      }
-      
-      // function onDocumentTouchStart( event ) {
-        
-      //   event.preventDefault();
-        
-      //   event.clientX = event.touches[0].clientX;
-      //   event.clientY = event.touches[0].clientY;
-      //   onDocumentMouseDown( event );
-
-      // } 
-
-      // function onDocumentMouseDown( event ) {
-
-      //   event.preventDefault();
-
-      //   mouse.x = ( event.clientX / renderer.domElement.width ) * 2 - 1;
-      //   mouse.y = - ( event.clientY / renderer.domElement.height ) * 2 + 1;
-
-      //   raycaster.setFromCamera( mouse, camera );
-
-      //   var intersects = raycaster.intersectObjects( objects );
-
-      //   if ( intersects.length > 0 ) {
-
-      //     intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
-      //     console.log("intersected and selected");
-
-
-      //   }
-
-      //   /*
-      //   // Parse all the faces
-      //   for ( var i in intersects ) {
-
-      //     intersects[ i ].face.material[ 0 ].color.setHex( Math.random() * 0xffffff | 0x80000000 );
-
-      //   }
-      //   */
-      // }
-
-      //
-
-
-
- function random( min, max ) {
+function random( min, max ) {
       if ( isNaN(max) ) {
         max = min;
         min = 0;
       }
       return Math.random() * ( max - min ) + min;
-    }
+}
 
 function addOcta(x,y,z){
 
@@ -247,11 +186,7 @@ function addOcta(x,y,z){
   // octa.add(wireOcta );
   
   targetList.push(octa);
-  amountNow++;
-    
-
-
-}
+  amountNow++;}
 
 
 
@@ -276,33 +211,23 @@ var element = document.getElementById("ThreeJS");
                   console.log("paning : " + panx + " " + pany);
                   // checkSelection(panx1, pany1)
       
-}
-    });
-          function getRandom(min, max) {
-          return Math.random() * (max - min) + min;
-        }
+}});
 
-    mc.on("tap", function onTap(ev) {
+
+
+    mc.on("tap", function onTap(event) {
         // if( ev.pointerType === "touch"){
-              event.preventDefault();
-                  console.log(ev.pointerType);
-                  
-                  x1 = ev.pointers[0].clientX;
-                  y1 = ev.pointers[0].clientY;
-                  
-           
-                console.log("tap: " + x1 + " " + y1);
-                touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1 * 200;
-                touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 200;
-                console.log(touchPos.x);
-                raycaster.setFromCamera( touchPos, camera );
+        touchPos.x = ( event.clientX / renderer.domElement.width ) * 2 - 1;
+        touchPos.y = - ( event.clientY / renderer.domElement.height ) * 2 + 1;
+
+        raycaster.setFromCamera( touchPos, camera );
 
         var intersects = raycaster.intersectObjects( targetList );
 
         if ( intersects.length > 0 ) {
 
           intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
-          console.log("changed color");
+          document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
 
         }
 
@@ -314,7 +239,7 @@ var element = document.getElementById("ThreeJS");
 
         }
         */
-                  document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
+                  
         // }
                   
 
@@ -331,14 +256,14 @@ var element = document.getElementById("ThreeJS");
             var pinchx = ev.pointers[0].clientX;
             var pinchy = ev.pointers[0].clientY;
 
-                var scalefactor = 2;
-                var cartesianx = 1.1 * pinchx- windowHalfX
-                var cartesiany = - 1.1 * pinchy+ windowHalfY
+                
+            var cartesianx = pinchx- windowHalfX
+            var cartesiany = - pinchy+ windowHalfY
 
-                console.log("world cord: " + cartesianx + " " + cartesiany);
-            
+            console.log("world cord: " + cartesianx + " " + cartesiany);
+        
 
-                addOcta(cartesianx,cartesiany, getRandom(-300, 300));
+            addOcta(cartesianx,cartesiany, getRandom(-400, 300));
 
         }
  
