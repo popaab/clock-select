@@ -216,12 +216,12 @@ var element = document.getElementById("ThreeJS");
                   console.log("tap: " + x1 + " " + y1);
 
 
-                  ev.preventDefault();
+                
 
-        touchPos.x = ( ev.clientX / renderer.domElement.width ) * 2 - 1;
-        touchPos.y = - ( ev.clientY / renderer.domElement.height ) * 2 + 1;
+                touchPos.x = ( ev.clientX / renderer.domElement.width ) * 2 - 1;
+                touchPos.y = - ( ev.clientY / renderer.domElement.height ) * 2 + 1;
 
-        addOcta(touchPos.x,touchPos.y,0);
+                addOcta(touchPos.x,touchPos.y,0);
         // raycaster.setFromCamera( touchPos, camera );
 
         // var intersects = raycaster.intersectObjects( targetList );
@@ -264,14 +264,14 @@ var element = document.getElementById("ThreeJS");
 
     }
 
-function onWindowResize() {
+// function onWindowResize() {
 
-camera.aspect = window.innerWidth / window.innerHeight;
-camera.updateProjectionMatrix();
+// camera.aspect = window.innerWidth / window.innerHeight;
+// camera.updateProjectionMatrix();
 
-enderer.setSize( window.innerWidth, window.innerHeight );
+// renderer.setSize( window.innerWidth, window.innerHeight );
 
-}
+// }
 function animate() 
 {
   requestAnimationFrame( animate );
