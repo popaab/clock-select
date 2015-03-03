@@ -153,9 +153,6 @@ function addOcta(x,y,z){
 
   var posx = x, posy = y, posz = z;
   var position = new Array();
-  var notAboveGround = true;
-  var face;
-  var faces = [];
  
     position[0]= posx;
     position[1]= posy;
@@ -173,9 +170,8 @@ function addOcta(x,y,z){
   var octa= new THREE.Mesh( geometry, shiny2 );
 
   octa.position.set(position[0], position[1], position[2]);
-  console.log(position[0] + " " + position[1] + " " + position[2]);
   // creates a wireMesh object
-  var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: false }));
+  // var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: false }));
   
 
   // if( amountNow <= maxAlarms){
@@ -185,7 +181,9 @@ function addOcta(x,y,z){
   // octa.add(wireOcta );
   
   targetList.push(octa);
-  amountNow++;}
+  amountNow++;
+
+}
 
 
 
@@ -204,13 +202,13 @@ var element = document.getElementById("ThreeJS");
 
                   console.log(ev);
                   
-                  var panx = ev.pointers[0].clientX;
-                  var pany = ev.pointers[0].clientY;
+                  // var panx = ev.pointers[0].clientX;
+                  // var pany = ev.pointers[0].clientY;
            
-                  console.log("paning : " + panx + " " + pany);
-                  // checkSelection(panx1, pany1)
+                  // console.log("paning : " + panx + " " + pany);
+                  // // checkSelection(panx1, pany1)
       
-}});
+    }});
 
 
 
@@ -225,19 +223,19 @@ var element = document.getElementById("ThreeJS");
 
         if ( intersects.length > 0 ) {
 
-          intersects[ 0 ].object.material.color.setHex( 'black');
+          intersects[ 0 ].object.material.color.setHex( 'blue ');
           document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
 
         }
 
-        /*
+        
         // Parse all the faces
         for ( var i in intersects ) {
 
           intersects[ i ].face.material[ 0 ].color.setHex( Math.random() * 0xffffff | 0x80000000 );
 
         }
-        */
+        
                   
         // }
                   
