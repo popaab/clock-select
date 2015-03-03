@@ -293,12 +293,49 @@ var mc = new Hammer.Manager(document.body);
 
     });
 
+    var transforming = false;
+    var transformTimer = null;
+    mc.on('tap pinch pinchout transform', function(ev) {
+      manageMultitouch(ev);
+    });
+    mc.on("transformstart", function(evt) {                    
+        transforming = true;
+    });
 
-function manageMultitouch(ev){
- 
+    mc.on("transformend", function(evt) {
+        setTimeout(function () {       
+            transforming = false;
+        }, 1000);
+    });
+    
+    function manageMultitouch(ev){
     switch(ev.type) {
             case 'tap':
-               
+               if( event.pointerType === "touch"){
+
+                  touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
+                  touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
+
+                  raycaster.setFromCamera( touchPos, camera );
+
+                  var intersects = raycaster.intersectObjects( targetList );
+                
+                  if ( intersects.length > 0 ) {
+
+                    intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+                    console.log(intersects[0].object.id);
+                    var k = targetList.indexOf(intersects[0].object.id);
+                    selected = intersects[0].object;
+                    var cameraX = selected.position.x;
+                    var cameraY = selected.position.y;
+                    var cameraZ = -selected.position.z + 200;
+
+                    console.log(cameraX,cameraY,cameraZ);
+
+                     document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
+
+                  }      
+        }
  
             case '':
                  
@@ -308,7 +345,7 @@ function manageMultitouch(ev){
 
                 break;
  
-            case 'dragend':
+            case 'pinchout':
 
         break;
         }
