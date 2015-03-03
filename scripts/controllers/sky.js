@@ -292,8 +292,8 @@ var element = document.getElementById("ThreeJS");
                   
            
                 console.log("tap: " + x1 + " " + y1);
-                touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1 * 2;
-                touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 1;
+                touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1 * 200;
+                touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 200;
                 console.log(touchPos.x);
                 raycaster.setFromCamera( touchPos, camera );
 
@@ -306,7 +306,14 @@ var element = document.getElementById("ThreeJS");
 
         }
 
+        /*
+        // Parse all the faces
+        for ( var i in intersects ) {
 
+          intersects[ i ].face.material[ 0 ].color.setHex( Math.random() * 0xffffff | 0x80000000 );
+
+        }
+        */
                   document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
         }
                   
