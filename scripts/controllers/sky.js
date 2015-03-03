@@ -40,6 +40,12 @@ var maxAlarms = 10;
 var amountNow = 0;
 var x1, y1;
 
+var k;
+var selected;
+var cameraX
+var cameraY;
+var cameraZ;
+
 var maxParticles = 5000,
 particles,
 particleMaterial,
@@ -257,7 +263,15 @@ var mc = new Hammer.Manager(document.body);
 
           intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
           console.log(intersects[0].object.id);
-          camera.lookAt(intersects[0].object);
+          var k = targetList.indexOf(intersects[0].object.id);
+          var selected = intersects[0].object;
+          var cameraX = selected.position.x;
+          var cameraY = selected.position.y;
+          var cameraZ = selected.position.z;
+
+          camera.postion.set(cameraX,cameraY,cameraZ);
+          console.log(cameraX,cameraY,cameraZ);
+
            document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
 
           // document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
