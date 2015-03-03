@@ -77,8 +77,7 @@ function init()
   // CONTROLS
   controls = new THREE.OrbitControls( camera, renderer.domElement );
   controls2 = new THREE.TrackballControls( camera, renderer.domElement );
-
-        controls2.addEventListener( 'change', render );
+  controls2.addEventListener( 'change', render );
 
 
   //lights red and blue
@@ -204,8 +203,8 @@ function update()
 function render() 
 {
 
-        deltaTime = clock.getDelta();
-        particleSystem.rotation.y += deltaTime/40;
+  deltaTime = clock.getDelta();
+  particleSystem.rotation.y += deltaTime/40;
 
   renderer.render( scene, camera );
 }
@@ -214,7 +213,7 @@ var mc = new Hammer.Manager(document.body);
 
     mc.add(new Hammer.Pinch({ threshold: 0}));
 
-    mc.add(new Hammer.Tap());
+    mc.add(new Hammer.Tap({ taps: 1}));
     mc.add(new Hammer.Pan());
 
 
@@ -232,7 +231,15 @@ var mc = new Hammer.Manager(document.body);
       
     }});
 
+    function alarm(){
+    while (local === true){
 
+
+
+    }
+
+
+    }
 
     mc.on("tap", function onTap(event) {
         if( event.pointerType === "touch"){
@@ -247,6 +254,7 @@ var mc = new Hammer.Manager(document.body);
         if ( intersects.length > 0 ) {
 
           intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+
           // document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
 
         }
