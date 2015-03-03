@@ -217,7 +217,9 @@ var element = document.getElementById("ThreeJS");
       
 }
     });
-  
+          function getRandom(min, max) {
+          return Math.random() * (max - min) + min;
+        }
 
     mc.on("tap", function onTap(ev) {
         if( ev.pointerType === "touch"){
@@ -230,8 +232,8 @@ var element = document.getElementById("ThreeJS");
            
                   console.log("tap: " + x1 + " " + y1);
                 var scalefactor = 2;
-                var cartesianx = x1- windowHalfX
-                var cartesiany = -y1+ windowHalfY
+                var cartesianx = 0.9 * x1- windowHalfX
+                var cartesiany = -0.9 * y1+ windowHalfY
 
                 console.log("world cord: " + cartesianx + " " + cartesiany);
                 
@@ -239,7 +241,7 @@ var element = document.getElementById("ThreeJS");
                 touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1 * 2;
                 touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 1;
 
-                addOcta(cartesianx,cartesiany,0);
+                addOcta(cartesianx,cartesiany, getRandom(-100, 100));
         
 
           // var square = new THREE.Mesh(new THREE.OctahedronGeometry( 10, 0 ), new THREE.MeshBasicMaterial({ color: 'green', wireframe: false }));
