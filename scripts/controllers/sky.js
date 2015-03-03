@@ -203,7 +203,7 @@ var element = document.getElementById("ThreeJS");
     mc.add(new Hammer.Pan());
 
 
-    mc.on("pinchout", onPinch);
+    mc.on("pinchout pinchstart", onPinch);
     mc.on("panmove", function onPan(ev) {
          if( ev.pointerType === "touch"){
 
