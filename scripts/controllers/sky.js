@@ -40,7 +40,7 @@ var maxAlarms = 10;
 var amountNow = 0;
 var x1, y1;
 
-var maxParticles = 1000,
+var maxParticles = 5000,
 particles,
 particleMaterial,
 particleSystem;
@@ -61,7 +61,7 @@ function init()
 
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
   scene.add(camera);
-  camera.position.set(0,250,950);
+  camera.position.set(0,250,700);
   camera.lookAt(scene.position);  
   // RENDERER
   if ( Detector.webgl )
