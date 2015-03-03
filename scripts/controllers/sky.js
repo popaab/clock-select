@@ -237,9 +237,6 @@ var element = document.getElementById("ThreeJS");
                 raycaster.setFromCamera( touchPos, camera );
 
 
-        raycaster.setFromCamera( mouse, camera );
-
-
           // var square = new THREE.Mesh(new THREE.OctahedronGeometry( 10, 0 ), new THREE.MeshBasicMaterial({ color: 'green', wireframe: false }));
           // square.position.x = touchPos.x;
           // square.position.y = touchPos.y;
