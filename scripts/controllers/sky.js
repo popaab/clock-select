@@ -116,7 +116,7 @@ function init()
   //main time sphere 
    var shiny = new THREE.MeshPhongMaterial({
               color: 'white',
-               opacity: 0, transparent: true,
+               opacity: 1, transparent: true,
               shading: THREE.FlatShading,
               fog: false
               
@@ -164,7 +164,7 @@ function addOcta(x,y,z){
    var shiny2 = new THREE.MeshPhongMaterial({
               color: 'white',
               shading: THREE.FlatShading,
-              opacity: 0, transparent: true,
+              opacity: 1, transparent: true,
               fog: false
               
           });
