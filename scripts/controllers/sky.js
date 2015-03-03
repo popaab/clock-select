@@ -211,7 +211,7 @@ function render()
 
   deltaTime = clock.getDelta();
   particleSystem.rotation.y += deltaTime/40;
-
+  state();
   renderer.render( scene, camera );
 }
 
@@ -241,12 +241,20 @@ var mc = new Hammer.Manager(document.body);
     }});
 
     var editMode = false;
-    var transforming = false;
-    var transformTimer = null;
-
     mc.on('tap swiperight', function(ev) {
       manageMultitouch(ev);
     });
+
+
+    function state(){
+    if(editMode === true){
+
+          controls2.enabled = false;
+        }
+
+    }else{
+      controls2.enabled = true;
+    }
 
     
     function manageMultitouch(event){
@@ -257,7 +265,7 @@ var mc = new Hammer.Manager(document.body);
     if(event.type === 'tap'){
       editMode = true;
        if( event.pointerType === "touch"){
-        controls2.enabled = false;
+        
                   
                   touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
                   touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
@@ -286,7 +294,7 @@ var mc = new Hammer.Manager(document.body);
 
     }if(event.type === 'swiperight'){
       editMode = true;
-      controls2.enabled = false;
+    
 
       if( event.pointerType === "touch"){
 
@@ -303,7 +311,7 @@ var mc = new Hammer.Manager(document.body);
 
 
     }else{
-      controls2.enabled = true;
+  
 
 
     }
