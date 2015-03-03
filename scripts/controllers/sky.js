@@ -97,7 +97,7 @@ function init()
               
           });
 
-    var mainTime = new THREE.Mesh(new THREE.TetrahedronGeometry(60, 3), shiny);
+    var mainTime = new THREE.Mesh(new THREE.TetrahedronGeometry(100, 3), shiny);
 
           mainTime.position.x = 0;
           mainTime.position.y = 0;
@@ -166,12 +166,17 @@ function addOcta(x,y,z){
     position[1]= posy;
     position[2]= posz;
 
-
+   var shiny2 = new THREE.MeshPhongMaterial({
+              color: 'red',
+              shading: THREE.FlatShading,
+              fog: false
+              
+          });
   var material = new THREE.MeshBasicMaterial( 
   { color: 'white', opacity: 0.5, transparent: true,shading:THREE.FlatShading} );
   
-  var geometry = new THREE.OctahedronGeometry( 40, 0 );
-  var octa= new THREE.Mesh( geometry, material );
+  var geometry = new THREE.OctahedronGeometry( 60, 0 );
+  var octa= new THREE.Mesh( geometry, shiny2 );
 
   octa.position.set(position[0], position[1], position[2]);
   console.log(position[0] + " " + position[1] + " " + position[2]);
