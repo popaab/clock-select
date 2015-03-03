@@ -54,6 +54,7 @@ particleSystem;
 var state = 0, world = true, selectedOnce = false;
 init();
 animate();
+var editMode;
 
 function getRandom(min, max) {
           return Math.random() * (max - min) + min;
@@ -143,6 +144,9 @@ function init()
   raycaster = new THREE.Raycaster();
   touchPos = new THREE.Vector2();
 
+
+  var editMode = false;
+
 }
 
 function random( min, max ) {
@@ -201,7 +205,13 @@ function animate()
 function update()
 {
 
-state();
+      if(editMode === true){
+
+      controls2.enabled = false;
+    }if(editMode === false){
+
+      controls2.enabled = true;
+    }
   controls.update();
   controls2.update();
 }
@@ -240,20 +250,13 @@ var mc = new Hammer.Manager(document.body);
       
     }});
 
-    var editMode = false;
+ 
     mc.on('tap swiperight', function(ev) {
+      
       manageMultitouch(ev);
     });
 
 
-    function state(){
-    if(editMode === true){
-
-          controls2.enabled = false;
-        }else{
-      controls2.enabled = true;
-    }
-  }
 
     
     function manageMultitouch(event){
@@ -262,7 +265,7 @@ var mc = new Hammer.Manager(document.body);
      var k, cameraX, cameraY, cameraZ;
     
     if(event.type === 'tap'){
-      editMode = true;
+    editMode = true;
        if( event.pointerType === "touch"){
         
                   
@@ -292,8 +295,8 @@ var mc = new Hammer.Manager(document.body);
 
 
     }if(event.type === 'swiperight'){
-      editMode = true;
-    
+     
+    editMode = true;
 
       if( event.pointerType === "touch"){
 
@@ -311,7 +314,7 @@ var mc = new Hammer.Manager(document.body);
 
     }else{
   
-
+editMode = false;
 
     }
 
@@ -345,71 +348,3 @@ function removeEntity(object) {
     scene.remove( del );
     
 }
-
-    // mc.on("tap", function onTap(event) {
-    //     if( event.pointerType === "touch"){
-
-    //     touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
-    //     touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
-
-    //     raycaster.setFromCamera( touchPos, camera );
-
-    //     var intersects = raycaster.intersectObjects( targetList );
-      
-    //     if ( intersects.length > 0 ) {
-
-    //       intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
-    //       console.log(intersects[0].object.id);
-    //       var k = targetList.indexOf(intersects[0].object.id);
-    //       selected = intersects[0].object;
-    //       var cameraX = selected.position.x;
-    //       var cameraY = selected.position.y;
-    //       var cameraZ = -selected.position.z + 200;
-
-    //       // camera.position.set(cameraX,cameraY,cameraZ);
-    //       // camera.lookAt(selected);
-    //       console.log(cameraX,cameraY,cameraZ);
-
-    //        document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
-
-    //       // document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
-
-    //     }
-
-        
-    //     // Parse all the faces
-    //     // for ( var i in intersects ) {
-
-    //     //   intersects[ i ].face.material[ 0 ].color.setHex( Math.random() * 0xffffff | 0x80000000 );
-
-    //     // }
-        
-                  
-    //     }
-                  
-
-    // });
-
-
-    // function onPinchIn(ev) {
-    // // if(ev.type == 'pinchout') {
-
-
-    //         // var selectedDelete = selected;
-    //         // removeEntity(selectedDelete);
-    //         // console.log(ev.pointerType);
-            
-    //         // var pinchx = ev.pointers[0].clientX;
-    //         // var pinchy = ev.pointers[0].clientY;
-
-                
-    //         // var cartesianx = pinchx- windowHalfX
-    //         // var cartesiany = - pinchy+ windowHalfY
-
-    //         // console.log("world cord: " + cartesianx + " " + cartesiany);
-        
-
-    //         // addOcta(cartesianx,cartesiany, getRandom(-400, 300));
-
-
-    // }
