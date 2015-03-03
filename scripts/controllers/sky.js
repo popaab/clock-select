@@ -35,13 +35,13 @@ var clock = new THREE.Clock();
 var deltaTime = 0;
 var fov = 75;
 var mainTime;
-var particleMaterial;
-var particle;
+
+
 var maxAlarms = 10;
 var amountNow = 0;
 var x1, y1;
 
-    var maxParticles = 200,
+    var maxParticles = 1000,
     particles,
     particleMaterial,
     particleSystem;
@@ -100,7 +100,7 @@ function init()
         // particles
 particles = new THREE.Geometry();
     for (var i = 0; i < maxParticles; i++) {
-      var particle = new THREE.Vector3(random(-400, 400), random(-200, 200), random(-1000, 100));
+      var particle = new THREE.Vector3(random(-800, 800), random(-400, 400), random(-1000, 1000));
       particles.vertices.push(particle);
     }
     particleMaterial = new THREE.ParticleBasicMaterial({ color: 0xeeeeee, size: 2 });
