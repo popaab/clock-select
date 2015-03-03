@@ -286,7 +286,7 @@ var mc = new Hammer.Manager(document.body);
 
     }if(event.type === 'swiperight'){
       editMode = true;
-      controls.rotate = false;
+
       if( event.pointerType === "touch"){
 
                       
@@ -301,6 +301,9 @@ var mc = new Hammer.Manager(document.body);
                     
 
 
+    }else{
+
+      controls.rotate = true;
     }
 
   }
