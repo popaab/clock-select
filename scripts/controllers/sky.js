@@ -240,7 +240,9 @@ var element = document.getElementById("ThreeJS");
         raycaster.setFromCamera( touchPos, camera );
 
           var square = new THREE.Mesh(new THREE.OctahedronGeometry( 10, 0 ), new THREE.MeshBasicMaterial({ color: 'green', wireframe: false }));
-          square.position.( touchPos.x, touchPos.y, 10);
+          square.position.x = touchPos.x;
+          square.position.y = touchPos.y;
+          square.position.z = 10;
           
           scene.add( square );
 
