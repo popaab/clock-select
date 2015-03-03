@@ -146,7 +146,7 @@ function init()
             {
 
 
-                var worldPos;
+                var worldPos = {x: 0, y:0};
                 worldPos.x = touchPos.x / windowHalfX - 1;
                 worldPos.y = - touchPos.y / windowHalfY + 1;
 ;
