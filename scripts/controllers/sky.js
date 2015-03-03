@@ -31,9 +31,9 @@ var raycaster;
 var baseColor=new THREE.Color( 'white' );
 var highlightedColor=new THREE.Color( 0xddaa00 );
 var selectedColor=new THREE.Color( 0x4466dd );
- clock = new THREE.Clock(),
- deltaTime = 0,
-  fov = 75;
+var clock = new THREE.Clock(),
+var deltaTime = 0,
+var fov = 75;
 var mainTime;
 var particleMaterial;
 var particle;
@@ -338,7 +338,7 @@ function update()
 
 function render() 
 {
-  
+
         deltaTime = clock.getDelta();
         particleSystem.rotation.y += deltaTime/40;
 
