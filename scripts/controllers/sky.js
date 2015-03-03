@@ -235,7 +235,7 @@ var element = document.getElementById("ThreeJS");
           intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
           console.log("changed color");
 
-          var square = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: false }));
+          var square = new THREE.Mesh(new THREE.OctahedronGeometry( 10, 0 );, new THREE.MeshBasicMaterial({ color: 'green', wireframe: false }));
           square.position.copy( intersects[ 0 ].point );
           square.scale.x = particle.scale.y = 2;
           scene.add( square );
