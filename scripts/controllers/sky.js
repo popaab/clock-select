@@ -237,8 +237,8 @@ var mc = new Hammer.Manager(document.body);
     mc.on("tap", function onTap(event) {
         if( event.pointerType === "touch"){
 
-        touchPos.x = ( event.clientX / renderer.domElement.width ) * 2 - 1;
-        touchPos.y = - ( event.clientY / renderer.domElement.height ) * 2 + 1;
+        touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
+        touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
 
         raycaster.setFromCamera( touchPos, camera );
 
