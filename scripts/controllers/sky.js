@@ -20,14 +20,14 @@ var keyboard = new KeyboardState();
 
 // custom global variables
 var targetList = [];
-var projector, mouse = { x: 0, y: 0 },INTERSECTED;
-var selectedFaces = [];
-var floorSide=1000;
+var projector, touchPos = { x: 0, y: 0 },INTERSECTED;
+var raycaster;
+
+
 var baseColor=new THREE.Color( 'white' );
 var highlightedColor=new THREE.Color( 0xddaa00 );
 var selectedColor=new THREE.Color( 0x4466dd );
-var mouseSphereCoords = null;
-var mouseSphere=[];
+
 var mainTime;
 
 var maxAlarms = 10;
@@ -130,6 +130,8 @@ function init()
   
   // initialize object to perform world/screen calculations
   projector = new THREE.Projector();
+  raycaster = new THREE.Raycaster();
+  touchPos = new THREE.Vector2();
   
 
 }
@@ -174,7 +176,7 @@ function addOcta(x,y,z){
 
 }
 
-
+function
 
 
 var mc = new Hammer.Manager(document.body);
@@ -210,9 +212,32 @@ var element = document.getElementById("ThreeJS");
                   
                   x1 = ev.pointers[0].clientX;
                   y1 = ev.pointers[0].clientY;
-                  addOcta(x1,y1,20);
+                  
            
                   console.log("tap: " + x1 + " " + y1);
+
+
+                  ev.preventDefault();
+
+        touchPos.x = ( ev.clientX / renderer.domElement.width ) * 2 - 1;
+        touchPos.y = - ( ev.clientY / renderer.domElement.height ) * 2 + 1;
+
+        addOcta(touchPos.x,touchPos.y,0);
+        // raycaster.setFromCamera( touchPos, camera );
+
+        // var intersects = raycaster.intersectObjects( targetList );
+
+        // if ( intersects.length > 0 ) {
+
+        //   intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+        //   console.log("changed color");
+
+        //   var particle = new THREE.Sprite( particleMaterial );
+        //   particle.position.copy( intersects[ 0 ].point );
+        //   particle.scale.x = particle.scale.y = 16;
+        //   scene.add( particle );
+
+        // }
                   // checkSelection(x1, y1);
 
                   document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
@@ -231,6 +256,8 @@ var element = document.getElementById("ThreeJS");
             
             var pinchx = ev.pointers[0].clientX;
             var pinchy = ev.pointers[0].clientY;
+
+
             
         // }
         }
@@ -238,7 +265,14 @@ var element = document.getElementById("ThreeJS");
 
     }
 
+function onWindowResize() {
 
+camera.aspect = window.innerWidth / window.innerHeight;
+camera.updateProjectionMatrix();
+
+enderer.setSize( window.innerWidth, window.innerHeight );
+
+}
 function animate() 
 {
   requestAnimationFrame( animate );
