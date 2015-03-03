@@ -313,7 +313,7 @@ var element = document.getElementById("ThreeJS");
 
     }
 
-}
+
     function onPinch(ev) {
     // if(ev.type == 'pinchout') {
 
