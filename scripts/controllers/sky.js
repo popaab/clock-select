@@ -146,10 +146,10 @@ function init()
             {
 
 
-                var worldPos = touchPos.clone();
-                worldPos.x = worldPos.x / windowHalfX - 1;
-                worldPos.y = - worldPos.y / windowHalfY + 1;
-                projector.unprojectVector( worldPos, camera );
+                var worldPos;
+                worldPos.x = touchPos.x / windowHalfX - 1;
+                worldPos.y = - touchPos.y / windowHalfY + 1;
+;
                 return worldPos;                    
             }
 
