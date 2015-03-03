@@ -283,7 +283,7 @@ var element = document.getElementById("ThreeJS");
         }
 
     mc.on("tap", function onTap(ev) {
-        if( ev.pointerType === "touch"){
+        // if( ev.pointerType === "touch"){
               event.preventDefault();
                   console.log(ev.pointerType);
                   
@@ -315,7 +315,7 @@ var element = document.getElementById("ThreeJS");
         }
         */
                   document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
-        }
+        // }
                   
 
     });
