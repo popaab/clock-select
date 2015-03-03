@@ -89,13 +89,13 @@ function init()
 
   scene.add(L1);
 
-  var L1 = new THREE.PointLight('orange', 0.2);
+  var L1 = new THREE.PointLight('orange', 0.4);
   L1.position.x = 5000;
   L1.position.y = 500;
   L1.position.z = 5000;
 
   scene.add(L1);
-  var L3 = new THREE.PointLight(0x0000ff, 0.3);
+  var L3 = new THREE.PointLight(0x0000ff, 0.4);
   L3.position.z = -2000;
   L3.position.x = 1000;
   L3.position.y = 500;
