@@ -121,10 +121,10 @@ function init()
 
   addOcta(180,0,0);
   
-  var newSphereGeom= new THREE.SphereGeometry(5,5,5);
-  var sphere= new THREE.Mesh(newSphereGeom, new THREE.MeshBasicMaterial({ color: 0x2266dd }));
-  scene.add(sphere);
-  mouseSphere.push(sphere);
+  // var newSphereGeom= new THREE.SphereGeometry(5,5,5);
+  // var sphere= new THREE.Mesh(newSphereGeom, new THREE.MeshBasicMaterial({ color: 0x2266dd }));
+  // scene.add(sphere);
+  // mouseSphere.push(sphere);
 
   //////////////////////////////////////////////////////////////////////
   
