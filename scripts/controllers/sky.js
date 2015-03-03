@@ -269,7 +269,7 @@ var mc = new Hammer.Manager(document.body);
           var cameraY = selected.position.y;
           var cameraZ = selected.position.z;
 
-          camera.postion.set(cameraX,cameraY,cameraZ);
+          camera.position.set(cameraX,cameraY,cameraZ);
           console.log(cameraX,cameraY,cameraZ);
 
            document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
