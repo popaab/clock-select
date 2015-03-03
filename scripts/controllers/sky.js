@@ -103,20 +103,6 @@ function init()
           scene.add(mainTime);
           targetList.push(mainTime);
 
-
-        var PI2 = Math.PI * 2;
-        var particleMaterial = new THREE.SpriteCanvasMaterial( {
-
-          color: 0x000000,
-          program: function ( context ) {
-
-            context.beginPath();
-            context.arc( 0, 0, 0.5, 0, PI2, true );
-            context.fill();
-
-          }
-
-        } );
   // // FLOOR
   // var faceMat = new THREE.MeshBasicMaterial({color: 0x888888,side: THREE.DoubleSide});
 
@@ -249,10 +235,10 @@ var element = document.getElementById("ThreeJS");
           intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
           console.log("changed color");
 
-          var particle = new THREE.Sprite( particleMaterial );
-          particle.position.copy( intersects[ 0 ].point );
-          particle.scale.x = particle.scale.y = 16;
-          scene.add( particle );
+          var square = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: false }));
+          square.position.copy( intersects[ 0 ].point );
+          square.scale.x = particle.scale.y = 2;
+          scene.add( square );
 
         }
                   // checkSelection(x1, y1);
