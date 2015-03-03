@@ -243,7 +243,7 @@ var mc = new Hammer.Manager(document.body);
     var transforming = false;
     var transformTimer = null;
 
-    mc.on('tap pinchin', function(ev) {
+    mc.on('tap pinch', function(ev) {
       manageMultitouch(ev);
     });
 
