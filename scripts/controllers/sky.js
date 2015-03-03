@@ -185,15 +185,6 @@ particles = new THREE.Geometry();
 
 
         }
-
-        /*
-        // Parse all the faces
-        for ( var i in intersects ) {
-
-          intersects[ i ].face.material[ 0 ].color.setHex( Math.random() * 0xffffff | 0x80000000 );
-
-        }
-        */
       }
 
       //
@@ -291,7 +282,7 @@ var element = document.getElementById("ThreeJS");
                   y1 = ev.pointers[0].clientY;
                   
            
-        //         console.log("tap: " + x1 + " " + y1);
+                console.log("tap: " + x1 + " " + y1);
         //         touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1 * 2;
         //         touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 1;
                 
