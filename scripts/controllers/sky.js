@@ -233,6 +233,7 @@ var element = document.getElementById("ThreeJS");
                   var newPos = screenToWorld(touchPos);
 
                   addOcta(newPos.x,newPos.y,0);
+                  console.log("changed color");
         // raycaster.setFromCamera( touchPos, camera );
 
         // var intersects = raycaster.intersectObjects( targetList );
