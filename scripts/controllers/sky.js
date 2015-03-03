@@ -279,7 +279,7 @@ var mc = new Hammer.Manager(document.body);
 
                   }      
                 }
-            
+            break;
  
             case 'pinin':
                 if( event.pointerType === "touch"){
@@ -309,7 +309,7 @@ var mc = new Hammer.Manager(document.body);
                          document.getElementById("resultDIV").innerHTML = ("deleted: "+ selected);
 
                       }      
-                    }
+                    
 
 
 
