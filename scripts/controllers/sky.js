@@ -176,7 +176,6 @@ function addOcta(x,y,z){
 
 }
 
-function
 
 
 var mc = new Hammer.Manager(document.body);
