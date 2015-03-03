@@ -221,22 +221,22 @@ var element = document.getElementById("ThreeJS");
                 touchPos.x = ( x1 / SCREEN_WIDTH) * 2 - 1;
                 touchPos.y = - ( y1 / SCREEN_HEIGHT ) * 2 + 1;
 
-                addOcta(touchPos.x,touchPos.y,0);
-        // raycaster.setFromCamera( touchPos, camera );
+                // addOcta(touchPos.x,touchPos.y,0);
+        raycaster.setFromCamera( touchPos, camera );
 
-        // var intersects = raycaster.intersectObjects( targetList );
+        var intersects = raycaster.intersectObjects( targetList );
 
-        // if ( intersects.length > 0 ) {
+        if ( intersects.length > 0 ) {
+            
+          intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+          console.log("changed color");
 
-        //   intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
-        //   console.log("changed color");
+          var particle = new THREE.Sprite( particleMaterial );
+          particle.position.copy( intersects[ 0 ].point );
+          particle.scale.x = particle.scale.y = 16;
+          scene.add( particle );
 
-        //   var particle = new THREE.Sprite( particleMaterial );
-        //   particle.position.copy( intersects[ 0 ].point );
-        //   particle.scale.x = particle.scale.y = 16;
-        //   scene.add( particle );
-
-        // }
+        }
                   // checkSelection(x1, y1);
 
                   document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
