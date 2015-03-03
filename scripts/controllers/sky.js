@@ -264,12 +264,12 @@ var mc = new Hammer.Manager(document.body);
           intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
           console.log(intersects[0].object.id);
           var k = targetList.indexOf(intersects[0].object.id);
-          var selected = intersects[0].object;
+          selected = intersects[0].object;
           var cameraX = selected.position.x;
           var cameraY = selected.position.y;
           var cameraZ = -selected.position.z + 200;
 
-          camera.position.set(cameraX,cameraY,cameraZ);
+          // camera.position.set(cameraX,cameraY,cameraZ);
           camera.lookAt(selected);
           console.log(cameraX,cameraY,cameraZ);
 
@@ -317,13 +317,18 @@ var mc = new Hammer.Manager(document.body);
  
 
     }
-
+function removeEntity(object) {
+    var selectedObject = scene.getObjectByName(object.name);
+    scene.remove( selectedObject );
+    
+}
 
     function onPinchIn(ev) {
     // if(ev.type == 'pinchout') {
 
 
-
+            var selectedDelete = selected;
+            removeEntity(selectedDelete);
             // console.log(ev.pointerType);
             
             // var pinchx = ev.pointers[0].clientX;
