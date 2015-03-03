@@ -222,6 +222,7 @@ var mc = new Hammer.Manager(document.body);
 
     mc.add(new Hammer.Tap({ taps: 1}));
     mc.add(new Hammer.Pan());
+    mc.add(new Hammer.Swipe());
 
 
     mc.on("pinchout", onPinch);
@@ -243,7 +244,7 @@ var mc = new Hammer.Manager(document.body);
     var transforming = false;
     var transformTimer = null;
 
-    mc.on('tap pinchin', function(ev) {
+    mc.on('tap swiperight', function(ev) {
       manageMultitouch(ev);
     });
 
@@ -252,13 +253,12 @@ var mc = new Hammer.Manager(document.body);
 
      var selectedObject = null; 
      var k, cameraX, cameraY, cameraZ;
-    switch(event.type) {
+    
+    if(event.type === 'tap'){
+      editMode = true;
+       if( event.pointerType === "touch"){
 
-
-            case 'tap':
-               if( event.pointerType === "touch"){
-
-                  editMode = true;
+                  
                   touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
                   touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
 
@@ -282,12 +282,13 @@ var mc = new Hammer.Manager(document.body);
 
                   }      
                 }
-            break;
- 
-            case 'pinchin':
-                if( event.pointerType === "touch"){
 
-                      editMode = true;
+
+    }if(event.type === 'swiperight'){
+      editMode = true;
+      if( event.pointerType === "touch"){
+
+                      
                      
                         removeEntity(selectedObject);
 
@@ -299,10 +300,8 @@ var mc = new Hammer.Manager(document.body);
                     
 
 
+    }
 
-              break;
-        }
-      
   }
 
     function onPinch(ev) {
