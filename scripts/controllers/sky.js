@@ -235,7 +235,8 @@ var mc = new Hammer.Manager(document.body);
 
 
     mc.on("tap", function onTap(event) {
-        if( ev.pointerType === "touch"){
+        if( event.pointerType === "touch"){
+
         touchPos.x = ( event.clientX / renderer.domElement.width ) * 2 - 1;
         touchPos.y = - ( event.clientY / renderer.domElement.height ) * 2 + 1;
 
@@ -245,7 +246,7 @@ var mc = new Hammer.Manager(document.body);
 
         if ( intersects.length > 0 ) {
 
-          intersects[ 0 ].object.material.color.setHex( 'blue ');
+          intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
           document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
 
         }
