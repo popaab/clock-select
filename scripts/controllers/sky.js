@@ -121,7 +121,7 @@ function init()
               
           });
 
-    var mainTime = new THREE.Mesh(new THREE.TetrahedronGeometry(100, 3), shiny);
+    var mainTime = new THREE.Mesh(new THREE.TetrahedronGeometry(100, 3), opacity: 0, transparent: true,shiny);
 
           mainTime.position.x = 0;
           mainTime.position.y = 0;
@@ -130,7 +130,7 @@ function init()
           scene.add(mainTime);
           targetList.push(mainTime);
   addOcta(180,0,0);
-  
+
   
   // initialize object to perform world/screen calculations
   projector = new THREE.Projector();
@@ -163,7 +163,7 @@ function addOcta(x,y,z){
    var shiny2 = new THREE.MeshPhongMaterial({
               color: 'white',
               shading: THREE.FlatShading,
-              opacity: 0.5, transparent: true,
+              opacity: 0, transparent: true,
               fog: false
               
           });
