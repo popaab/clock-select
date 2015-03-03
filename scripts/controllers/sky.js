@@ -73,7 +73,11 @@ function init()
   // THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
   // CONTROLS
   controls = new THREE.OrbitControls( camera, renderer.domElement );
-  
+  controls2 = new THREE.TrackballControls( camera, renderer.domElement );
+        controls2.rotateSpeed = 0.5;
+        controls2.minDistance = 500;
+        controls2.maxDistance = 6000;
+        controls2.addEventListener( 'change', render );
 
   // // LIGHT
   // var light = new THREE.AmbientLight( 0x333333 ); // soft white light
@@ -346,6 +350,7 @@ function update()
 
 
   controls.update();
+  controls2.update();
 }
 
 function render() 
