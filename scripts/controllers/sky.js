@@ -229,11 +229,11 @@ var element = document.getElementById("ThreeJS");
                   
            
                   console.log("tap: " + x1 + " " + y1);
-
+                  var newPos = {};
                   var newPos = screenToWorld(touchPos);
 
                   addOcta(newPos.x,newPos.y,0);
-                  console.log("changed color");
+                  console.log(newPos);
         // raycaster.setFromCamera( touchPos, camera );
 
         // var intersects = raycaster.intersectObjects( targetList );
