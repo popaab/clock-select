@@ -250,11 +250,10 @@ var mc = new Hammer.Manager(document.body);
     if(editMode === true){
 
           controls2.enabled = false;
-        }
-
-    }else{
+        }else{
       controls2.enabled = true;
     }
+  }
 
     
     function manageMultitouch(event){
