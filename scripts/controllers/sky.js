@@ -186,9 +186,31 @@ function addOcta(x,y,z){
 }
 
 
+function animate() 
+{
+  requestAnimationFrame( animate );
+  render();   
+  update();
+}
+
+function update()
+{
+
+
+  controls.update();
+  controls2.update();
+}
+
+function render() 
+{
+
+        deltaTime = clock.getDelta();
+        particleSystem.rotation.y += deltaTime/40;
+
+  renderer.render( scene, camera );
+}
 
 var mc = new Hammer.Manager(document.body);
-var element = document.getElementById("ThreeJS");
 
     mc.add(new Hammer.Pinch({ threshold: 0}));
 
@@ -213,7 +235,7 @@ var element = document.getElementById("ThreeJS");
 
 
     mc.on("tap", function onTap(event) {
-        // if( ev.pointerType === "touch"){
+        if( ev.pointerType === "touch"){
         touchPos.x = ( event.clientX / renderer.domElement.width ) * 2 - 1;
         touchPos.y = - ( event.clientY / renderer.domElement.height ) * 2 + 1;
 
@@ -237,7 +259,7 @@ var element = document.getElementById("ThreeJS");
         }
         
                   
-        // }
+        }
                   
 
     });
@@ -267,29 +289,6 @@ var element = document.getElementById("ThreeJS");
 
     }
 
-function animate() 
-{
-  requestAnimationFrame( animate );
-  render();   
-  update();
-}
-
-function update()
-{
-
-
-  controls.update();
-  controls2.update();
-}
-
-function render() 
-{
-
-        deltaTime = clock.getDelta();
-        particleSystem.rotation.y += deltaTime/40;
-
-  renderer.render( scene, camera );
-}
 
 
 
