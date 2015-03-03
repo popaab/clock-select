@@ -154,7 +154,7 @@ function addOcta(x,y,z){
   var material = new THREE.MeshBasicMaterial( 
   { color: 'white', opacity: 0.5, transparent: true,shading:THREE.FlatShading} );
   
-  var geometry = new THREE.OctahedronGeometry( 30, 0 );
+  var geometry = new THREE.OctahedronGeometry( 40, 0 );
   var octa= new THREE.Mesh( geometry, material );
 
   octa.position.set(position[0], position[1], position[2]);
