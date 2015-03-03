@@ -122,6 +122,19 @@ function init()
 
   addOcta(180,0,0);
 
+        var PI2 = Math.PI * 2;
+        particleMaterial = new THREE.SpriteCanvasMaterial( {
+
+          color: 0x000000,
+          program: function ( context ) {
+
+            context.beginPath();
+            context.arc( 0, 0, 0.5, 0, PI2, true );
+            context.fill();
+
+          }
+
+        } );
   
   // var newSphereGeom= new THREE.SphereGeometry(5,5,5);
   // var sphere= new THREE.Mesh(newSphereGeom, new THREE.MeshBasicMaterial({ color: 0x2266dd }));
