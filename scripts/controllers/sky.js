@@ -224,7 +224,7 @@ var mc = new Hammer.Manager(document.body);
     mc.add(new Hammer.Pan());
 
 
-    mc.on("pinchout pinchstart", onPinch);
+    mc.on("pinchout", onPinch);
     mc.on("pinchin pinchend", onPinchIn);
     mc.on("panmove", function onPan(ev) {
          if( ev.pointerType === "touch"){
@@ -294,6 +294,30 @@ var mc = new Hammer.Manager(document.body);
     });
 
 
+function manageMultitouch(ev){
+ 
+    switch(ev.type) {
+            case 'tap':
+               
+ 
+            case '':
+                 
+                break;
+ 
+            case 'transform':
+
+                break;
+ 
+            case 'dragend':
+
+        break;
+        }
+ 
+
+ 
+      
+  }
+
     function onPinch(ev) {
     // if(ev.type == 'pinchout') {
 
@@ -345,9 +369,3 @@ var mc = new Hammer.Manager(document.body);
 
 
     }
-
-
-
-
-
-
