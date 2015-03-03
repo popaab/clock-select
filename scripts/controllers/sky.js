@@ -74,9 +74,9 @@ function init()
   // CONTROLS
   controls = new THREE.OrbitControls( camera, renderer.domElement );
   controls2 = new THREE.TrackballControls( camera, renderer.domElement );
-        controls2.rotateSpeed = 0.5;
+        controls2.rotateSpeed = 0.7;
         controls2.minDistance = 500;
-        controls2.maxDistance = 6000;
+        controls2.maxDistance = 10000;
         controls2.addEventListener( 'change', render );
 
   // // LIGHT
