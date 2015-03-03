@@ -85,12 +85,12 @@ function init()
   var L1 = new THREE.PointLight(0xff0000, 1);
   L1.position.x = -1000;
   L1.position.y = 500;
-  L1.position.z = 500;
+  L1.position.z = 1000;
 
   scene.add(L1);
 
   var L3 = new THREE.PointLight(0x0000ff, 0.4);
-  L3.position.z = -500;
+  L3.position.z = -2000;
   L3.position.x = 1000;
   L3.position.y = 500;
 
