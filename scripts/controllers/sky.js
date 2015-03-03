@@ -116,12 +116,13 @@ function init()
   //main time sphere 
    var shiny = new THREE.MeshPhongMaterial({
               color: 'white',
+               opacity: 0, transparent: true,
               shading: THREE.FlatShading,
               fog: false
               
           });
 
-    var mainTime = new THREE.Mesh(new THREE.TetrahedronGeometry(100, 3), opacity: 0, transparent: true,shiny);
+    var mainTime = new THREE.Mesh(new THREE.TetrahedronGeometry(100, 3), shiny);
 
           mainTime.position.x = 0;
           mainTime.position.y = 0;
