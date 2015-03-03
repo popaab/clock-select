@@ -267,9 +267,9 @@ var mc = new Hammer.Manager(document.body);
           var selected = intersects[0].object;
           var cameraX = selected.position.x;
           var cameraY = selected.position.y;
-          var cameraZ = selected.position.z;
+          var cameraZ = -selected.position.z + 200;
 
-          camera.position.set(cameraX,cameraY,-cameraZ+ 200);
+          camera.position.set(cameraX,cameraY,cameraZ);
           camera.lookAt(selected);
           console.log(cameraX,cameraY,cameraZ);
 
