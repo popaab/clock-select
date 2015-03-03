@@ -241,7 +241,7 @@ var element = document.getElementById("ThreeJS");
                 touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1 * 2;
                 touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 1;
 
-                addOcta(cartesianx,cartesiany, getRandom(-100, 100));
+                addOcta(cartesianx,cartesiany, getRandom(-400, 400));
         
 
           // var square = new THREE.Mesh(new THREE.OctahedronGeometry( 10, 0 ), new THREE.MeshBasicMaterial({ color: 'green', wireframe: false }));
