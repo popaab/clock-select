@@ -242,14 +242,14 @@ var mc = new Hammer.Manager(document.body);
     var editMode = false;
     var transforming = false;
     var transformTimer = null;
-    
+
     mc.on('tap pinchin', function(ev) {
       manageMultitouch(ev);
     });
 
     
-    function manageMultitouch(ev){
-    switch(ev.type) {
+    function manageMultitouch(event){
+    switch(event.type) {
 
 
             case 'tap':
@@ -279,7 +279,7 @@ var mc = new Hammer.Manager(document.body);
 
                   }      
                 }
-          
+            break;
  
             case 'pinin':
                 if( event.pointerType === "touch"){
