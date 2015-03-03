@@ -196,9 +196,7 @@ particles = new THREE.Geometry();
 
       //
 
-  
 
-}
 
  function random( min, max ) {
       if ( isNaN(max) ) {
