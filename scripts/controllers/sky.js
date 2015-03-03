@@ -15,6 +15,9 @@
 // MAIN
 
 // standard global variables
+
+
+var  windowHalfX = window.innerWidth / 2, windowHalfY = window.innerHeight / 2
 var container, scene, camera, renderer, controls;
 var keyboard = new KeyboardState();
   var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
@@ -122,8 +125,6 @@ function init()
   ////////////
 
   addOcta(180,0,0);
-
-
   
   // var newSphereGeom= new THREE.SphereGeometry(5,5,5);
   // var sphere= new THREE.Mesh(newSphereGeom, new THREE.MeshBasicMaterial({ color: 0x2266dd }));
@@ -140,6 +141,17 @@ function init()
 
 }
 
+
+    function screenToWorld(touchPos)
+            {
+
+
+                var worldPos = touchPos.clone();
+                worldPos.x = worldPos.x / windowHalfX - 1;
+                worldPos.y = - worldPos.y / windowHalfY + 1;
+                projector.unprojectVector( worldPos, camera );
+                return worldPos;                    
+            }
 
 function addOcta(x,y,z){
 
@@ -207,7 +219,6 @@ var element = document.getElementById("ThreeJS");
     });
   
 
-
     mc.on("tap", function onTap(ev) {
         if( ev.pointerType === "touch"){
 
@@ -219,28 +230,24 @@ var element = document.getElementById("ThreeJS");
            
                   console.log("tap: " + x1 + " " + y1);
 
+                  var newPos = screenToWorld(touchPos);
 
-                
+                  addOcta(newPos.x,newPos.y,0);
+        // raycaster.setFromCamera( touchPos, camera );
 
-                touchPos.x = ( x1 / renderer.domElement.width) * 2 - 1;
-                touchPos.y = - ( y1 / renderer.domElement.height ) * 2 + 2;
+        // var intersects = raycaster.intersectObjects( targetList );
 
-                // addOcta(touchPos.x,touchPos.y,0);
-        raycaster.setFromCamera( touchPos, camera );
+        // if ( intersects.length > 0 ) {
 
-        var intersects = raycaster.intersectObjects( targetList );
+        //   intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+        //   console.log("changed color");
 
-        if ( intersects.length > 0 ) {
-
-          intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
-          console.log("changed color");
-
-          var square = new THREE.Mesh(new THREE.OctahedronGeometry( 10, 0 ), new THREE.MeshBasicMaterial({ color: 'green', wireframe: false }));
-          square.position.copy( intersects[ 0 ].point );
+        //   var square = new THREE.Mesh(new THREE.OctahedronGeometry( 10, 0 ), new THREE.MeshBasicMaterial({ color: 'green', wireframe: false }));
+        //   square.position.copy( intersects[ 0 ].point );
           
-          scene.add( square );
+        //   scene.add( square );
 
-        }
+        // }
                   // checkSelection(x1, y1);
 
                   document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
