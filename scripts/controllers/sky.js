@@ -167,7 +167,7 @@ function addOcta(x,y,z){
     position[2]= posz;
 
    var shiny2 = new THREE.MeshPhongMaterial({
-              color: 'red',
+              color: 'white',
               shading: THREE.FlatShading,
               fog: false
               
@@ -181,14 +181,14 @@ function addOcta(x,y,z){
   octa.position.set(position[0], position[1], position[2]);
   console.log(position[0] + " " + position[1] + " " + position[2]);
   // creates a wireMesh object
-  var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
+  var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: false }));
   
 
   // if( amountNow <= maxAlarms){
 
   scene.add(octa);
   // wireMesh object is added to the original as a sub-object
-  octa.add(wireOcta );
+  // octa.add(wireOcta );
   
   targetList.push(octa);
   amountNow++;
