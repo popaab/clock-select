@@ -185,6 +185,15 @@ particles = new THREE.Geometry();
 
 
         }
+
+        /*
+        // Parse all the faces
+        for ( var i in intersects ) {
+
+          intersects[ i ].face.material[ 0 ].color.setHex( Math.random() * 0xffffff | 0x80000000 );
+
+        }
+        */
       }
 
       //
@@ -304,7 +313,7 @@ var element = document.getElementById("ThreeJS");
 
     });
 
-
+}
     function onPinch(ev) {
     // if(ev.type == 'pinchout') {
 
