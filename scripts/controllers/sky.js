@@ -187,11 +187,12 @@ function addOcta(x,y,z){
    var shiny2 = new THREE.MeshPhongMaterial({
               color: 'white',
               shading: THREE.FlatShading,
+              opacity: 0.5, transparent: true,
               fog: false
               
           });
   var material = new THREE.MeshBasicMaterial( 
-  { color: 'white', opacity: 0.5, transparent: true,shading:THREE.FlatShading} );
+  { color: 'white', opacity: 0.3, transparent: true, shading:THREE.FlatShading} );
   
   var geometry = new THREE.OctahedronGeometry( 60, 0 );
   var octa= new THREE.Mesh( geometry, shiny2 );
