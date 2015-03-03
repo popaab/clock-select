@@ -1,21 +1,5 @@
 
 'use strict';
- //  Experiment 02-05
- //  Seth Moczydlowski
- //  January 8th, 2014
- //  http://www.moczys.com
-  
- //  Code architecture adapted from:
- //  http://stemkoski.github.io/Three.js/Template.html
-  
- //  Three.js "tutorials by example"
- //  Author: Lee Stemkoski
- // */
-
-// MAIN
-
-// standard global variables
-
 
 var  windowHalfX = window.innerWidth / 2, windowHalfY = window.innerHeight / 2
 var container, scene, camera, renderer, controls, controls2;
@@ -239,15 +223,11 @@ var mc = new Hammer.Manager(document.body);
       
     }});
 
-    function alarm(){
-    if(selectedOnce === true){
+ 
 
 
 
-    }
 
-
-    }
 
     mc.on("tap", function onTap(event) {
         if( event.pointerType === "touch"){
@@ -264,13 +244,15 @@ var mc = new Hammer.Manager(document.body);
           intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
           console.log(intersects[0].object.id);
           var k = targetList.indexOf(intersects[0].object.id);
+          selectedOnce = true;
+
           selected = intersects[0].object;
           var cameraX = selected.position.x;
           var cameraY = selected.position.y;
           var cameraZ = -selected.position.z + 200;
 
           // camera.position.set(cameraX,cameraY,cameraZ);
-          camera.lookAt(selected);
+          // camera.lookAt(selected);
           console.log(cameraX,cameraY,cameraZ);
 
            document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
@@ -289,9 +271,22 @@ var mc = new Hammer.Manager(document.body);
         
                   
         }
-                  
+  //             function onPinchIn(ev) {
+  //   // if(ev.type == 'pinchout') {
+  //   if(selectedOnce === true){
+  //      if( ev.pointerType === "touch"){
 
-    });
+            
+  //           var selectedDelete = selected;
+  //           removeEntity(selectedDelete);
+
+
+
+  //     }
+  //   }
+  // }        
+
+  //   });
 
 
     function onPinch(ev) {
@@ -317,34 +312,12 @@ var mc = new Hammer.Manager(document.body);
  
 
     }
-function removeEntity(object) {
-    var selectedObject = scene.getObjectByName(object.name);
-    scene.remove( selectedObject );
+// function removeEntity(object) {
+//     var selectedObject = scene.getObjectByName(object.name);
+//     scene.remove( selectedObject );
     
-}
+// }
 
-    function onPinchIn(ev) {
-    // if(ev.type == 'pinchout') {
-
-
-            var selectedDelete = selected;
-            removeEntity(selectedDelete);
-            // console.log(ev.pointerType);
-            
-            // var pinchx = ev.pointers[0].clientX;
-            // var pinchy = ev.pointers[0].clientY;
-
-                
-            // var cartesianx = pinchx- windowHalfX
-            // var cartesiany = - pinchy+ windowHalfY
-
-            // console.log("world cord: " + cartesianx + " " + cartesiany);
-        
-
-            // addOcta(cartesianx,cartesiany, getRandom(-400, 300));
-
-
-    }
 
 
 
