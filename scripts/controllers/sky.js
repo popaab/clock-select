@@ -247,7 +247,7 @@ var mc = new Hammer.Manager(document.body);
         if ( intersects.length > 0 ) {
 
           intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
-          document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
+          // document.getElementById("resultDIV").innerHTML = "tap: "+ x1 + " " + y1;
 
         }
 
