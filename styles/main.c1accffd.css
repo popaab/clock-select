@@ -20,7 +20,7 @@ html{
 .clock {
   $w: 350px;
   position: absolute;
-  top: 60%;
+  top: 56%;
   left: 25%;
   width: $w;
   margin-top: -45px;
