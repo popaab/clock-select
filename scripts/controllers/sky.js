@@ -231,6 +231,9 @@ function addOcta(x,y,z) {
           octa.rotation.x = 0;
           octa.rotation.y = 0;
           octa.rotation.z = 0;
+          octa.scale.x = 0;
+    octa.scale.y = 0;
+    octa.scale.z = 0;
   // creates a wireMesh object
   var numb = amountNow + 1;
   var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
