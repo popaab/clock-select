@@ -268,15 +268,10 @@ function render()
  
 
     }
-function removeEntity(object) {
-    var del = scene.getObjectByName(object.id);
-    scene.remove( del );
-    
-}
 
  function manageMultitouch(event){
   state();
-     var selectedObject = null; 
+     var selectedObject; 
      var k, cameraX, cameraY, cameraZ;
     
     if(event.type === 'tap'){
@@ -316,7 +311,7 @@ function removeEntity(object) {
 
         if( event.pointerType === "touch"){
 
-          removeEntity(selectedObject);
+          scene.remove( k);
 
           console.log(cameraX,cameraY,cameraZ);
 
