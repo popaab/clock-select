@@ -459,7 +459,7 @@ mc.get('tap').requireFailure('doubletap');
         
           if ( intersects.length > 0 ) {
 
-              intersects[ 0 ].object.material.color.setHex( 'blue');
+              intersects[ 0 ].object.material.color.setHex( 'red' );
               
             console.log(intersects[0].object.id);
             k = targetList.indexOf(intersects[0].object.id);
