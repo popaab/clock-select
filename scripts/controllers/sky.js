@@ -50,9 +50,9 @@ var cameraY;
 var cameraZ;
 var toDel;
 var maxParticles = 2000,
-particles,
-particleMaterial,
-particleSystem;
+    particles,
+    particleMaterial,
+    particleSystem;
 
 var editMode = false;
 var alarmEdit = false;
@@ -60,14 +60,13 @@ var world = true, selectedOnce = false;
 
 var rotation_matrix;
 
-
 var count = 0,
     hour = 0,
     mins = 0,
     deltaTime = 0,
     finalRotationY;
 
-    var targetRotationX = 0,
+var targetRotationX = 0,
     targetRotationOnMouseDownX = 0,
 
     targetRotationY = 0,
@@ -209,7 +208,7 @@ function random( min, max ) {
       return Math.random() * ( max - min ) + min;
 }
 
-function addOcta(x,y,z){
+function addOcta(x,y,z) {
 
 
   var posx = x, posy = y, posz = z;
@@ -255,21 +254,19 @@ function addOcta(x,y,z){
 }
 
 }
-      function alarmNumbers(){
+      function alarmNumbers() {
 
-        if (alarmEdit === true){
-
+        if (alarmEdit === true) {
           document.getElementById("alarmTitle").style.visibility = "visble";
           document.getElementById("hour").style.visibility = "visble";
-            document.getElementById("mins").style.visibility = "visble";
-      }else{
+          document.getElementById("mins").style.visibility = "visble";
+      } else {
         document.getElementById("alarmTitle").style.visibility = "hidden";
         document.getElementById("hour").style.visibility = "hidden";
-      document.getElementById("mins").style.visibility = "hidden";
+        document.getElementById("mins").style.visibility = "hidden";
       }
-      
-
     }
+
 var mc = new Hammer.Manager(document.body);
 mc.add(new Hammer.Pinch({ threshold: 0}));
 
@@ -299,7 +296,6 @@ mc.get('tap').requireFailure('doubletap');
     function onPinch(ev) {
     // if(ev.type == 'pinchout') {
       editMode = false;
-
       
        if( ev.pointerType === "touch" && editMode === false){
 
@@ -314,23 +310,18 @@ mc.get('tap').requireFailure('doubletap');
 
             console.log("world cord: " + cartesianx + " " + cartesiany);
         
-
             addOcta(cartesianx,cartesiany, getRandom(-200, 200));
-
         }
- 
-
     }
-    function manageMultitouchAlarm(event){
 
+    function manageMultitouchAlarm(event){
     
     if(event.type === 'doubletap'){
-
       
        if( event.pointerType === "touch"){
         alarmEdit = true;
         alarmNumbers();
-        
+        console.log(alarmEdit);
           console.log(event);
           touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
           touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
@@ -353,8 +344,7 @@ mc.get('tap').requireFailure('doubletap');
             cameraZ = -selectedObject.position.z + 200;
 
 
-
-          $('#alarmTitle').text( 'Alarm: ' + num );
+        
         
             document.getElementById("alarmTitle").innerHTML = 'Alarm ' + num;
 
@@ -362,13 +352,11 @@ mc.get('tap').requireFailure('doubletap');
    
           } 
         }
-      
+      }
 
-    }
-
-        if(event.type === 'panleft' ){
+        if(event.type === 'panleft' ) {
           alarmEdit = true;
-      
+        console.log(alarmEdit);
           console.log(event);
         for(i = 0; i < 1; i++) {
           hour -= 1;
@@ -377,14 +365,14 @@ mc.get('tap').requireFailure('doubletap');
             }
         }
         if(hour < 10) {
-           $('#hour').text( 'Time: ' + '0' + hour + ' : ');
+          document.getElementById("hour").innerHTML = 'Time: ' + '0' + hour + ' : ';
+        
           
         } else {
-          $('#hour').text( 'Time: ' + hour + ' : ');
-        }
+        document.getElementById("hour").innerHTML = 'Time: ' + hour + ' : ';
       }
 
-      if(event.type === 'panright' ){
+      if(event.type === 'panright' ) {
         alarmEdit = true;
 
         console.log(event);
@@ -395,14 +383,14 @@ mc.get('tap').requireFailure('doubletap');
           }
         }
         if(hour < 10) {
-           $('#hour').text( 'Time: ' + '0' + hour + ' : ');
+          document.getElementById("hour").innerHTML = 'Time: ' + '0' + hour + ' : ';
+        
           
         } else {
-          $('#hour').text( 'Time: ' + hour + ' : ');
-        }
+        document.getElementById("hour").innerHTML = 'Time: ' + hour + ' : ';
       }
 
-      if(event.type === 'panup'){
+      if(event.type === 'panup') {
         alarmEdit = true;
    
         console.log(event);
@@ -413,14 +401,15 @@ mc.get('tap').requireFailure('doubletap');
           }
         }
         if(mins < 10) {
-            $('#mins').text( '0'+ mins);
+          document.getElementById("mins").innerHTML = '0'+ mins;
+
         } else {
-          $('#mins').text(  mins);
+          document.getElementById("mins").innerHTML =  mins;
         }
           
       }
 
-      if(event.type === 'pandown'){
+      if(event.type === 'pandown') {
         alarmEdit = true;
 
         console.log(event);
@@ -431,22 +420,20 @@ mc.get('tap').requireFailure('doubletap');
           }
         }
         if(mins < 10) {
-            $('#mins').text( '0'+ mins);
-        } else {
-          $('#mins').text(  mins);
-        }
-      }
-      
-        
-    
+          document.getElementById("mins").innerHTML = '0'+ mins;
 
+        } else {
+          document.getElementById("mins").innerHTML =  mins;
+        }
+          
+      }
 }
 
- function manageMultitouch(event){
+ function manageMultitouch(event) {
 
-    if(event.type === 'tap'){
+    if(event.type === 'tap') {
       
-       if( event.pointerType === "touch"){
+       if( event.pointerType === "touch") {
           editMode = true;
           alarmEdit = false;
           touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
@@ -476,27 +463,18 @@ mc.get('tap').requireFailure('doubletap');
 
           }      
         }
-
-
     }
-
 
     if(event.type === 'pinchin'){
 
         if( event.pointerType === "touch"){
- 
-          
-              scene.remove( toDel);
-
-      
+           
+              scene.remove( toDel);     
 
            document.getElementById("resultDIV").innerHTML = ("deleted: "+ toDel.object.id);
            editMode = false;
-
         }    
-
-}
- 
+  } 
 }
 
 function onDocumentTouchStart( event ) {
@@ -588,31 +566,28 @@ function makeTextSprite( message, parameters )
 }
 
 
-function animate() 
-{
+function animate() {
   requestAnimationFrame( animate );
     
   update();
   render(); 
 }
 
-function update()
-{
+function update(){
 
   controls.update();
   controls2.update();
 }
 
-function render() 
-{
+function render() {
   renderer.render( scene, camera );
   
   // scene.getObjectByName('clock').rotation.x += 0.05;
   deltaTime = clock.getDelta();
   particleSystem.rotation.y += deltaTime/40;
   // mainTime.rotation.y += 0.05;
-//   mainTime.rotation.y += ( targetRotationX - mainTime.rotation.y ) * 0.1;
-// mainTime.rotation.x += ( targetRotationY - mainTime.rotation.x ) * 0.1;
+  // mainTime.rotation.y += ( targetRotationX - mainTime.rotation.y ) * 0.1;
+  // mainTime.rotation.x += ( targetRotationY - mainTime.rotation.x ) * 0.1;
   
 }
 
