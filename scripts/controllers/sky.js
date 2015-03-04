@@ -253,6 +253,7 @@ function addOcta(x,y,z) {
         z: this.scale,
         ease:"Exponential.InOut",
         onComplete:function(){
+          console.log('tweeneeedddd');
           // this.reverse()
         }
       })
