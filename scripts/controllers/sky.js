@@ -48,7 +48,7 @@ var cameraX
 var cameraY;
 var cameraZ;
 var toDel;
-var maxParticles = 1000,
+var maxParticles = 2000,
 particles,
 particleMaterial,
 particleSystem;
