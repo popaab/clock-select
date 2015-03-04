@@ -226,25 +226,28 @@ function render()
     // mc.add(new Hammer.Pan());
     mc.add(new Hammer.Swipe());
 
-        mc.on("pinchout", onPinch);
-        // mc.on("pinchin pinchend", onPinchIn);
-      mc.on('tap swiperight', function(ev) {
-      manageMultitouch(ev);
+    mc.on("pinchout", onPinch);
+    // mc.on("pinchin pinchend", onPinchIn);
+    mc.on('tap swiperight', function(ev) {
+    manageMultitouch(ev);
+
+    }
 
 
     function state(){
-        if(editMode === false){
+      if(editMode === false){
           controls2.enabled = false;
 
         }else {
           controls2.enabled = true;
 
         }
+
     }
 
     function onPinch(ev) {
     // if(ev.type == 'pinchout') {
-
+      state();
        if( ev.pointerType === "touch" && editMode === false){
 
             console.log(ev.pointerType);
@@ -272,7 +275,7 @@ function removeEntity(object) {
 }
 
  function manageMultitouch(event){
-
+  state();
      var selectedObject = null; 
      var k, cameraX, cameraY, cameraZ;
     
