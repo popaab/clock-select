@@ -63,7 +63,7 @@ var  count = 0,
     mins = 00,
     deltaTime = 0,
     finalRotationY;
-    
+
     var targetRotationX = 0,
     targetRotationOnMouseDownX = 0,
 
@@ -74,7 +74,7 @@ var  count = 0,
     mouseXOnMouseDown = 0,
 
     mouseY = 0,
-    mouseYOnMouseDown = 0,
+    mouseYOnMouseDown = 0;
 init();
 animate();
 
@@ -168,6 +168,10 @@ function init()
   projector = new THREE.Projector();
   raycaster = new THREE.Raycaster();
   touchPos = new THREE.Vector2();
+
+  document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+  document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+  document.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
 }
 
