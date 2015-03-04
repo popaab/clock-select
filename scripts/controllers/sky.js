@@ -239,11 +239,11 @@ function addOcta(x,y,z){
 
 mc.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) );
 // Single tap recognizer
-mc.add( new Hammer.Tap({ event: 'singletap' }) );
+mc.add( new Hammer.Tap({ event: 'tap' }) );
 
 
-mc.get('doubletap').recognizeWith('singletap');
-mc.get('singletap').requireFailure('doubletap');
+mc.get('doubletap').recognizeWith('tap');
+mc.get('tap').requireFailure('doubletap');
 
     // mc.add(new Hammer.Pan());
     mc.add(new Hammer.Swipe());
@@ -258,7 +258,7 @@ mc.get('singletap').requireFailure('doubletap');
 
     mc.on('doubletap panmove panleft panright panup pandown', function(ev){
       manageMultitouchAlarm(ev);
-    })
+    });
 
     function onPinch(ev) {
     // if(ev.type == 'pinchout') {
@@ -285,8 +285,8 @@ mc.get('singletap').requireFailure('doubletap');
 
     }
     function manageMultitouchAlarm(event){
-controls2.enable = false;
-    if(event.type === 'doubletap' && editMode === true){
+    controls2.enable = false;
+    if(event.type === 'doubletap'){
       
        if( event.pointerType === "touch"){
       alarmEdit = true;
@@ -319,7 +319,7 @@ controls2.enable = false;
 
     }
 
-  if(event.type === 'panmove' && event.type === 'panleft' && editMode === true && alarmEdit === true){
+  if(event.type === 'panmove' && event.type === 'panleft' && alarmEdit === true){
   for(i = 0; i < 1; i++) {
     hour -= 1;
       if(hour < 0) {
@@ -333,7 +333,7 @@ controls2.enable = false;
   }
 }
 
-if(event.type === 'panmove' && event.type === 'panright' && editMode === true  && alarmEdit === true){
+if(event.type === 'panmove' && event.type === 'panright' && alarmEdit === true){
   for(i = 0; i < 1; i++) {
     hour += 1;
     if(hour > 23) {
@@ -347,7 +347,7 @@ if(event.type === 'panmove' && event.type === 'panright' && editMode === true  &
   }
 }
 
-if(event.type === 'panmove' && event.type === 'panup' && editMode === true  && alarmEdit === true){
+if(event.type === 'panmove' && event.type === 'panup'   && alarmEdit === true){
   for(i = 0; i < 1; i++) {
     mins += 1;
     if(mins > 59) {
@@ -362,7 +362,7 @@ if(event.type === 'panmove' && event.type === 'panup' && editMode === true  && a
     
 }
 
-if(event.type === 'panmove' && event.type === 'pandown' && editMode === true  && alarmEdit === true){
+if(event.type === 'panmove' && event.type === 'pandown'  && alarmEdit === true){
   for(i = 0; i < 1; i++) {
     mins -= 1;
     if(mins < 0) {
@@ -445,7 +445,7 @@ function onDocumentTouchStart( event ) {
         mouseYOnMouseDown = event.touches[ 0 ].pageY - windowHalfY;
         targetRotationOnMouseDownY = targetRotationY;
     }
- 
+ console.log("Touch start: "+ targetRotationOnMouseDownX + " " + targetRotationOnMouseDownY);
 }
  
 function onDocumentTouchMove( event ) {
@@ -460,7 +460,7 @@ function onDocumentTouchMove( event ) {
         mouseY = event.touches[ 0 ].pageY - windowHalfY;
         targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.05;
       }
-
+ console.log("Touch move: "+ targetRotationX + " " + targetRotationY);
       
  
 }
