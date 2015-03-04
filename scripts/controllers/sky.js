@@ -303,7 +303,7 @@ function render()
         controls2.enable = false;
         if( event.pointerType === "touch"){
  
-            if(toDel.object.id !=== 8){
+            if(toDel.object.id != 8){
               scene.remove( toDel);
             }
 
