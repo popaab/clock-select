@@ -30,25 +30,21 @@ var raycaster;
 var selectedObject; 
 var k, cameraX, cameraY, cameraZ, intersects;
 
-var baseColor=new THREE.Color( 'white' );
-var highlightedColor=new THREE.Color( 0xddaa00 );
-var selectedColor=new THREE.Color( 0x4466dd );
-var clock = new THREE.Clock();
-var deltaTime = 0;
-var fov = 75;
-var mainTime;
-var sprite1;
-var canvas1, context1, texture1;
-var maxAlarms = 10;
-var amountNow = 0;
-var x1, y1;
-var setId, getId;
-var k;
-var selected;
-var cameraX
-var cameraY;
-var cameraZ;
-var toDel;
+var baseColor=new THREE.Color( 'white' ),
+
+highlightedColor=new THREE.Color( 0xddaa00 ),
+ selectedColor=new THREE.Color( 0x4466dd ),
+ clock = new THREE.Clock(),
+ deltaTime = 0,
+ fov = 75,
+ mainTime,
+ sprite1,
+ canvas1, context1, texture1,
+ maxAlarms = 10,
+ amountNow = 0,
+x1, y1,
+setId, getId,
+k, selected, cameraX, cameraY, cameraZ, toDel;
 var maxParticles = 2000,
     particles,
     particleMaterial,
@@ -97,7 +93,7 @@ function init()
   // CAMERA
 
   alarmEdit = false;
-  alarmNumbers();
+
 
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
   scene.add(camera);
@@ -321,7 +317,7 @@ mc.get('tap').requireFailure('doubletap');
        alarmEdit = tru
        if( event.pointerType === "touch"){
        
-        alarmNumbers();
+        // alarmNumbers();
         
           console.log(event);
           touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
