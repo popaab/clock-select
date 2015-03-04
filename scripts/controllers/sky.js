@@ -321,7 +321,7 @@ mc.get('tap').requireFailure('doubletap');
        if( event.pointerType === "touch"){
         alarmEdit = true;
         alarmNumbers();
-        console.log(alarmEdit);
+        
           console.log(event);
           touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
           touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
@@ -356,7 +356,7 @@ mc.get('tap').requireFailure('doubletap');
 
         if(event.type === 'panleft' ) {
           alarmEdit = true;
-        console.log(alarmEdit);
+      
           console.log(event);
         for(i = 0; i < 1; i++) {
           hour -= 1;
