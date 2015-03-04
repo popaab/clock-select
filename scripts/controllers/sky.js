@@ -322,6 +322,7 @@ mc.get('tap').requireFailure('doubletap');
       
        if( event.pointerType === "touch"){
         setTimeout( function (){alarmEdit = true;}, 5000);
+        alarmNumbers();
           console.log(event);
           touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
           touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
@@ -356,6 +357,7 @@ mc.get('tap').requireFailure('doubletap');
 
         if(event.type === 'panleft' ){
           alarmEdit = true;
+          alarmNumbers();
           console.log(event);
         for(i = 0; i < 1; i++) {
           hour -= 1;
@@ -365,6 +367,7 @@ mc.get('tap').requireFailure('doubletap');
         }
         if(hour < 10) {
           alarmEdit = true;
+          alarmNumbers();
           document.getElementById("hour").innerHTML = 'Time: ' + '0' + hour + ' : ';
         } else {
           document.getElementById("hour").innerHTML = 'Time: ' + hour + ' : ';
@@ -373,6 +376,7 @@ mc.get('tap').requireFailure('doubletap');
 
       if(event.type === 'panright' ){
         alarmEdit = true;
+        alarmNumbers();
         console.log(event);
         for(i = 0; i < 1; i++) {
           hour += 1;
@@ -389,6 +393,7 @@ mc.get('tap').requireFailure('doubletap');
 
       if(event.type === 'panup'){
         alarmEdit = true;
+        alarmNumbers();
         console.log(event);
         for(i = 0; i < 1; i++) {
           mins += 1;
@@ -406,6 +411,7 @@ mc.get('tap').requireFailure('doubletap');
 
       if(event.type === 'pandown'){
         alarmEdit = true;
+        alarmNumbers();
         console.log(event);
         for(i = 0; i < 1; i++) {
           mins -= 1;
@@ -421,6 +427,7 @@ mc.get('tap').requireFailure('doubletap');
         }
       }else{
         alarmEdit = false;
+        alarmNumbers();
 
       }
    
@@ -593,7 +600,6 @@ function animate()
 
 function update()
 {
-  alarmNumbers();
 
   controls.update();
   controls2.update();
