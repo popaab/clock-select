@@ -318,13 +318,15 @@ mc.get('tap').requireFailure('doubletap');
 
     }
     function manageMultitouchAlarm(event){
+
     
     if(event.type === 'doubletap'){
 
       
        if( event.pointerType === "touch"){
-        setTimeout( function (){alarmEdit = true;}, 5000);
+        alarmEdit = true;
         alarmNumbers();
+        
           console.log(event);
           touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
           touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
