@@ -57,6 +57,9 @@ init();
 animate();
 
 
+     var selectedObject; 
+     var k, cameraX, cameraY, cameraZ, intersects;
+
 function getRandom(min, max) {
           return Math.random() * (max - min) + min;
 }
