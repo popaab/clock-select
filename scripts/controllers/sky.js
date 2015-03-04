@@ -241,6 +241,10 @@ function addOcta(x,y,z) {
     { fontsize: 32, fontface: "Lato"} );
   spritey.position.set(+90 , +20 , 10 );
 
+var spritey2 = makeTextSprite( getRandom(0, 24) + " : " + getRandom(0, 60), 
+    { fontsize: 32, fontface: "Lato"} );
+  spritey.position.set(+90 , +10 , 10 );
+
   if( amountNow <= maxAlarms){
 
   scene.add(octa);
@@ -460,8 +464,6 @@ mc.get('tap').requireFailure('doubletap');
               cameraY = selectedObject.position.y;
               cameraZ = -selectedObject.position.z + 200;
 
-              // console.log(cameraX,cameraY,cameraZ);
-
             // document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
 
           }      
@@ -483,7 +485,6 @@ mc.get('tap').requireFailure('doubletap');
                     z: this.scale,
                     ease:"Exponential.InOut",
                     onComplete:function(){
-                      // console.log('tweeneeedddd');
                       // this.reverse()
                     }
                   })
@@ -494,8 +495,8 @@ mc.get('tap').requireFailure('doubletap');
            document.getElementById("resultDIV").innerHTML = ("deleted: "+ toDel.object.id);
            editMode = false;
         }    
-  } 
-}
+    } 
+  }
 
 function onDocumentTouchStart( event ) {
  
