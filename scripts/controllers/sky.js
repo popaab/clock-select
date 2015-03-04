@@ -46,7 +46,7 @@ var selected;
 var cameraX
 var cameraY;
 var cameraZ;
-
+var toDel;
 var maxParticles = 5000,
 particles,
 particleMaterial,
@@ -282,6 +282,8 @@ function render()
             console.log(intersects[0].object.id);
             k = targetList.indexOf(intersects[0].object.id);
             selectedObject = intersects[0].object;
+
+            toDel = intersects[0].object;
             cameraX = selectedObject.position.x;
             cameraY = selectedObject.position.y;
             cameraZ = -selectedObject.position.z + 200;
@@ -302,7 +304,7 @@ function render()
         if( event.pointerType === "touch"){
  
             
-            scene.remove( k );
+            scene.remove( toDel);
 
 
            document.getElementById("resultDIV").innerHTML = ("deleted: "+ k);
