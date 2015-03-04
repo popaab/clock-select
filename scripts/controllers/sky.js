@@ -269,7 +269,7 @@ function render()
 
     }
 function removeEntity(object) {
-    var del = scene.getObjectByName(object.name);
+    var del = scene.getObjectByName(object.id);
     scene.remove( del );
     
 }
