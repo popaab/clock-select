@@ -237,16 +237,22 @@ function addOcta(x,y,z) {
   // creates a wireMesh object
   var numb = amountNow + 1;
   var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
-  var spritey = makeTextSprite( "Alarm " + numb + " " + Math.Floor(getRandom(0, 24)) + " : " + Math.Floor(getRandom(0, 60)), 
+  var spritey = makeTextSprite( "Alarm " + numb, 
+    { fontsize: 32, fontface: "Lato"} );
+  spritey.position.set(+90 , +30 , 10 );
+
+  var h =  Math.Floor(getRandom(0, 24));
+  var m = Math.Floor(getRandom(0, 60));
+    var spritey2 = makeTextSprite(h + " : " + m);
     { fontsize: 32, fontface: "Lato"} );
   spritey.position.set(+90 , +20 , 10 );
-
   if( amountNow <= maxAlarms){
 
   scene.add(octa);
   // wireMesh object is added to the original as a sub-object
   octa.add(wireOcta );
   octa.add (spritey);
+  octa.add(spritey2);
 
   var tween = {
     scale: 1,
