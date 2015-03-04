@@ -271,7 +271,7 @@ mc.get('tap').requireFailure('doubletap');
 
     mc.on("pinchout", onPinch);
     // mc.on("pinchin pinchend", onPinchIn);
-    mc.on('tap pinchin', function(ev) {
+    mc.on('tap doubletap', function(ev) {
     manageMultitouch(ev);
 
     });
@@ -449,13 +449,13 @@ mc.get('tap').requireFailure('doubletap');
     }
 
 
-    if(event.type === 'pinchin' && editMode === true){
+    if(event.type === 'doubletap' && editMode === true){
 
-        controls2.enable = false;
         if( event.pointerType === "touch"){
  
           
               scene.remove( toDel);
+
       
 
            document.getElementById("resultDIV").innerHTML = ("deleted: "+ toDel.object.id);
