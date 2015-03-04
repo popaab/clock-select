@@ -179,7 +179,7 @@ function init()
 
   var spritey = makeTextSprite( "Alarm 1", 
     { fontsize: 32, fontface: "Lato"} );
-  spritey.position.set(160,50,10);
+  spritey.position.set(180,60,0);
   scene.add( spritey );
   
           // targetList.push(mainTime);
