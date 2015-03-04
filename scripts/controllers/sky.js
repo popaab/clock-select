@@ -281,7 +281,8 @@ function render()
             intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
             console.log(intersects[0].object.id);
             k = targetList.indexOf(intersects[0].object.id);
-            selectedObject = toDel= intersects[0].object;
+            selectedObject = intersects[0].object;
+            toDel= intersects[0].object;
 
             
             cameraX = selectedObject.position.x;
@@ -308,7 +309,7 @@ function render()
             }
 
 
-           document.getElementById("resultDIV").innerHTML = ("deleted: "+ k);
+           document.getElementById("resultDIV").innerHTML = ("deleted: "+ toDel.object.id);
            editMode = false;
 
         }    
