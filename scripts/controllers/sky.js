@@ -97,6 +97,9 @@ function init()
   scene = new THREE.Scene();
   // CAMERA
 
+  alarmEdit = false;
+  alarmNumbers();
+
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
   scene.add(camera);
   camera.position.set(0,250,700);
@@ -296,7 +299,7 @@ mc.get('tap').requireFailure('doubletap');
     function onPinch(ev) {
     // if(ev.type == 'pinchout') {
       editMode = false;
-      
+
       
        if( ev.pointerType === "touch" && editMode === false){
 
