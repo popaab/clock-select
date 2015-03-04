@@ -447,7 +447,7 @@ mc.get('tap').requireFailure('doubletap');
     }
 
 
-    if(event.type === 'pinchin' && editMode === true){
+    if(event.type === 'pinchin'){
 
         if( event.pointerType === "touch"){
  
