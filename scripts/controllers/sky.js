@@ -298,10 +298,7 @@ function render()
 
 
         if( event.pointerType === "touch"){
-        
-          if ( intersects.length > 0 ) {
-
-            var k = targetList.indexOf(intersects[0].object.id);
+ 
             
             scene.remove( k );
 
@@ -309,7 +306,7 @@ function render()
            document.getElementById("resultDIV").innerHTML = ("deleted: "+ k);
            editMode = false;
 
-        }      
+        }    
                     
     }
   }
