@@ -375,7 +375,7 @@ if(event.type === 'panmove' && event.type === 'pandown' && editMode === true){
   } else {
     document.getElementById("mins").innerHTML = mins;
   }
-});
+}
 }
 
 function onDocumentMouseDown( event ) {
