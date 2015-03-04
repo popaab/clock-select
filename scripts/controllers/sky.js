@@ -252,13 +252,6 @@ function addOcta(x,y,z) {
 }
 
 function alarmNumbers() {
-
-
-      if (alarmEdit === false){
-        document.getElementById("alarmTitle").style.visibility = "hidden";
-        document.getElementById("hour").style.visibility = "hidden";
-        document.getElementById("mins").style.visibility = "hidden";
-      }
     }
 
 var mc = new Hammer.Manager(document.body);
