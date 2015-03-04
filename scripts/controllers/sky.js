@@ -61,7 +61,7 @@ var world = true, selectedOnce = false;
 
 var count = 0,
     hour = 0,
-    mins = 00,
+    mins = 0,
     deltaTime = 0,
     finalRotationY;
 
