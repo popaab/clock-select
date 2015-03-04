@@ -236,7 +236,7 @@ function addOcta(x,y,z) {
   var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
   var spritey = makeTextSprite( "Alarm " + numb, 
     { fontsize: 32, fontface: "Lato"} );
-  spritey.position.set(x -190,y -50,z + 200 );
+  spritey.position.set(x -190,y + 20,z +10);
 
   if( amountNow <= maxAlarms){
 
@@ -258,7 +258,7 @@ function addOcta(x,y,z) {
       })
     }
   }
-  tween.go()
+  tween.go();
 
   
   targetList.push(octa);
@@ -455,7 +455,7 @@ mc.get('tap').requireFailure('doubletap');
         
           if ( intersects.length > 0 ) {
 
-              intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+              intersects[ 0 ].object.material.color.setHex( 'blue');
               
             console.log(intersects[0].object.id);
             k = targetList.indexOf(intersects[0].object.id);
