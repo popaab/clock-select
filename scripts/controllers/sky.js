@@ -179,7 +179,7 @@ function init()
 
   var spritey = makeTextSprite( "Alarm 1", 
     { fontsize: 32, fontface: "Lato"} );
-  spritey.position.set(125,20,10);
+  spritey.position.set(160,100,10);
   scene.add( spritey );
   
           // targetList.push(mainTime);
@@ -250,10 +250,8 @@ function addOcta(x,y,z){
 }
 
 
-
-    var mc = new Hammer.Manager(document.body);
-
-    mc.add(new Hammer.Pinch({ threshold: 0}));
+var mc = new Hammer.Manager(document.body);
+mc.add(new Hammer.Pinch({ threshold: 0}));
 
 mc.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) );
 // Single tap recognizer
