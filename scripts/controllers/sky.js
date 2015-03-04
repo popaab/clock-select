@@ -350,9 +350,9 @@ mc.get('tap').requireFailure('doubletap');
             }
         }
         if(hour < 10) {
-          document.getElementById("hour").innerHTML = '0' + hour;
+          document.getElementById("hour").innerHTML = 'Time: ' + '0' + hour + ' : ';
         } else {
-          document.getElementById("hour").innerHTML = hour;
+          document.getElementById("hour").innerHTML = 'Time: ' + hour + ' : ';
         }
       }
 
@@ -365,9 +365,9 @@ mc.get('tap').requireFailure('doubletap');
           }
         }
         if(hour < 10) {
-          document.getElementById("hour").innerHTML = '0' + hour;
+          document.getElementById("hour").innerHTML = 'Time: ' + '0' + hour + ' : ';
         } else {
-          document.getElementById("hour").innerHTML = hour;
+          document.getElementById("hour").innerHTML = 'Time: ' + hour + ' : ';
         }
       }
 
