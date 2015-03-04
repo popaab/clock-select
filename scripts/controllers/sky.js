@@ -434,9 +434,9 @@ function render()
 
   deltaTime = clock.getDelta();
   particleSystem.rotation.y += deltaTime/40;
-
-  mainTime.rotation.y += ( targetRotationX - mainTime.rotation.y ) * 0.1;
-mainTime.rotation.x += ( targetRotationY - mainTime.rotation.x ) * 0.1;
+  mainTime.rotation.y += 0.05;
+//   mainTime.rotation.y += ( targetRotationX - mainTime.rotation.y ) * 0.1;
+// mainTime.rotation.x += ( targetRotationY - mainTime.rotation.x ) * 0.1;
   renderer.render( scene, camera );
 }
 
