@@ -172,14 +172,14 @@ function init()
 
           scene.add(mainTime);
 
-          var spritey = makeTextSprite( " Hello, ", 
-    { fontsize: 24, borderColor: {r:255, g:0, b:0, a:1.0}, backgroundColor: {r:255, g:100, b:100, a:0.8} } );
+          var spritey = makeTextSprite( "Vancouver", 
+    { fontsize: 24, fontface: "Lato"} );
   spritey.position.set(-85,105,55);
   scene.add( spritey );
 
-  var spritey = makeTextSprite( " World! ", 
-    { fontsize: 32, fontface: "Georgia", borderColor: {r:0, g:0, b:255, a:1.0} } );
-  spritey.position.set(55,105,55);
+  var spritey = makeTextSprite( "Alarm 1", 
+    { fontsize: 32, fontface: "Lato"} );
+  spritey.position.set(180,0,0);
   scene.add( spritey );
   
           // targetList.push(mainTime);
@@ -515,7 +515,7 @@ function makeTextSprite( message, parameters )
     parameters["borderColor"] : { r:0, g:0, b:0, a:1.0 };
   
   var backgroundColor = parameters.hasOwnProperty("backgroundColor") ?
-    parameters["backgroundColor"] : { r:255, g:255, b:255, a:1.0 };
+    parameters["backgroundColor"] : { r:0, g:0, b:0, a:1.0 };
 
     
   var canvas = document.createElement('canvas');
