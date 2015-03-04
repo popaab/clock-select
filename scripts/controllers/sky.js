@@ -50,8 +50,8 @@ var maxParticles = 5000,
 particles,
 particleMaterial,
 particleSystem;
-
-var state = 0, world = true, selectedOnce = false;
+var editMode = false
+var world = true, selectedOnce = false;
 init();
 animate();
 state();
@@ -240,7 +240,7 @@ var mc = new Hammer.Manager(document.body);
       
     }});
 
-    var editMode = false;
+    
     mc.on('tap swiperight', function(ev) {
       manageMultitouch(ev);
     });
