@@ -182,6 +182,8 @@ function init()
   document.addEventListener( 'touchstart', onDocumentTouchStart, false );
   document.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
+  controls2.enable = false;
+
 }
 
 function random( min, max ) {
@@ -202,10 +204,12 @@ function addOcta(x,y,z){
     position[1]= posy;
     position[2]= posz;
 
-   var shiny2 = new THREE.MeshPhongMaterial({
+
+
+   var shiny2 = new THREE.MeshLambertMaterial({
               color: 'white',
-              shading: THREE.FlatShading,
-              opacity: 1, transparent: true,
+              // shading: THREE.FlatShading,
+              opacity: 0.5, transparent: true,
               fog: false
               
           });
@@ -214,22 +218,24 @@ function addOcta(x,y,z){
   var octa= new THREE.Mesh( geometry, shiny2 );
 
   octa.position.set(position[0], position[1], position[2]);
+          octa.rotation.x = 0;
+          octa.rotation.y = 0;
+          octa.rotation.z = 0;
   // creates a wireMesh object
-  // var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: false }));
+  var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
   
 
-  // if( amountNow <= maxAlarms){
+  if( amountNow <= maxAlarms){
 
   scene.add(octa);
   // wireMesh object is added to the original as a sub-object
-  // octa.add(wireOcta );
+  octa.add(wireOcta );
   
   targetList.push(octa);
   amountNow++;
-
 }
 
-
+}
 
 
 
