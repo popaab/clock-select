@@ -253,14 +253,11 @@ function addOcta(x,y,z){
 
 }
       function alarmNumbers(){
-  document.getElementById("alarmTitle").innerHTML = "Alarm";
-                   document.getElementById("hour").innerHTML = 'Time: ' + hour + ' : ';
-            document.getElementById("mins").innerHTML = mins;
 
         if (alarmEdit === true){
 
           document.getElementById("alarmTitle").style.visibility = "visble";
-                   document.getElementById("hour").style.visibility = "visble";
+          document.getElementById("hour").style.visibility = "visble";
             document.getElementById("mins").style.visibility = "visble";
       }else{
         document.getElementById("alarmTitle").style.visibility = "visble";
