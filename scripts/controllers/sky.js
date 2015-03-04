@@ -32,8 +32,8 @@ var k, cameraX, cameraY, cameraZ, intersects;
 
 var baseColor=new THREE.Color( 'white' ),
 
-highlightedColor=new THREE.Color( 0xddaa00 ),
- selectedColor=new THREE.Color( 0x4466dd ),
+highlightedColor= new THREE.Color( 'blue' ),
+ selectedColor = new THREE.Color( 'blue' ),
  clock = new THREE.Clock(),
  deltaTime = 0,
  fov = 75,
@@ -459,7 +459,7 @@ mc.get('tap').requireFailure('doubletap');
         
           if ( intersects.length > 0 ) {
 
-              intersects[ 0 ].object.material.color.setHex( 'red' );
+              intersects[ 0 ].object.material.color.setHex( 'blue' );
               
             console.log(intersects[0].object.id);
             k = targetList.indexOf(intersects[0].object.id);
