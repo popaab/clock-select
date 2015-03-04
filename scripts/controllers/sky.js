@@ -271,7 +271,7 @@ mc.get('tap').requireFailure('doubletap');
 
     mc.on("pinchout", onPinch);
     // mc.on("pinchin pinchend", onPinchIn);
-    mc.on('tap doubletap', function(ev) {
+    mc.on('tap pinchin', function(ev) {
     manageMultitouch(ev);
 
     });
@@ -338,8 +338,6 @@ mc.get('tap').requireFailure('doubletap');
 
 
     }
-
-
 
         if(event.type === 'panleft' ){
           console.log(event);
@@ -449,7 +447,7 @@ mc.get('tap').requireFailure('doubletap');
     }
 
 
-    if(event.type === 'doubletap' && editMode === true){
+    if(event.type === 'pinchin' && editMode === true){
 
         if( event.pointerType === "touch"){
  
