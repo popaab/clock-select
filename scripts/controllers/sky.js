@@ -170,7 +170,6 @@ function init()
   raycaster = new THREE.Raycaster();
   touchPos = new THREE.Vector2();
 
-  document.addEventListener( 'mousedown', onDocumentMouseDown, false );
   document.addEventListener( 'touchstart', onDocumentTouchStart, false );
   document.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
@@ -321,6 +320,62 @@ function addOcta(x,y,z){
                     
     
   }
+  if(event.type === 'panmove' && event.type === 'panleft' && editMode === true){
+  for(i = 0; i < 1; i++) {
+    hour -= 1;
+      if(hour < 0) {
+          hour = 23;
+      }
+  }
+  if(hour < 10) {
+    document.getElementById("hour").innerHTML = '0' + hour;
+  } else {
+    document.getElementById("hour").innerHTML = hour;
+  }
+}
+
+if(event.type === 'panmove' && event.type === 'panright' && editMode === true){
+  for(i = 0; i < 1; i++) {
+    hour += 1;
+    if(hour > 23) {
+      hour = 0;
+    }
+  }
+  if(hour < 10) {
+    document.getElementById("hour").innerHTML = '0' + hour;
+  } else {
+    document.getElementById("hour").innerHTML = hour;
+  }
+}
+
+if(event.type === 'panmove' && event.type === 'panup' && editMode === true){
+  for(i = 0; i < 1; i++) {
+    mins += 1;
+    if(mins > 59) {
+      mins = 0;
+    }
+  }
+  if(mins < 10) {
+    document.getElementById("mins").innerHTML = '0' + mins;
+  } else {
+    document.getElementById("mins").innerHTML = mins;
+  }
+    
+}
+
+if(event.type === 'panmove' && event.type === 'pandown' && editMode === true){
+  for(i = 0; i < 1; i++) {
+    mins -= 1;
+    if(mins < 0) {
+      mins = 59;
+    }
+  }
+    if(mins < 10) {
+    document.getElementById("mins").innerHTML = '0' + mins;
+  } else {
+    document.getElementById("mins").innerHTML = mins;
+  }
+});
 }
 
 function onDocumentMouseDown( event ) {
@@ -339,32 +394,6 @@ function onDocumentMouseDown( event ) {
 
   }
 
-function onDocumentMouseMove( event ) {
- 
-    mouseX = event.clientX - windowHalfX;
-    mouseY = event.clientY - windowHalfY;
- 
-    targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.02;
-    targetRotationX = targetRotationOnMouseDownX + (mouseX - mouseXOnMouseDown) * 0.02;
-      
- 
-}
- 
-function onDocumentMouseUp( event ) {
- 
-    document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
-    document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
-    document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
- 
-}
- 
-function onDocumentMouseOut( event ) {
- 
-    document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
-    document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
-    document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
- 
-}
  
 function onDocumentTouchStart( event ) {
  
@@ -397,68 +426,13 @@ function onDocumentTouchMove( event ) {
 }
 
 function alarmRotate(){
-selectedObject.rotation.y += ( targetRotationX - selectedObject.rotation.y ) * 0.1;
-selectedObject.rotation.x += ( targetRotationY - selectedObject.rotation.x ) * 0.1;
+mainTime.rotation.y += ( targetRotationX - mainTime.rotation.y ) * 0.1;
+mainTime.rotation.x += ( targetRotationY - mainTime.rotation.x ) * 0.1;
 
 
 }
 
-mc.on("panmove panleft", function(ev) {
-  for(i = 0; i < 1; i++) {
-    hour -= 1;
-      if(hour < 0) {
-          hour = 23;
-      }
-  }
-  if(hour < 10) {
-    document.getElementById("hour").innerHTML = '0' + hour;
-  } else {
-    document.getElementById("hour").innerHTML = hour;
-  }
-});
 
-mc.on("panmove panright", function(ev) {
-  for(i = 0; i < 1; i++) {
-    hour += 1;
-    if(hour > 23) {
-      hour = 0;
-    }
-  }
-  if(hour < 10) {
-    document.getElementById("hour").innerHTML = '0' + hour;
-  } else {
-    document.getElementById("hour").innerHTML = hour;
-  }
-});
-
-mc.on("panmove panup", function(ev) {
-  for(i = 0; i < 1; i++) {
-    mins += 1;
-    if(mins > 59) {
-      mins = 0;
-    }
-  }
-  if(mins < 10) {
-    document.getElementById("mins").innerHTML = '0' + mins;
-  } else {
-    document.getElementById("mins").innerHTML = mins;
-  }
-    
-});
-
-mc.on("panmove pandown", function(ev) {
-  for(i = 0; i < 1; i++) {
-    mins -= 1;
-    if(mins < 0) {
-      mins = 59;
-    }
-  }
-    if(mins < 10) {
-    document.getElementById("mins").innerHTML = '0' + mins;
-  } else {
-    document.getElementById("mins").innerHTML = mins;
-  }
-});
 
 
 
