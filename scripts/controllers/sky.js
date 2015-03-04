@@ -54,6 +54,7 @@ particleMaterial,
 particleSystem;
 
 var editMode = false;
+var alarmEdit = false;
 var world = true, selectedOnce = false;
 
 var rotation_matrix;
@@ -236,8 +237,14 @@ function addOcta(x,y,z){
 
     mc.add(new Hammer.Pinch({ threshold: 0}));
 
+mc.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) );
+// Single tap recognizer
+mc.add( new Hammer.Tap({ event: 'singletap' }) );
 
-    mc.add(new Hammer.Tap({ taps: 1}));
+
+mc.get('doubletap').recognizeWith('singletap');
+mc.get('singletap').requireFailure('doubletap');
+
     // mc.add(new Hammer.Pan());
     mc.add(new Hammer.Swipe());
     mc.add(new Hammer.Pan());
@@ -249,6 +256,9 @@ function addOcta(x,y,z){
 
     });
 
+    mc.on('doubletap panmove panleft panright panup pandown', function(ev){
+      manageMultitouchAlarm(ev);
+    })
 
     function onPinch(ev) {
     // if(ev.type == 'pinchout') {
@@ -274,6 +284,98 @@ function addOcta(x,y,z){
  
 
     }
+    function manageMultitouchAlarm(event){
+
+    if(event.type === 'doubletap' && editMode === true){
+      
+       if( event.pointerType === "touch"){
+      alarmEdit = true;
+          
+          touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
+          touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
+
+          raycaster.setFromCamera( touchPos, camera );
+
+          var intersects = raycaster.intersectObjects( targetList );
+        
+          if ( intersects.length > 0 ) {
+
+            intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+            console.log(intersects[0].object.id);
+            k = targetList.indexOf(intersects[0].object.id);
+            selectedObject = intersects[0].object;
+            
+            cameraX = selectedObject.position.x;
+            cameraY = selectedObject.position.y;
+            cameraZ = -selectedObject.position.z + 200;
+
+            console.log(cameraX,cameraY,cameraZ);
+
+            document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
+
+          }      
+        }
+
+
+    }
+
+  if(event.type === 'panmove' && event.type === 'panleft' && editMode === true && alarmEdit === true){
+  for(i = 0; i < 1; i++) {
+    hour -= 1;
+      if(hour < 0) {
+          hour = 23;
+      }
+  }
+  if(hour < 10) {
+    document.getElementById("hour").innerHTML = '0' + hour;
+  } else {
+    document.getElementById("hour").innerHTML = hour;
+  }
+}
+
+if(event.type === 'panmove' && event.type === 'panright' && editMode === true  && alarmEdit === true){
+  for(i = 0; i < 1; i++) {
+    hour += 1;
+    if(hour > 23) {
+      hour = 0;
+    }
+  }
+  if(hour < 10) {
+    document.getElementById("hour").innerHTML = '0' + hour;
+  } else {
+    document.getElementById("hour").innerHTML = hour;
+  }
+}
+
+if(event.type === 'panmove' && event.type === 'panup' && editMode === true  && alarmEdit === true){
+  for(i = 0; i < 1; i++) {
+    mins += 1;
+    if(mins > 59) {
+      mins = 0;
+    }
+  }
+  if(mins < 10) {
+    document.getElementById("mins").innerHTML = '0' + mins;
+  } else {
+    document.getElementById("mins").innerHTML = mins;
+  }
+    
+}
+
+if(event.type === 'panmove' && event.type === 'pandown' && editMode === true  && alarmEdit === true){
+  for(i = 0; i < 1; i++) {
+    mins -= 1;
+    if(mins < 0) {
+      mins = 59;
+    }
+  }
+    if(mins < 10) {
+    document.getElementById("mins").innerHTML = '0' + mins;
+  } else {
+    document.getElementById("mins").innerHTML = mins;
+  }
+}
+}
 
  function manageMultitouch(event){
 
@@ -326,76 +428,14 @@ function addOcta(x,y,z){
            editMode = false;
 
         }    
-                    
-    
-  }
-  if(event.type === 'panmove' && event.type === 'panleft' && editMode === true){
-  for(i = 0; i < 1; i++) {
-    hour -= 1;
-      if(hour < 0) {
-          hour = 23;
-      }
-  }
-  if(hour < 10) {
-    document.getElementById("hour").innerHTML = '0' + hour;
-  } else {
-    document.getElementById("hour").innerHTML = hour;
-  }
-}
 
-if(event.type === 'panmove' && event.type === 'panright' && editMode === true){
-  for(i = 0; i < 1; i++) {
-    hour += 1;
-    if(hour > 23) {
-      hour = 0;
-    }
-  }
-  if(hour < 10) {
-    document.getElementById("hour").innerHTML = '0' + hour;
-  } else {
-    document.getElementById("hour").innerHTML = hour;
-  }
 }
-
-if(event.type === 'panmove' && event.type === 'panup' && editMode === true){
-  for(i = 0; i < 1; i++) {
-    mins += 1;
-    if(mins > 59) {
-      mins = 0;
-    }
-  }
-  if(mins < 10) {
-    document.getElementById("mins").innerHTML = '0' + mins;
-  } else {
-    document.getElementById("mins").innerHTML = mins;
-  }
-    
+ 
 }
-
-if(event.type === 'panmove' && event.type === 'pandown' && editMode === true){
-  for(i = 0; i < 1; i++) {
-    mins -= 1;
-    if(mins < 0) {
-      mins = 59;
-    }
-  }
-    if(mins < 10) {
-    document.getElementById("mins").innerHTML = '0' + mins;
-  } else {
-    document.getElementById("mins").innerHTML = mins;
-  }
-}
-}
-
- function setId(selectedObject){
-  setId = selectedObject.id;
-  getId = setId;
-  return getId;
- }
 
 function onDocumentTouchStart( event ) {
  
-    if ( event.touches.length == 1 ) {
+    if ( event.touches.length == 1  && alarmEdit === true) {
 
         event.preventDefault();
 
@@ -410,7 +450,7 @@ function onDocumentTouchStart( event ) {
  
 function onDocumentTouchMove( event ) {
  
-    if ( event.touches.length == 1 ) {
+    if ( event.touches.length == 1  && alarmEdit === true) {
 
         event.preventDefault();
 
@@ -426,7 +466,7 @@ function onDocumentTouchMove( event ) {
 }
 
 function alarm(object) {
-if( editMode === true){
+if( editMode === true  && alarmEdit === true){
   var selectedId = setId(object); 
   scene.getObjectById(selectedId).rotation.y += ( targetRotationX - mainTime.rotation.y ) * 0.1;
   scene.getObjectById(selectedId).rotation.rotation.x += ( targetRotationY - mainTime.rotation.x ) * 0.1;
