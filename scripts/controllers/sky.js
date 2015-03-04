@@ -215,106 +215,32 @@ function render()
   renderer.render( scene, camera );
 }
 
-var mc = new Hammer.Manager(document.body);
+
+
+    var mc = new Hammer.Manager(document.body);
 
     mc.add(new Hammer.Pinch({ threshold: 0}));
 
 
     mc.add(new Hammer.Tap({ taps: 1}));
-    mc.add(new Hammer.Pan());
+    // mc.add(new Hammer.Pan());
     mc.add(new Hammer.Swipe());
 
-
-    mc.on("pinchout", onPinch);
-    // mc.on("pinchin pinchend", onPinchIn);
-    mc.on("panmove", function onPan(ev) {
-         if( ev.pointerType === "touch"){
-
-                  console.log(ev);
-                  
-                  // var panx = ev.pointers[0].clientX;
-                  // var pany = ev.pointers[0].clientY;
-           
-                  // console.log("paning : " + panx + " " + pany);
-                  // // checkSelection(panx1, pany1)
-      
-    }});
-
-    
-    mc.on('tap swiperight', function(ev) {
+        mc.on("pinchout", onPinch);
+        // mc.on("pinchin pinchend", onPinchIn);
+      mc.on('tap swiperight', function(ev) {
       manageMultitouch(ev);
-    });
-
 
 
     function state(){
-        if(editMode === true){
+        if(editMode === false){
           controls2.enabled = false;
-        }if (editMode === false){
+
+        }else {
           controls2.enabled = true;
+
         }
     }
-
-    function manageMultitouch(event){
-
-     var selectedObject = null; 
-     var k, cameraX, cameraY, cameraZ;
-    
-    if(event.type === 'tap'){
-      editMode = true;
-       if( event.pointerType === "touch"){
-        
-                  
-                  touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
-                  touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
-
-                  raycaster.setFromCamera( touchPos, camera );
-
-                  var intersects = raycaster.intersectObjects( targetList );
-                
-                  if ( intersects.length > 0 ) {
-
-                    intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
-                    console.log(intersects[0].object.id);
-                    k = targetList.indexOf(intersects[0].object.id);
-                    selectedObject = intersects[0].object;
-                    cameraX = selectedObject.position.x;
-                    cameraY = selectedObject.position.y;
-                    cameraZ = -selectedObject.position.z + 200;
-
-                    console.log(cameraX,cameraY,cameraZ);
-
-                    document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
-
-                  }      
-                }
-
-
-    }if(event.type === 'swiperight'){
-      editMode = true;
-    
-
-      if( event.pointerType === "touch"){
-
-                      
-                     
-                        removeEntity(selectedObject);
-
-                        console.log(cameraX,cameraY,cameraZ);
-
-                         document.getElementById("resultDIV").innerHTML = ("deleted: "+ selectedObject);
-
-                      }      
-                    
-
-
-    }else{
-  
-
-
-    }
-
-  }
 
     function onPinch(ev) {
     // if(ev.type == 'pinchout') {
@@ -343,4 +269,58 @@ function removeEntity(object) {
     var del = scene.getObjectByName(object.name);
     scene.remove( del );
     
+}
+
+ function manageMultitouch(event){
+
+     var selectedObject = null; 
+     var k, cameraX, cameraY, cameraZ;
+    
+    if(event.type === 'tap'){
+      
+       if( event.pointerType === "touch"){
+                  if(editMode === false){editMode = true;}
+                  
+                  touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
+                  touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
+
+                  raycaster.setFromCamera( touchPos, camera );
+
+                  var intersects = raycaster.intersectObjects( targetList );
+                
+                  if ( intersects.length > 0 ) {
+
+                    intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+                    console.log(intersects[0].object.id);
+                    k = targetList.indexOf(intersects[0].object.id);
+                    selectedObject = intersects[0].object;
+                    cameraX = selectedObject.position.x;
+                    cameraY = selectedObject.position.y;
+                    cameraZ = -selectedObject.position.z + 200;
+
+                    console.log(cameraX,cameraY,cameraZ);
+
+                    document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
+
+                  }      
+                }
+
+
+    }
+
+    if(event.type === 'swiperight' && editMode === true){
+
+
+        if( event.pointerType === "touch"){
+
+          removeEntity(selectedObject);
+
+          console.log(cameraX,cameraY,cameraZ);
+
+           document.getElementById("resultDIV").innerHTML = ("deleted: "+ selectedObject);
+           editMode = false;
+
+        }      
+                    
+    }
 }
