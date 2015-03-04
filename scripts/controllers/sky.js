@@ -54,6 +54,27 @@ particleMaterial,
 particleSystem;
 var editMode = false
 var world = true, selectedOnce = false;
+
+
+
+
+var  count = 0,
+    hour = 0,
+    mins = 00,
+    deltaTime = 0,
+    finalRotationY;
+    
+    var targetRotationX = 0,
+    targetRotationOnMouseDownX = 0,
+
+    targetRotationY = 0,
+    targetRotationOnMouseDownY = 0,
+
+    mouseX = 0,
+    mouseXOnMouseDown = 0,
+
+    mouseY = 0,
+    mouseYOnMouseDown = 0,
 init();
 animate();
 
@@ -99,12 +120,12 @@ function init()
 
   scene.add(L1);
 
-  var L2 = new THREE.PointLight('orange', 0.4);
-  L2.position.x = 5000;
-  L2.position.y = 500;
-  L2.position.z = 5000;
+  // var L2 = new THREE.PointLight('orange', 0.4);
+  // L2.position.x = 5000;
+  // L2.position.y = 500;
+  // L2.position.z = 5000;
 
-  scene.add(L2);
+  // scene.add(L2);
   var L3 = new THREE.PointLight(0x0000ff, 0.4);
   L3.position.z = -2000;
   L3.position.x = 1000;
