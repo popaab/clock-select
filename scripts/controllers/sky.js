@@ -228,7 +228,7 @@ function render()
 
     mc.on("pinchout", onPinch);
     // mc.on("pinchin pinchend", onPinchIn);
-    mc.on('tap swiperight', function(ev) {
+    mc.on('tap pinchin', function(ev) {
     manageMultitouch(ev);
 
     });
@@ -311,7 +311,7 @@ function removeEntity(object) {
 
     }
 
-    if(event.type === 'swiperight' && editMode === true){
+    if(event.type === 'pinchin' && editMode === true){
 
 
         if( event.pointerType === "touch"){
