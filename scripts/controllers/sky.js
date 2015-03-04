@@ -255,8 +255,6 @@ function addOcta(x,y,z){
       function alarm(){
         if (alarmEdit === true){
           document.getElementById("alarmTitle").style.visibility = "visble";
-
-      
                    document.getElementById("hour").style.visibility = "visble";
             document.getElementById("mins").style.visibility = "visble";
       }else{
@@ -345,7 +343,7 @@ mc.get('tap').requireFailure('doubletap');
             cameraZ = -selectedObject.position.z + 200;
 
             console.log(cameraX,cameraY,cameraZ);
-            document.getElementById("alarmTitle").innerHTML = 'ALARM ' + num;
+            document.getElementById("alarmTitle").innerHTML = 'Alarm ' + num;
 
             document.getElementById("resultDIV").innerHTML = ("double tap: "+ intersects[0].object.id);
    
@@ -588,6 +586,7 @@ function animate()
 
 function update()
 {
+  alarm();
 
   controls.update();
   controls2.update();
