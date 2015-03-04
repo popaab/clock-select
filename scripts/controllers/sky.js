@@ -83,7 +83,7 @@ var count = 0,
 
 init();
 animate();
-
+alarmNumbers();
 
 
 
@@ -368,7 +368,7 @@ mc.get('tap').requireFailure('doubletap');
 
         if(event.type === 'panleft' ){
           alarmEdit = true;
-          alarmNumbers();
+      
           console.log(event);
         for(i = 0; i < 1; i++) {
           hour -= 1;
@@ -386,7 +386,7 @@ mc.get('tap').requireFailure('doubletap');
 
       if(event.type === 'panright' ){
         alarmEdit = true;
-        alarmNumbers();
+
         console.log(event);
         for(i = 0; i < 1; i++) {
           hour += 1;
@@ -404,7 +404,7 @@ mc.get('tap').requireFailure('doubletap');
 
       if(event.type === 'panup'){
         alarmEdit = true;
-        alarmNumbers();
+   
         console.log(event);
         for(i = 0; i < 1; i++) {
           mins += 1;
@@ -422,7 +422,7 @@ mc.get('tap').requireFailure('doubletap');
 
       if(event.type === 'pandown'){
         alarmEdit = true;
-        alarmNumbers();
+
         console.log(event);
         for(i = 0; i < 1; i++) {
           mins -= 1;
@@ -435,12 +435,7 @@ mc.get('tap').requireFailure('doubletap');
         } else {
           $('#mins').text(  mins);
         }
-      }else{
-        alarmEdit = false;
-        alarmNumbers();
-
       }
-   
       
         
     
@@ -453,7 +448,7 @@ mc.get('tap').requireFailure('doubletap');
       
        if( event.pointerType === "touch"){
           editMode = true;
-          alarmEdit = true;
+          alarmEdit = false;
           touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
           touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
 
