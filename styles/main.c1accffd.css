@@ -15,7 +15,9 @@ html{
   color: #777;
   background: #eee;
 }*/
-
+.alarmTitle {
+  visibility: hidden;
+}
 .hour{
 
   visibility: hidden;
