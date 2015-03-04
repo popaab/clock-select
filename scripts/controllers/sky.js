@@ -206,7 +206,7 @@ function addOcta(x,y,z){
 
 
 
-   var shiny2 = new THREE.MeshLambertMaterial({
+   var shiny2 = new THREE.MeshBasicMaterial({
               color: 'white',
               // shading: THREE.FlatShading,
               opacity: 0.5, transparent: true,
