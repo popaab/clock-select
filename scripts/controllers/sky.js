@@ -285,7 +285,7 @@ mc.get('singletap').requireFailure('doubletap');
 
     }
     function manageMultitouchAlarm(event){
-
+controls2.enable = false;
     if(event.type === 'doubletap' && editMode === true){
       
        if( event.pointerType === "touch"){
@@ -435,7 +435,7 @@ if(event.type === 'panmove' && event.type === 'pandown' && editMode === true  &&
 
 function onDocumentTouchStart( event ) {
  
-    if ( event.touches.length == 1  && alarmEdit === true) {
+    if ( event.touches.length == 1 ) {
 
         event.preventDefault();
 
@@ -450,7 +450,7 @@ function onDocumentTouchStart( event ) {
  
 function onDocumentTouchMove( event ) {
  
-    if ( event.touches.length == 1  && alarmEdit === true) {
+    if ( event.touches.length == 1  ) {
 
         event.preventDefault();
 
