@@ -290,7 +290,7 @@ function render()
 
                     intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
                     console.log(intersects[0].object.id);
-                    k = targetList.indexOf(intersects[0].object.id);
+                    var k = targetList.indexOf(intersects[0].object.id);
                     selectedObject = intersects[0].object;
                     cameraX = selectedObject.position.x;
                     cameraY = selectedObject.position.y;
@@ -311,7 +311,7 @@ function render()
 
         if( event.pointerType === "touch"){
 
-          scene.remove( k);
+          scene.remove( k );
 
           console.log(cameraX,cameraY,cameraZ);
 
