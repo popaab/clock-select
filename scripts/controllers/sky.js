@@ -177,10 +177,10 @@ function init()
   spritey.position.set(-85,105,55);
   scene.add( spritey );
 
-  var spritey = makeTextSprite( "Alarm 1", 
-    { fontsize: 32, fontface: "Lato"} );
-  spritey.position.set(190,50,0);
-  scene.add( spritey );
+  // var spritey = makeTextSprite( "Alarm 1", 
+  //   { fontsize: 32, fontface: "Lato"} );
+  // spritey.position.set(190,50,0);
+  // scene.add( spritey );
   
           // targetList.push(mainTime);
   addOcta(180,0,0);
