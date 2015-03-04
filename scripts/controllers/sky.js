@@ -318,8 +318,7 @@ mc.get('tap').requireFailure('doubletap');
 
 
     }
-
-  while(alarmEdit === true){
+if(alarmEdit === true){
         controls2.enable = false;
 
         if(event.type === 'panmove' && event.type === 'panleft' ){
@@ -379,7 +378,7 @@ mc.get('tap').requireFailure('doubletap');
         }
       }if(event.type === 'tap'){
         editMode = false;
-        break;
+   
       }
         
     }
