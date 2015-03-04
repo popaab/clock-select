@@ -421,7 +421,7 @@ function onDocumentTouchMove( event ) {
         targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.05;
       }
 
-      alarm(selectedObject);
+      
  
 }
 
@@ -451,7 +451,7 @@ function update()
 function render() 
 {
   renderer.render( scene, camera );
-  
+  alarm(selectedObject);
   // scene.getObjectByName('clock').rotation.x += 0.05;
   deltaTime = clock.getDelta();
   particleSystem.rotation.y += deltaTime/40;
