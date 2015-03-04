@@ -252,9 +252,21 @@ function addOcta(x,y,z){
 }
 
 }
+      function alarm(){
+        if (alarmEdit === true){
+          document.getElementById("alarmTitle").style.visibility = "visble";
 
-      document.getElementById("hour").style.visibility = "hidden";
+      
+                   document.getElementById("hour").style.visibility = "visble";
+            document.getElementById("mins").style.visibility = "visble";
+      }else{
+        document.getElementById("alarmTitle").style.visibility = "visble";
+        document.getElementById("hour").style.visibility = "hidden";
       document.getElementById("mins").style.visibility = "hidden";
+      }
+      
+
+    }
 var mc = new Hammer.Manager(document.body);
 mc.add(new Hammer.Pinch({ threshold: 0}));
 
@@ -326,16 +338,17 @@ mc.get('tap').requireFailure('doubletap');
             console.log(intersects[0].object.id);
             k = targetList.indexOf(intersects[0].object.id);
             selectedObject = intersects[0].object;
+            var num = selectedObject.id + 1;
             
             cameraX = selectedObject.position.x;
             cameraY = selectedObject.position.y;
             cameraZ = -selectedObject.position.z + 200;
 
             console.log(cameraX,cameraY,cameraZ);
+            document.getElementById("alarmTitle").innerHTML = 'ALARM ' + num;
 
             document.getElementById("resultDIV").innerHTML = ("double tap: "+ intersects[0].object.id);
-            document.getElementById("hour").style.visibility = "visble";
-            document.getElementById("mins").style.visibility = "visble";
+   
           } 
         }
       
@@ -402,6 +415,9 @@ mc.get('tap').requireFailure('doubletap');
         } else {
           document.getElementById("mins").innerHTML = mins;
         }
+      }else{
+        alarmEdit = false;
+
       }
    
       
