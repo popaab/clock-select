@@ -465,6 +465,9 @@ mc.get('tap').requireFailure('doubletap');
             k = targetList.indexOf(intersects[0].object.id);
             selectedObject = intersects[0].object;
             toDel= intersects[0].object;
+              toDel.scale.x = 1;
+              toDel.scale.y = 1;
+              toDel.scale.z = 1;
 
             
             cameraX = selectedObject.position.x;
@@ -482,14 +485,13 @@ mc.get('tap').requireFailure('doubletap');
     if(event.type === 'pinchin'){
 
         if( event.pointerType === "touch"){
-              toDel.scale.x = 1;
-              toDel.scale.y = 1;
-              toDel.scale.z = 1;
+
               scene.remove( toDel );
+
               var tween2 = {
                 scale: 0,
                 go: function() {
-                  TweenLite.to(toDel.scale, 0.4, {
+                  TweenLite.to(scene.getObjectById( toDel );.scale, 0.4, {
                     x: this.scale,
                     y: this.scale,
                     z: this.scale,
