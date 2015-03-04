@@ -76,6 +76,9 @@ var count = 0,
 
     mouseY = 0,
     mouseYOnMouseDown = 0;
+
+
+
 init();
 animate();
 
@@ -378,22 +381,6 @@ if(event.type === 'panmove' && event.type === 'pandown' && editMode === true){
 }
 }
 
-function onDocumentMouseDown( event ) {
-
-    event.preventDefault();
-
-    document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-    document.addEventListener( 'mouseup', onDocumentMouseUp, false );
-    document.addEventListener( 'mouseout', onDocumentMouseOut, false );
-
-    mouseXOnMouseDown = event.clientX - windowHalfX;
-    targetRotationOnMouseDownX = targetRotationX;
-
-    mouseYOnMouseDown = event.clientY - windowHalfY;
-    targetRotationOnMouseDownY = targetRotationY;
-
-  }
-
  
 function onDocumentTouchStart( event ) {
  
@@ -424,15 +411,6 @@ function onDocumentTouchMove( event ) {
       }
  
 }
-
-function alarmRotate(){
-
-
-
-}
-
-
-
 
 
 function animate() 
