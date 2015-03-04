@@ -56,7 +56,7 @@ particleSystem;
 var editMode = false;
 var world = true, selectedOnce = false;
 
-
+var rotation_matrix;
 
 
 var count = 0,
@@ -157,13 +157,18 @@ function init()
               
           });
 
+   
     var mainTime = new THREE.Mesh(new THREE.TetrahedronGeometry(100, 3), shiny);
+    mainTime..add(new THREE.Axes());
+    mainTime.rotation.set(Math.PI/2, Math.PI/4, Math.PI/4);
+    mainTime.matrix.setRotationFromEuler(mainTime.rotation);
 
           mainTime.position.x = 0;
           mainTime.position.y = 0;
           mainTime.position.z = 0;
           mainTime.rotation.y = 0; 
           mainTime.rotation.x = 0;
+          mainTime.rotation.z = 0;
 
           scene.add(mainTime);
           // targetList.push(mainTime);
@@ -418,8 +423,9 @@ function onDocumentTouchMove( event ) {
 function animate() 
 {
   requestAnimationFrame( animate );
-  render();   
+    
   update();
+  render(); 
 }
 
 function update()
@@ -431,7 +437,9 @@ function update()
 
 function render() 
 {
-
+rotation_matrix = new THREE.Matrix4().setRotationX(.01);
+rotation_matrix.multiplySelf(mainTime.matrix);
+mainTime.rotation.setRotationFromMatrix(rotation_matrix);
   deltaTime = clock.getDelta();
   particleSystem.rotation.y += deltaTime/40;
   mainTime.rotation.y += 0.05;
