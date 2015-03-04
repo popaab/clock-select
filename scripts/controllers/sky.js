@@ -304,10 +304,9 @@ function render()
         controls2.enable = false;
         if( event.pointerType === "touch"){
  
-            if(toDel.object.id != 7){
+        
               scene.remove( toDel);
-            }
-
+      
 
            document.getElementById("resultDIV").innerHTML = ("deleted: "+ toDel.object.id);
            editMode = false;
