@@ -256,7 +256,7 @@ mc.get('tap').requireFailure('doubletap');
 
     });
 
-    mc.on('doubletap panmove panleft panright panup pandown', function(ev){
+    mc.on('doubletap tap panmove panleft panright panup pandown', function(ev){
       manageMultitouchAlarm(ev);
     });
 
@@ -285,7 +285,7 @@ mc.get('tap').requireFailure('doubletap');
 
     }
     function manageMultitouchAlarm(event){
-    controls2.enable = false;
+    
     if(event.type === 'doubletap'){
       
        if( event.pointerType === "touch"){
@@ -319,62 +319,71 @@ mc.get('tap').requireFailure('doubletap');
 
     }
 
-  if(event.type === 'panmove' && event.type === 'panleft' && alarmEdit === true){
-  for(i = 0; i < 1; i++) {
-    hour -= 1;
-      if(hour < 0) {
-          hour = 23;
+  while(alarmEdit === true){
+        controls2.enable = false;
+
+        if(event.type === 'panmove' && event.type === 'panleft' ){
+        for(i = 0; i < 1; i++) {
+          hour -= 1;
+            if(hour < 0) {
+                hour = 23;
+            }
+        }
+        if(hour < 10) {
+          document.getElementById("hour").innerHTML = '0' + hour;
+        } else {
+          document.getElementById("hour").innerHTML = hour;
+        }
       }
-  }
-  if(hour < 10) {
-    document.getElementById("hour").innerHTML = '0' + hour;
-  } else {
-    document.getElementById("hour").innerHTML = hour;
-  }
+
+      if(event.type === 'panmove' && event.type === 'panright' ){
+        for(i = 0; i < 1; i++) {
+          hour += 1;
+          if(hour > 23) {
+            hour = 0;
+          }
+        }
+        if(hour < 10) {
+          document.getElementById("hour").innerHTML = '0' + hour;
+        } else {
+          document.getElementById("hour").innerHTML = hour;
+        }
+      }
+
+      if(event.type === 'panmove' && event.type === 'panup'){
+        for(i = 0; i < 1; i++) {
+          mins += 1;
+          if(mins > 59) {
+            mins = 0;
+          }
+        }
+        if(mins < 10) {
+          document.getElementById("mins").innerHTML = '0' + mins;
+        } else {
+          document.getElementById("mins").innerHTML = mins;
+        }
+          
+      }
+
+      if(event.type === 'panmove' && event.type === 'pandown'){
+        for(i = 0; i < 1; i++) {
+          mins -= 1;
+          if(mins < 0) {
+            mins = 59;
+          }
+        }
+          if(mins < 10) {
+          document.getElementById("mins").innerHTML = '0' + mins;
+        } else {
+          document.getElementById("mins").innerHTML = mins;
+        }
+      }if(event.type === 'tap'){
+        editMode = false;
+        break;
+      }
+        
 }
 
-if(event.type === 'panmove' && event.type === 'panright' && alarmEdit === true){
-  for(i = 0; i < 1; i++) {
-    hour += 1;
-    if(hour > 23) {
-      hour = 0;
-    }
-  }
-  if(hour < 10) {
-    document.getElementById("hour").innerHTML = '0' + hour;
-  } else {
-    document.getElementById("hour").innerHTML = hour;
-  }
-}
-
-if(event.type === 'panmove' && event.type === 'panup'   && alarmEdit === true){
-  for(i = 0; i < 1; i++) {
-    mins += 1;
-    if(mins > 59) {
-      mins = 0;
-    }
-  }
-  if(mins < 10) {
-    document.getElementById("mins").innerHTML = '0' + mins;
-  } else {
-    document.getElementById("mins").innerHTML = mins;
-  }
-    
-}
-
-if(event.type === 'panmove' && event.type === 'pandown'  && alarmEdit === true){
-  for(i = 0; i < 1; i++) {
-    mins -= 1;
-    if(mins < 0) {
-      mins = 59;
-    }
-  }
-    if(mins < 10) {
-    document.getElementById("mins").innerHTML = '0' + mins;
-  } else {
-    document.getElementById("mins").innerHTML = mins;
-  }
-}
 }
 
  function manageMultitouch(event){
