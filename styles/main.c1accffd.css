@@ -16,14 +16,14 @@ html{
   background: #eee;
 }*/
 .alarmTitle {
-  visibility: hidden;
+  visibility: visible;
 }
 .hour{
 
-  visibility: hidden;
+  visibility: visible;
 }
 .mins {
-  visibility: hidden;
+  visibility: visible;
 }
 .alarm {
   $w: 350px;
