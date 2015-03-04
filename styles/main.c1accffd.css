@@ -17,7 +17,7 @@ html{
 }*/
 
 .hour{
-  
+
   visibility: hidden;
 }
 .mins {
@@ -41,41 +41,6 @@ html{
   display: inline-block;
   width: 30px;
 }
-
-.alarm span:nth-child(2){
-  border-right: 1px solid #aaa;
-}
-
-.alarm span:before,
-.alarm span:after {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  backface-visibility: hidden;
-  transition: transform .75s;
-}
-
-.alarm span:before {
-  content: attr(data-old);
-  z-index: 1;
-  transform: translate3d(0,0,0);
-}
-
-.alarm  .flip:before {
-  transform: translate3d(0,102.5%,0);
-}
-
-.alarm  span:after {
-  content: attr(data-now);
-  z-index: 2;
-  transform: translate3d(0,-102.5%,0);
-}
-
-.alarm  .flip:after {
-  transform: translate3d(0,0,0);
-}/* Space out content a bit */
 
 .clock {
   $w: 350px;
