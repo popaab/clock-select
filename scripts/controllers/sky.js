@@ -297,6 +297,7 @@ mc.get('tap').requireFailure('doubletap');
     // if(ev.type == 'pinchout') {
       editMode = false;
       
+      
        if( ev.pointerType === "touch" && editMode === false){
 
             console.log(ev.pointerType);
@@ -449,7 +450,7 @@ mc.get('tap').requireFailure('doubletap');
       
        if( event.pointerType === "touch"){
           editMode = true;
-          
+          alarmEdit = true;
           touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
           touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
 
