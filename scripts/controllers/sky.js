@@ -57,8 +57,7 @@ init();
 animate();
 
 
-     var selectedObject; 
-     var k, cameraX, cameraY, cameraZ, intersects;
+
 
 function getRandom(min, max) {
           return Math.random() * (max - min) + min;
@@ -275,13 +274,13 @@ function render()
 
           raycaster.setFromCamera( touchPos, camera );
 
-          intersects = raycaster.intersectObjects( targetList );
+          var intersects = raycaster.intersectObjects( targetList );
         
           if ( intersects.length > 0 ) {
 
             intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
             console.log(intersects[0].object.id);
-            k = targetList.indexOf(intersects[0].object.id);
+            var k = targetList.indexOf(intersects[0].object.id);
             selectedObject = intersects[0].object;
             cameraX = selectedObject.position.x;
             cameraY = selectedObject.position.y;
