@@ -181,7 +181,7 @@ function init()
   // scene.add( spritey );
   
           // targetList.push(mainTime);
-  addOcta(250,0,0);
+  // addOcta(250,0,0);
 
   
   // initialize object to perform world/screen calculations
@@ -250,7 +250,7 @@ function addOcta(x,y,z) {
   var tween = {
     scale: 1,
     go: function() {
-      TweenLite.to(octa.scale, 2, {
+      TweenLite.to(octa.scale, 0.4, {
         x: this.scale,
         y: this.scale,
         z: this.scale,
@@ -483,7 +483,23 @@ mc.get('tap').requireFailure('doubletap');
 
         if( event.pointerType === "touch"){
            
-              scene.remove( toDel);     
+              scene.remove( toDel);
+               var tween2 = {
+    scale: 0,
+    go: function() {
+      TweenLite.to(toDel.scale, 0.4, {
+        x: this.scale,
+        y: this.scale,
+        z: this.scale,
+        ease:"Exponential.InOut",
+        onComplete:function(){
+          // console.log('tweeneeedddd');
+          // this.reverse()
+        }
+      })
+    }
+  }
+  tween2.go();     
 
            document.getElementById("resultDIV").innerHTML = ("deleted: "+ toDel.object.id);
            editMode = false;
