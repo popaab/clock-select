@@ -491,7 +491,7 @@ mc.get('tap').requireFailure('doubletap');
               var tween2 = {
                 scale: 0,
                 go: function() {
-                  TweenLite.to(scene.getObjectById( toDel ).scale, 0.4, {
+                  TweenLite.to(scene.getObjectById(toDel).scale, 0.4, {
                     x: this.scale,
                     y: this.scale,
                     z: this.scale,
