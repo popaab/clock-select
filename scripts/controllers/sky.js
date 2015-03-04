@@ -298,7 +298,7 @@ function render()
 
     if(event.type === 'swiperight' && editMode === true){
 
-
+        controls2.enable = false;
         if( event.pointerType === "touch"){
  
             
