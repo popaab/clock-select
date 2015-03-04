@@ -277,48 +277,59 @@ function render()
     if(event.type === 'tap'){
       
        if( event.pointerType === "touch"){
-                  if(editMode === false){editMode = true;}
-                  
-                  touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
-                  touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
+          if(editMode === false){editMode = true;}
+          
+          touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
+          touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
 
-                  raycaster.setFromCamera( touchPos, camera );
+          raycaster.setFromCamera( touchPos, camera );
 
-                  var intersects = raycaster.intersectObjects( targetList );
-                
-                  if ( intersects.length > 0 ) {
+          var intersects = raycaster.intersectObjects( targetList );
+        
+          if ( intersects.length > 0 ) {
 
-                    intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
-                    console.log(intersects[0].object.id);
-                    var k = targetList.indexOf(intersects[0].object.id);
-                    selectedObject = intersects[0].object;
-                    cameraX = selectedObject.position.x;
-                    cameraY = selectedObject.position.y;
-                    cameraZ = -selectedObject.position.z + 200;
+            intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+            console.log(intersects[0].object.id);
+            var k = targetList.indexOf(intersects[0].object.id);
+            selectedObject = intersects[0].object;
+            cameraX = selectedObject.position.x;
+            cameraY = selectedObject.position.y;
+            cameraZ = -selectedObject.position.z + 200;
 
-                    console.log(cameraX,cameraY,cameraZ);
+            console.log(cameraX,cameraY,cameraZ);
 
-                    document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
+            document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
 
-                  }      
-                }
+          }      
+        }
 
 
     }
 
-    if(event.type === 'pinchin' && editMode === true){
+    if(event.type === 'pinchin ' && editMode === true){
 
 
         if( event.pointerType === "touch"){
 
+          raycaster.setFromCamera( touchPos, camera );
+
+          var intersects = raycaster.intersectObjects( targetList );
+        
+          if ( intersects.length > 0 ) {
+
+            intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+            console.log(intersects[0].object.id);
+            var k = targetList.indexOf(intersects[0].object.id);
+            selectedObject = intersects[0].object;
           scene.remove( k );
 
           console.log(cameraX,cameraY,cameraZ);
 
-           document.getElementById("resultDIV").innerHTML = ("deleted: "+ selectedObject);
+           document.getElementById("resultDIV").innerHTML = ("deleted: "+ k);
            editMode = false;
 
         }      
                     
     }
+  }
 }
