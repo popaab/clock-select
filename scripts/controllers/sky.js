@@ -227,13 +227,13 @@ function addOcta(x,y,z) {
   var geometry = new THREE.OctahedronGeometry( 60, 0 );
   var octa= new THREE.Mesh( geometry, shiny2 );
 
-  octa.position.set(position[0], position[1], position[2]);
-          octa.rotation.x = 0;
-          octa.rotation.y = 0;
-          octa.rotation.z = 0;
-          octa.scale.x = 0;
-    octa.scale.y = 0;
-    octa.scale.z = 0;
+      octa.position.set(position[0], position[1], position[2]);
+      octa.rotation.x = 0;
+      octa.rotation.y = 0;
+      octa.rotation.z = 0;
+      octa.scale.x = 0;
+      octa.scale.y = 0;
+      octa.scale.z = 0;
   // creates a wireMesh object
   var numb = amountNow + 1;
   var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
@@ -256,7 +256,6 @@ function addOcta(x,y,z) {
         z: this.scale,
         ease:"Exponential.InOut",
         onComplete:function(){
-          console.log('tweeneeedddd');
           // this.reverse()
         }
       })
@@ -306,16 +305,15 @@ mc.get('tap').requireFailure('doubletap');
       
        if( ev.pointerType === "touch" && editMode === false){
 
-            console.log(ev.pointerType);
+            // console.log(ev.pointerType);
             
             var pinchx = ev.pointers[0].clientX;
             var pinchy = ev.pointers[0].clientY;
-
                 
             var cartesianx = pinchx- windowHalfX
             var cartesiany = - pinchy+ windowHalfY
 
-            console.log("world cord: " + cartesianx + " " + cartesiany);
+            // console.log("world cord: " + cartesianx + " " + cartesiany);
         
             addOcta(cartesianx,cartesiany, getRandom(-150, 150));
         }
@@ -329,7 +327,7 @@ mc.get('tap').requireFailure('doubletap');
        
         // alarmNumbers();
         
-          console.log(event);
+          // console.log(event);
           touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
           touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
 
@@ -347,7 +345,7 @@ mc.get('tap').requireFailure('doubletap');
 
             intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
             
-            console.log(intersects[0].object.id);
+            // console.log(intersects[0].object.id);
             k = targetList.indexOf(intersects[0].object.id);
             selectedObject = intersects[0].object;
             var num = selectedObject.id + 1;
@@ -355,60 +353,51 @@ mc.get('tap').requireFailure('doubletap');
             cameraX = selectedObject.position.x;
             cameraY = selectedObject.position.y;
             cameraZ = -selectedObject.position.z + 200;
-
-
-        
-        
+         
             document.getElementById("alarmTitle").innerHTML = 'Alarm ' + num;
-
-            document.getElementById("resultDIV").innerHTML = ("double tap: "+ intersects[0].object.id);
-   
+            document.getElementById("resultDIV").innerHTML = ("double tap: "+ intersects[0].object.id);  
           } 
         }
       }
 
         if(event.type === 'panleft' ) {
           alarmEdit = true;
-      
-          console.log(event);
+          // console.log(event);
+
         for(i = 0; i < 1; i++) {
           hour -= 1;
             if(hour < 0) {
                 hour = 23;
             }
         }
-        if(hour < 10) {
-          document.getElementById("hour").innerHTML = 'Time: ' + '0' + hour + ' : ';
-        
-          
-        } else {
-        document.getElementById("hour").innerHTML = 'Time: ' + hour + ' : ';
-      }
-    }
-
-      if(event.type === 'panright' ) {
-        alarmEdit = true;
-
-        console.log(event);
-        for(i = 0; i < 1; i++) {
-          hour += 1;
-          if(hour > 23) {
-            hour = 0;
-          }
+            if(hour < 10) {
+              document.getElementById("hour").innerHTML = 'Time: ' + '0' + hour + ' : ';
+            } else {
+            document.getElementById("hour").innerHTML = 'Time: ' + hour + ' : ';
+            }
         }
-        if(hour < 10) {
-          document.getElementById("hour").innerHTML = 'Time: ' + '0' + hour + ' : ';
-        
-          
-        } else {
-        document.getElementById("hour").innerHTML = 'Time: ' + hour + ' : ';
-      }
-    }
+
+            if(event.type === 'panright' ) {
+              alarmEdit = true;
+
+              // console.log(event);
+              for(i = 0; i < 1; i++) {
+                hour += 1;
+                if(hour > 23) {
+                  hour = 0;
+                }
+              }
+              if(hour < 10) {
+                document.getElementById("hour").innerHTML = 'Time: ' + '0' + hour + ' : ';
+              } else {
+                document.getElementById("hour").innerHTML = 'Time: ' + hour + ' : ';
+              }
+            }
 
       if(event.type === 'panup') {
         alarmEdit = true;
    
-        console.log(event);
+        // console.log(event);
         for(i = 0; i < 1; i++) {
           mins += 1;
           if(mins > 59) {
@@ -417,17 +406,15 @@ mc.get('tap').requireFailure('doubletap');
         }
         if(mins < 10) {
           document.getElementById("mins").innerHTML = '0'+ mins;
-
         } else {
           document.getElementById("mins").innerHTML =  mins;
         }
-          
       }
 
       if(event.type === 'pandown') {
         alarmEdit = true;
 
-        console.log(event);
+        // console.log(event);
         for(i = 0; i < 1; i++) {
           mins -= 1;
           if(mins < 0) {
@@ -461,20 +448,19 @@ mc.get('tap').requireFailure('doubletap');
 
               intersects[ 0 ].object.material.color.setHex( 'blue' );
               
-            console.log(intersects[0].object.id);
-            k = targetList.indexOf(intersects[0].object.id);
-            selectedObject = intersects[0].object;
-            toDel= intersects[0].object;
-              toDel.scale.x = 1;
-              toDel.scale.y = 1;
-              toDel.scale.z = 1;
+              // console.log(intersects[0].object.id);
+              k = targetList.indexOf(intersects[0].object.id);
+              selectedObject = intersects[0].object;
+              toDel= intersects[0].object;
+              // toDel.scale.x = 1;
+              // toDel.scale.y = 1;
+              // toDel.scale.z = 1;
+              
+              cameraX = selectedObject.position.x;
+              cameraY = selectedObject.position.y;
+              cameraZ = -selectedObject.position.z + 200;
 
-            
-            cameraX = selectedObject.position.x;
-            cameraY = selectedObject.position.y;
-            cameraZ = -selectedObject.position.z + 200;
-
-            console.log(cameraX,cameraY,cameraZ);
+              // console.log(cameraX,cameraY,cameraZ);
 
             // document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
 
@@ -523,7 +509,7 @@ function onDocumentTouchStart( event ) {
         mouseYOnMouseDown = event.touches[ 0 ].pageY - windowHalfY;
         targetRotationOnMouseDownY = targetRotationY;
     }
- console.log("Touch start: "+ targetRotationOnMouseDownX + " " + targetRotationOnMouseDownY);
+ // console.log("Touch start: "+ targetRotationOnMouseDownX + " " + targetRotationOnMouseDownY);
 }
  
 function onDocumentTouchMove( event ) {
@@ -538,7 +524,7 @@ function onDocumentTouchMove( event ) {
         mouseY = event.touches[ 0 ].pageY - windowHalfY;
         targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.05;
       }
- console.log("Touch move: "+ targetRotationX + " " + targetRotationY);
+ // console.log("Touch move: "+ targetRotationX + " " + targetRotationY);
       
  
 }
