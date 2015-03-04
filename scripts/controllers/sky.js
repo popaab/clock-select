@@ -333,6 +333,7 @@ mc.get('tap').requireFailure('doubletap');
           if ( intersects.length > 0 ) {
 
             setTimeout( function (){ intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );}, 5000);
+            intersects[ 0 ].object.material.color.setHex( 'white');
             console.log(intersects[0].object.id);
             k = targetList.indexOf(intersects[0].object.id);
             selectedObject = intersects[0].object;
@@ -445,7 +446,8 @@ mc.get('tap').requireFailure('doubletap');
         
           if ( intersects.length > 0 ) {
 
-            intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+              setTimeout( function (){intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );}, 5000);
+              intersects[ 0 ].object.material.color.setHex( 'white');
             console.log(intersects[0].object.id);
             k = targetList.indexOf(intersects[0].object.id);
             selectedObject = intersects[0].object;
