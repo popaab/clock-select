@@ -504,7 +504,7 @@ function makeTextSprite( message, parameters )
   if ( parameters === undefined ) parameters = {};
   
   var fontface = parameters.hasOwnProperty("fontface") ? 
-    parameters["fontface"] : "Arial";
+    parameters["fontface"] : "Lato";
   
   var fontsize = parameters.hasOwnProperty("fontsize") ? 
     parameters["fontsize"] : 18;
