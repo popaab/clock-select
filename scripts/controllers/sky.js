@@ -55,7 +55,7 @@ var editMode = false
 var world = true, selectedOnce = false;
 init();
 animate();
-state();
+
 
 function getRandom(min, max) {
           return Math.random() * (max - min) + min;
