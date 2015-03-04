@@ -417,6 +417,13 @@ function onDocumentTouchMove( event ) {
  
 }
 
+function alarm(object) {
+if( editMode === true){
+    var selectedId = object.id; 
+  scene.getObjectById(selectedId).rotation.y += ( targetRotationX - mainTime.rotation.y ) * 0.1;
+  scene.getObjectById(selectedId).rotation.rotation.x += ( targetRotationY - mainTime.rotation.x ) * 0.1;
+}
+}
 
 function animate() 
 {
@@ -436,7 +443,8 @@ function update()
 function render() 
 {
   renderer.render( scene, camera );
-scene.getObjectByName('clock').rotation.x += 0.05;
+  alarm(selectedObject);
+  scene.getObjectByName('clock').rotation.x += 0.05;
   deltaTime = clock.getDelta();
   particleSystem.rotation.y += deltaTime/40;
   // mainTime.rotation.y += 0.05;
