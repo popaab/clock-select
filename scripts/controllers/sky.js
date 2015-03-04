@@ -222,29 +222,6 @@ function addOcta(x,y,z){
 }
 
 
-function animate() 
-{
-  requestAnimationFrame( animate );
-  render();   
-  update();
-}
-
-function update()
-{
-
-  controls.update();
-  controls2.update();
-}
-
-function render() 
-{
-
-  deltaTime = clock.getDelta();
-  particleSystem.rotation.y += deltaTime/40;
-  alarmRotate();
-  
-  renderer.render( scene, camera );
-}
 
 
 
@@ -420,8 +397,8 @@ function onDocumentTouchMove( event ) {
 }
 
 function alarmRotate(){
-octa.rotation.y += ( targetRotationX - octa.rotation.y ) * 0.1;
-octa.rotation.x += ( targetRotationY - octa.rotation.x ) * 0.1;
+selectedObject.rotation.y += ( targetRotationX - selectedObject.rotation.y ) * 0.1;
+selectedObject.rotation.x += ( targetRotationY - selectedObject.rotation.x ) * 0.1;
 
 
 }
@@ -438,7 +415,7 @@ mc.on("panmove panleft", function(ev) {
   } else {
     document.getElementById("hour").innerHTML = hour;
   }
-})
+});
 
 mc.on("panmove panright", function(ev) {
   for(i = 0; i < 1; i++) {
@@ -452,7 +429,7 @@ mc.on("panmove panright", function(ev) {
   } else {
     document.getElementById("hour").innerHTML = hour;
   }
-})
+});
 
 mc.on("panmove panup", function(ev) {
   for(i = 0; i < 1; i++) {
@@ -467,7 +444,7 @@ mc.on("panmove panup", function(ev) {
     document.getElementById("mins").innerHTML = mins;
   }
     
-})
+});
 
 mc.on("panmove pandown", function(ev) {
   for(i = 0; i < 1; i++) {
@@ -481,4 +458,31 @@ mc.on("panmove pandown", function(ev) {
   } else {
     document.getElementById("mins").innerHTML = mins;
   }
-})
+});
+
+
+
+function animate() 
+{
+  requestAnimationFrame( animate );
+  render();   
+  update();
+}
+
+function update()
+{
+
+  controls.update();
+  controls2.update();
+}
+
+function render() 
+{
+
+  deltaTime = clock.getDelta();
+  particleSystem.rotation.y += deltaTime/40;
+  alarmRotate();
+  
+  renderer.render( scene, camera );
+}
+
