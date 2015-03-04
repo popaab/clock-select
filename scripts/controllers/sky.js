@@ -420,8 +420,8 @@ function onDocumentTouchMove( event ) {
 }
 
 function alarmRotate(){
-selectedObject.rotation.y += ( targetRotationX - selectedObject.rotation.y ) * 0.1;
-selectedObject.rotation.x += ( targetRotationY - selectedObject.rotation.x ) * 0.1;
+octa.rotation.y += ( targetRotationX - octa.rotation.y ) * 0.1;
+octa.rotation.x += ( targetRotationY - octa.rotation.x ) * 0.1;
 
 
 }
