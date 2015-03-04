@@ -235,7 +235,7 @@ function addOcta(x,y,z){
           octa.rotation.z = 0;
   // creates a wireMesh object
   var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
-  var spritey = makeTextSprite( "Alarm 1", 
+  var spritey = makeTextSprite( "Alarm " + amountNow, 
     { fontsize: 32, fontface: "Lato"} );
   spritey.position.set(x,y+ 10,z - 40);
 
@@ -539,7 +539,7 @@ function makeTextSprite( message, parameters )
   // 1.4 is extra height factor for text below baseline: g,j,p,q.
   
   // text color
-  context.fillStyle = "rgba(0, 0, 0, 1.0)";
+  context.fillStyle = "rgba(255, 255, 255, 1.0)";
 
   context.fillText( message, borderThickness, fontsize + borderThickness);
   
