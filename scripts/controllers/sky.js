@@ -371,6 +371,7 @@ mc.get('tap').requireFailure('doubletap');
         } else {
         document.getElementById("hour").innerHTML = 'Time: ' + hour + ' : ';
       }
+    }
 
       if(event.type === 'panright' ) {
         alarmEdit = true;
@@ -389,6 +390,7 @@ mc.get('tap').requireFailure('doubletap');
         } else {
         document.getElementById("hour").innerHTML = 'Time: ' + hour + ' : ';
       }
+    }
 
       if(event.type === 'panup') {
         alarmEdit = true;
