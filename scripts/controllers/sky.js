@@ -354,6 +354,7 @@ mc.get('tap').requireFailure('doubletap');
     }
 
         if(event.type === 'panleft' ){
+          alarmEdit = true;
           console.log(event);
         for(i = 0; i < 1; i++) {
           hour -= 1;
@@ -362,6 +363,7 @@ mc.get('tap').requireFailure('doubletap');
             }
         }
         if(hour < 10) {
+          alarmEdit = true;
           document.getElementById("hour").innerHTML = 'Time: ' + '0' + hour + ' : ';
         } else {
           document.getElementById("hour").innerHTML = 'Time: ' + hour + ' : ';
@@ -369,6 +371,7 @@ mc.get('tap').requireFailure('doubletap');
       }
 
       if(event.type === 'panright' ){
+        alarmEdit = true;
         console.log(event);
         for(i = 0; i < 1; i++) {
           hour += 1;
@@ -384,6 +387,7 @@ mc.get('tap').requireFailure('doubletap');
       }
 
       if(event.type === 'panup'){
+        alarmEdit = true;
         console.log(event);
         for(i = 0; i < 1; i++) {
           mins += 1;
@@ -400,6 +404,7 @@ mc.get('tap').requireFailure('doubletap');
       }
 
       if(event.type === 'pandown'){
+        alarmEdit = true;
         console.log(event);
         for(i = 0; i < 1; i++) {
           mins -= 1;
