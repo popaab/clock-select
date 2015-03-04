@@ -54,7 +54,7 @@ particleSystem;
 var state = 0, world = true, selectedOnce = false;
 init();
 animate();
-var editMode;
+state();
 
 function getRandom(min, max) {
           return Math.random() * (max - min) + min;
@@ -144,9 +144,6 @@ function init()
   raycaster = new THREE.Raycaster();
   touchPos = new THREE.Vector2();
 
-
-  var editMode = false;
-
 }
 
 function random( min, max ) {
@@ -205,13 +202,6 @@ function animate()
 function update()
 {
 
-      if(editMode === true){
-
-      controls2.enabled = false;
-    }if(editMode === false){
-
-      controls2.enabled = true;
-    }
   controls.update();
   controls2.update();
 }
@@ -250,22 +240,28 @@ var mc = new Hammer.Manager(document.body);
       
     }});
 
- 
+    var editMode = false;
     mc.on('tap swiperight', function(ev) {
-      
       manageMultitouch(ev);
     });
 
 
 
-    
+    function state(){
+        if(editMode === true){
+          controls2.enabled = false;
+        }if (editMode === false){
+          controls2.enabled = true;
+        }
+    }
+
     function manageMultitouch(event){
 
      var selectedObject = null; 
      var k, cameraX, cameraY, cameraZ;
     
     if(event.type === 'tap'){
-    editMode = true;
+      editMode = true;
        if( event.pointerType === "touch"){
         
                   
@@ -295,8 +291,8 @@ var mc = new Hammer.Manager(document.body);
 
 
     }if(event.type === 'swiperight'){
-     
-    editMode = true;
+      editMode = true;
+    
 
       if( event.pointerType === "touch"){
 
@@ -314,7 +310,7 @@ var mc = new Hammer.Manager(document.body);
 
     }else{
   
-editMode = false;
+
 
     }
 
@@ -322,7 +318,7 @@ editMode = false;
 
     function onPinch(ev) {
     // if(ev.type == 'pinchout') {
-      editMode = false;
+
        if( ev.pointerType === "touch" && editMode === false){
 
             console.log(ev.pointerType);
