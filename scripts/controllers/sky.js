@@ -52,13 +52,14 @@ var maxParticles = 5000,
 particles,
 particleMaterial,
 particleSystem;
-var editMode = false
+
+var editMode = false;
 var world = true, selectedOnce = false;
 
 
 
 
-var  count = 0,
+var count = 0,
     hour = 0,
     mins = 00,
     deltaTime = 0,
