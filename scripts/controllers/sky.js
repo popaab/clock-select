@@ -172,14 +172,14 @@ function init()
 
           scene.add(mainTime);
 
-          var spritey = makeTextSprite( "Vancouver", 
+          var spritey = makeTextSprite( "", 
     { fontsize: 24, fontface: "Lato"} );
   spritey.position.set(-85,105,55);
   scene.add( spritey );
 
   var spritey = makeTextSprite( "Alarm 1", 
     { fontsize: 32, fontface: "Lato"} );
-  spritey.position.set(180,0,0);
+  spritey.position.set(125,20,10);
   scene.add( spritey );
   
           // targetList.push(mainTime);
