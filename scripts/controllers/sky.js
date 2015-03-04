@@ -238,7 +238,7 @@ function addOcta(x,y,z){
   var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
   var spritey = makeTextSprite( "Alarm " + numb, 
     { fontsize: 32, fontface: "Lato"} );
-  spritey.position.set(x -290,y -50,z - 200);
+  spritey.position.set(x -200,y -50,z - 200);
 
   if( amountNow <= maxAlarms){
 
@@ -334,7 +334,8 @@ mc.get('tap').requireFailure('doubletap');
             console.log(cameraX,cameraY,cameraZ);
 
             document.getElementById("resultDIV").innerHTML = ("double tap: "+ intersects[0].object.id);
-
+            document.getElementById("hour").style.visibility = "visble";
+            document.getElementById("mins").style.visibility = "visble";
           }      
         }
 
