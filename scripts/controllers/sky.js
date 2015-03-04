@@ -41,7 +41,7 @@ var mainTime;
 var maxAlarms = 10;
 var amountNow = 0;
 var x1, y1;
-
+var setId, getId;
 var k;
 var selected;
 var cameraX
@@ -312,6 +312,7 @@ function addOcta(x,y,z){
 
     }
 
+
     if(event.type === 'pinchin' && editMode === true){
 
         controls2.enable = false;
@@ -386,7 +387,12 @@ if(event.type === 'panmove' && event.type === 'pandown' && editMode === true){
 }
 }
 
- 
+ function setId(selectedObject){
+  setId = selectedObject.id;
+  getId = setId;
+  return getId;
+ }
+
 function onDocumentTouchStart( event ) {
  
     if ( event.touches.length == 1 ) {
@@ -414,12 +420,14 @@ function onDocumentTouchMove( event ) {
         mouseY = event.touches[ 0 ].pageY - windowHalfY;
         targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.05;
       }
+
+      alarm(selectedObject);
  
 }
 
 function alarm(object) {
 if( editMode === true){
-  var selectedId = object.id; 
+  var selectedId = setId(object); 
   scene.getObjectById(selectedId).rotation.y += ( targetRotationX - mainTime.rotation.y ) * 0.1;
   scene.getObjectById(selectedId).rotation.rotation.x += ( targetRotationY - mainTime.rotation.x ) * 0.1;
 }
@@ -443,7 +451,7 @@ function update()
 function render() 
 {
   renderer.render( scene, camera );
-  alarm(selectedObject);
+  
   // scene.getObjectByName('clock').rotation.x += 0.05;
   deltaTime = clock.getDelta();
   particleSystem.rotation.y += deltaTime/40;
