@@ -239,7 +239,7 @@ function addOcta(x,y,z) {
   var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
   var spritey = makeTextSprite( "Alarm " + numb, 
     { fontsize: 32, fontface: "Lato"} );
-  spritey.position.set(0 , 0 , 0 );
+  spritey.position.set(10 , 10 , 10 );
 
   if( amountNow <= maxAlarms){
 
