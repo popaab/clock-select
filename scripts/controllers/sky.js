@@ -255,6 +255,7 @@ function render()
     mc.add(new Hammer.Tap({ taps: 1}));
     // mc.add(new Hammer.Pan());
     mc.add(new Hammer.Swipe());
+    mc.add(new Hammer.Pan());
 
     mc.on("pinchout", onPinch);
     // mc.on("pinchin pinchend", onPinchIn);
@@ -343,3 +344,134 @@ function render()
     
   }
 }
+
+function onDocumentMouseDown( event ) {
+
+    event.preventDefault();
+
+    document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+    document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+    document.addEventListener( 'mouseout', onDocumentMouseOut, false );
+
+    mouseXOnMouseDown = event.clientX - windowHalfX;
+    targetRotationOnMouseDownX = targetRotationX;
+
+    mouseYOnMouseDown = event.clientY - windowHalfY;
+    targetRotationOnMouseDownY = targetRotationY;
+
+  }
+
+function onDocumentMouseMove( event ) {
+ 
+    mouseX = event.clientX - windowHalfX;
+    mouseY = event.clientY - windowHalfY;
+ 
+    targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.02;
+    targetRotationX = targetRotationOnMouseDownX + (mouseX - mouseXOnMouseDown) * 0.02;
+      
+ 
+}
+ 
+function onDocumentMouseUp( event ) {
+ 
+    document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+    document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+    document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
+ 
+}
+ 
+function onDocumentMouseOut( event ) {
+ 
+    document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+    document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+    document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
+ 
+}
+ 
+function onDocumentTouchStart( event ) {
+ 
+    if ( event.touches.length == 1 ) {
+
+        event.preventDefault();
+
+        mouseXOnMouseDown = event.touches[ 0 ].pageX - windowHalfX;
+        targetRotationOnMouseDownX = targetRotationX;
+
+        mouseYOnMouseDown = event.touches[ 0 ].pageY - windowHalfY;
+        targetRotationOnMouseDownY = targetRotationY;
+    }
+ 
+}
+ 
+function onDocumentTouchMove( event ) {
+ 
+    if ( event.touches.length == 1 ) {
+
+        event.preventDefault();
+
+        mouseX = event.touches[ 0 ].pageX - windowHalfX;
+        targetRotationX = targetRotationOnMouseDownX + ( mouseX - mouseXOnMouseDown ) * 0.05;
+
+        mouseY = event.touches[ 0 ].pageY - windowHalfY;
+        targetRotationY = targetRotationOnMouseDownY + (mouseY - mouseYOnMouseDown) * 0.05;
+      }
+ 
+}
+
+
+mc.on("panmove panleft", function(ev) {
+  for(i = 0; i < 1; i++) {
+    hour -= 1;
+      if(hour < 0) {
+          hour = 23;
+      }
+  }
+  if(hour < 10) {
+    document.getElementById("hour").innerHTML = '0' + hour;
+  } else {
+    document.getElementById("hour").innerHTML = hour;
+  }
+})
+
+mc.on("panmove panright", function(ev) {
+  for(i = 0; i < 1; i++) {
+    hour += 1;
+    if(hour > 23) {
+      hour = 0;
+    }
+  }
+  if(hour < 10) {
+    document.getElementById("hour").innerHTML = '0' + hour;
+  } else {
+    document.getElementById("hour").innerHTML = hour;
+  }
+})
+
+mc.on("panmove panup", function(ev) {
+  for(i = 0; i < 1; i++) {
+    mins += 1;
+    if(mins > 59) {
+      mins = 0;
+    }
+  }
+  if(mins < 10) {
+    document.getElementById("mins").innerHTML = '0' + mins;
+  } else {
+    document.getElementById("mins").innerHTML = mins;
+  }
+    
+})
+
+mc.on("panmove pandown", function(ev) {
+  for(i = 0; i < 1; i++) {
+    mins -= 1;
+    if(mins < 0) {
+      mins = 59;
+    }
+  }
+    if(mins < 10) {
+    document.getElementById("mins").innerHTML = '0' + mins;
+  } else {
+    document.getElementById("mins").innerHTML = mins;
+  }
+})
