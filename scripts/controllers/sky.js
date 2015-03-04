@@ -159,7 +159,7 @@ function init()
 
    
     var mainTime = new THREE.Mesh(new THREE.TetrahedronGeometry(100, 3), shiny);
-    mainTime.add(new THREE.AxisHelper());
+    mainTime.add(new THREE.Axis());
     mainTime.rotation.set(Math.PI/2, Math.PI/4, Math.PI/4);
     mainTime.matrix.setRotationFromEuler(mainTime.rotation);
 
