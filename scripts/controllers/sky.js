@@ -244,6 +244,22 @@ function addOcta(x,y,z) {
   // wireMesh object is added to the original as a sub-object
   octa.add(wireOcta );
   octa.add (spritey);
+  var tween = {
+    scale: 1,
+    go: function() {
+      TweenLite.to(shape.scale, .4, {
+        x: this.scale,
+        y: this.scale,
+        z: this.scale,
+        ease:"Exponential.InOut",
+        onComplete:function(){
+          // this.reverse()
+        }
+      })
+    }
+  }
+  tween.go()
+
   
   targetList.push(octa);
   amountNow++;
@@ -453,7 +469,7 @@ mc.get('tap').requireFailure('doubletap');
 
             console.log(cameraX,cameraY,cameraZ);
 
-            document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
+            // document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
 
           }      
         }
