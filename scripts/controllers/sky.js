@@ -349,7 +349,10 @@ mc.get('tap').requireFailure('doubletap');
             cameraY = selectedObject.position.y;
             cameraZ = -selectedObject.position.z + 200;
 
-            console.log(cameraX,cameraY,cameraZ);
+
+
+          $('#alarmTitle').text( 'Alarm: ' + num );
+        
             document.getElementById("alarmTitle").innerHTML = 'Alarm ' + num;
 
             document.getElementById("resultDIV").innerHTML = ("double tap: "+ intersects[0].object.id);
@@ -371,11 +374,10 @@ mc.get('tap').requireFailure('doubletap');
             }
         }
         if(hour < 10) {
-          alarmEdit = true;
-          alarmNumbers();
-          document.getElementById("hour").innerHTML = 'Time: ' + '0' + hour + ' : ';
+           $('#hour').text( 'Time: ' + '0' + hour + ' : ');
+          
         } else {
-          document.getElementById("hour").innerHTML = 'Time: ' + hour + ' : ';
+          $('#hour').text( 'Time: ' + hour + ' : ');
         }
       }
 
@@ -390,9 +392,10 @@ mc.get('tap').requireFailure('doubletap');
           }
         }
         if(hour < 10) {
-          document.getElementById("hour").innerHTML = 'Time: ' + '0' + hour + ' : ';
+           $('#hour').text( 'Time: ' + '0' + hour + ' : ');
+          
         } else {
-          document.getElementById("hour").innerHTML = 'Time: ' + hour + ' : ';
+          $('#hour').text( 'Time: ' + hour + ' : ');
         }
       }
 
@@ -407,9 +410,9 @@ mc.get('tap').requireFailure('doubletap');
           }
         }
         if(mins < 10) {
-          document.getElementById("mins").innerHTML = '0' + mins;
+            $('#mins').text( '0'+ mins);
         } else {
-          document.getElementById("mins").innerHTML = mins;
+          $('#mins').text(  mins);
         }
           
       }
@@ -424,11 +427,10 @@ mc.get('tap').requireFailure('doubletap');
             mins = 59;
           }
         }
-          if(mins < 10) {
-          document.getElementById("mins").innerHTML = '0' + mins;
-
+        if(mins < 10) {
+            $('#mins').text( '0'+ mins);
         } else {
-          document.getElementById("mins").innerHTML = mins;
+          $('#mins').text(  mins);
         }
       }else{
         alarmEdit = false;
