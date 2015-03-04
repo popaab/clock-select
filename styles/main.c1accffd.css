@@ -16,6 +16,13 @@ html{
   background: #eee;
 }*/
 
+.hour{
+  
+  visibility: hidden;
+}
+.mins {
+  visibility: hidden;
+}
 .alarm {
   $w: 350px;
   position: absolute;
@@ -26,6 +33,7 @@ html{
   margin-left: -($w/2);
   text-align: center;
   overflow: hidden;
+
 }
 
 .alarm span {
