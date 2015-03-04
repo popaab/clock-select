@@ -253,11 +253,8 @@ function addOcta(x,y,z) {
 
 function alarmNumbers() {
 
-        if (alarmEdit === true) {
-          document.getElementById("alarmTitle").style.visibility = "visble";
-          document.getElementById("hour").style.visibility = "visble";
-          document.getElementById("mins").style.visibility = "visble";
-      } if (alarmEdit === false){
+
+      if (alarmEdit === false){
         document.getElementById("alarmTitle").style.visibility = "hidden";
         document.getElementById("hour").style.visibility = "hidden";
         document.getElementById("mins").style.visibility = "hidden";
@@ -314,7 +311,7 @@ mc.get('tap').requireFailure('doubletap');
     function manageMultitouchAlarm(event){
     
     if(event.type === 'doubletap'){
-       alarmEdit = tru
+       alarmEdit = true;
        if( event.pointerType === "touch"){
        
         // alarmNumbers();
@@ -322,6 +319,12 @@ mc.get('tap').requireFailure('doubletap');
           console.log(event);
           touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
           touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
+
+        if (alarmEdit === true) {
+          document.getElementById("alarmTitle").style.visibility = "visble";
+          document.getElementById("hour").style.visibility = "visble";
+          document.getElementById("mins").style.visibility = "visble";
+        }
 
           raycaster.setFromCamera( touchPos, camera );
 
