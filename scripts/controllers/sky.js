@@ -260,7 +260,7 @@ function addOcta(x,y,z){
           document.getElementById("hour").style.visibility = "visble";
             document.getElementById("mins").style.visibility = "visble";
       }else{
-        document.getElementById("alarmTitle").style.visibility = "visble";
+        document.getElementById("alarmTitle").style.visibility = "hidden";
         document.getElementById("hour").style.visibility = "hidden";
       document.getElementById("mins").style.visibility = "hidden";
       }
