@@ -253,7 +253,8 @@ function addOcta(x,y,z){
 
 }
 
-
+      document.getElementById("hour").style.visibility = "hidden";
+      document.getElementById("mins").style.visibility = "hidden";
 var mc = new Hammer.Manager(document.body);
 mc.add(new Hammer.Pinch({ threshold: 0}));
 
@@ -307,6 +308,7 @@ mc.get('tap').requireFailure('doubletap');
     function manageMultitouchAlarm(event){
     
     if(event.type === 'doubletap'){
+
       
        if( event.pointerType === "touch"){
       alarmEdit = true;
@@ -399,11 +401,9 @@ mc.get('tap').requireFailure('doubletap');
         } else {
           document.getElementById("mins").innerHTML = mins;
         }
-      }if(event.type === 'tap'){
-        console.log(event);
-        editMode = false;
-   
       }
+   
+      
         
     
 
