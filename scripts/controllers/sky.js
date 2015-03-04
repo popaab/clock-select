@@ -235,21 +235,10 @@ function render()
     });
 
 
-    function state() {
-      if(editMode === false){
-          controls2.enabled = false;
-
-        }else {
-          controls2.enabled = true;
-
-        }
-
-    }
-
     function onPinch(ev) {
     // if(ev.type == 'pinchout') {
       editMode = false;
-      state();
+      
        if( ev.pointerType === "touch" && editMode === false){
 
             console.log(ev.pointerType);
@@ -272,8 +261,7 @@ function render()
     }
 
  function manageMultitouch(event){
-  state();
-    
+
     if(event.type === 'tap'){
       
        if( event.pointerType === "touch"){
