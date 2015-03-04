@@ -423,9 +423,8 @@ mc.get('tap').requireFailure('doubletap');
           document.getElementById("mins").innerHTML = '0'+ mins;
 
         } else {
-          document.getElementById("mins").innerHTML =  mins;
+          document.getElementById("mins").innerHTML = mins;
         }
-          
       }
 }
 
