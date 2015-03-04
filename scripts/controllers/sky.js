@@ -241,6 +241,7 @@ function render()
 
   deltaTime = clock.getDelta();
   particleSystem.rotation.y += deltaTime/40;
+  alarmRotate();
   
   renderer.render( scene, camera );
 }
@@ -418,6 +419,12 @@ function onDocumentTouchMove( event ) {
  
 }
 
+function alarmRotate(){
+shape.rotation.y += ( targetRotationX - shape.rotation.y ) * 0.1;
+    shape.rotation.x += ( targetRotationY - shape.rotation.x ) * 0.1;
+
+
+}
 
 mc.on("panmove panleft", function(ev) {
   for(i = 0; i < 1; i++) {
