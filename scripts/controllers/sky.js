@@ -231,10 +231,10 @@ function render()
     mc.on('tap swiperight', function(ev) {
     manageMultitouch(ev);
 
-    }
+    });
 
 
-    function state(){
+    function state() {
       if(editMode === false){
           controls2.enabled = false;
 
