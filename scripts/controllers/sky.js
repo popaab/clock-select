@@ -419,7 +419,7 @@ function onDocumentTouchMove( event ) {
 
 function alarm(object) {
 if( editMode === true){
-    var selectedId = object.id; 
+  var selectedId = object.id; 
   scene.getObjectById(selectedId).rotation.y += ( targetRotationX - mainTime.rotation.y ) * 0.1;
   scene.getObjectById(selectedId).rotation.rotation.x += ( targetRotationY - mainTime.rotation.x ) * 0.1;
 }
