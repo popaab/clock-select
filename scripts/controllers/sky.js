@@ -252,7 +252,7 @@ function addOcta(x,y,z){
 }
 
 }
-      function alarm(){
+      function alarmNumbers(){
         if (alarmEdit === true){
           document.getElementById("alarmTitle").style.visibility = "visble";
                    document.getElementById("hour").style.visibility = "visble";
@@ -586,7 +586,7 @@ function animate()
 
 function update()
 {
-  alarm();
+  alarmNumbers();
 
   controls.update();
   controls2.update();
