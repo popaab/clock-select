@@ -314,7 +314,7 @@ mc.get('tap').requireFailure('doubletap');
 
             console.log("world cord: " + cartesianx + " " + cartesiany);
         
-            addOcta(cartesianx,cartesiany, getRandom(-200, 200));
+            addOcta(cartesianx,cartesiany, getRandom(-150, 150));
         }
     }
 
