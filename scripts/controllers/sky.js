@@ -243,7 +243,7 @@ function addOcta(x,y,z) {
 
   var h = getRandom(0, 24);
     var spritey2 = makeTextSprite(Math.floor(h) + " : " + "00",    { fontsize: 32, fontface: "Lato"} );
-  spritey2.position.set(+90 , +10 , 0 );
+  spritey2.position.set(+90 , +10 , 10 );
   if( amountNow <= maxAlarms){
 
   scene.add(octa);
