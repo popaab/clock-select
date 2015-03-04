@@ -139,7 +139,7 @@ function init()
           mainTime.position.z = 0;
 
           scene.add(mainTime);
-          targetList.push(mainTime);
+          // targetList.push(mainTime);
   addOcta(180,0,0);
 
   
@@ -300,7 +300,7 @@ function render()
 
     }
 
-    if(event.type === 'pinchin' && editMode === true && toDel.object.id !== 7){
+    if(event.type === 'pinchin' && editMode === true){
 
         controls2.enable = false;
         if( event.pointerType === "touch"){
