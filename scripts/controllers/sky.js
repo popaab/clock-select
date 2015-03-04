@@ -179,7 +179,7 @@ function init()
 
   var spritey = makeTextSprite( "Alarm 1", 
     { fontsize: 32, fontface: "Lato"} );
-  spritey.position.set(180,60,0);
+  spritey.position.set(180,40,0);
   scene.add( spritey );
   
           // targetList.push(mainTime);
@@ -235,13 +235,16 @@ function addOcta(x,y,z){
           octa.rotation.z = 0;
   // creates a wireMesh object
   var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
-  
+  var spritey = makeTextSprite( "Alarm 1", 
+    { fontsize: 32, fontface: "Lato"} );
+  spritey.position.set(x,y+ 40,z);
 
   if( amountNow <= maxAlarms){
 
   scene.add(octa);
   // wireMesh object is added to the original as a sub-object
   octa.add(wireOcta );
+  octa.add (spritey);
   
   targetList.push(octa);
   amountNow++;
