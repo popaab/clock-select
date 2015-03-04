@@ -231,7 +231,7 @@ function render()
 
     mc.on("pinchout", onPinch);
     // mc.on("pinchin pinchend", onPinchIn);
-    mc.on('tap pinchin', function(ev) {
+    mc.on('tap swiperight', function(ev) {
     manageMultitouch(ev);
 
     });
@@ -280,7 +280,7 @@ function render()
 
             intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
             console.log(intersects[0].object.id);
-            var k = targetList.indexOf(intersects[0].object.id);
+            k = targetList.indexOf(intersects[0].object.id);
             selectedObject = intersects[0].object;
             cameraX = selectedObject.position.x;
             cameraY = selectedObject.position.y;
@@ -296,7 +296,7 @@ function render()
 
     }
 
-    if(event.type === 'pinchin ' && editMode === true){
+    if(event.type === 'swiperight' && editMode === true){
 
 
         if( event.pointerType === "touch"){
