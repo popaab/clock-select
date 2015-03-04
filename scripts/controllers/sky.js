@@ -26,7 +26,8 @@ var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20
 var targetList = [];
 var projector, touchPos = { x: 0, y: 0 },INTERSECTED;
 var raycaster;
-
+var selectedObject; 
+var k, cameraX, cameraY, cameraZ, intersects;
 
 var baseColor=new THREE.Color( 'white' );
 var highlightedColor=new THREE.Color( 0xddaa00 );
@@ -247,6 +248,7 @@ function render()
 
     function onPinch(ev) {
     // if(ev.type == 'pinchout') {
+      editMode = false;
       state();
        if( ev.pointerType === "touch" && editMode === false){
 
@@ -271,26 +273,24 @@ function render()
 
  function manageMultitouch(event){
   state();
-     var selectedObject; 
-     var k, cameraX, cameraY, cameraZ;
     
     if(event.type === 'tap'){
       
        if( event.pointerType === "touch"){
-          if(editMode === false){editMode = true;}
+          editMode = true;
           
           touchPos.x = ( event.pointers[0].clientX/ renderer.domElement.width ) * 2 - 1;
           touchPos.y = - ( event.pointers[0].clientY / renderer.domElement.height ) * 2 + 1;
 
           raycaster.setFromCamera( touchPos, camera );
 
-          var intersects = raycaster.intersectObjects( targetList );
+          intersects = raycaster.intersectObjects( targetList );
         
           if ( intersects.length > 0 ) {
 
             intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
             console.log(intersects[0].object.id);
-            var k = targetList.indexOf(intersects[0].object.id);
+            k = targetList.indexOf(intersects[0].object.id);
             selectedObject = intersects[0].object;
             cameraX = selectedObject.position.x;
             cameraY = selectedObject.position.y;
@@ -310,20 +310,13 @@ function render()
 
 
         if( event.pointerType === "touch"){
-
-          raycaster.setFromCamera( touchPos, camera );
-
-          var intersects = raycaster.intersectObjects( targetList );
         
           if ( intersects.length > 0 ) {
 
-            intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
-            console.log(intersects[0].object.id);
             var k = targetList.indexOf(intersects[0].object.id);
-            selectedObject = intersects[0].object;
-          scene.remove( k );
+            
+            scene.remove( k );
 
-          console.log(cameraX,cameraY,cameraZ);
 
            document.getElementById("resultDIV").innerHTML = ("deleted: "+ k);
            editMode = false;
