@@ -183,7 +183,7 @@ function init()
   // scene.add( spritey );
   
           // targetList.push(mainTime);
-  addOcta(180,0,0);
+  addOcta(250,0,0);
 
   
   // initialize object to perform world/screen calculations
@@ -235,7 +235,7 @@ function addOcta(x,y,z){
           octa.rotation.z = 0;
   // creates a wireMesh object
   var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
-  var spritey = makeTextSprite( "Alarm " + amountNow, 
+  var spritey = makeTextSprite( "Alarm " + amountNow + 1, 
     { fontsize: 32, fontface: "Lato"} );
   spritey.position.set(x -150,y+ 50,z - 40);
 
@@ -297,7 +297,7 @@ mc.get('tap').requireFailure('doubletap');
             console.log("world cord: " + cartesianx + " " + cartesiany);
         
 
-            addOcta(cartesianx,cartesiany, getRandom(-400, 300));
+            addOcta(cartesianx,cartesiany, getRandom(-300, 300));
 
         }
  
