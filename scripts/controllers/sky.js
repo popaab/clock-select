@@ -24,6 +24,7 @@ var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
 var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
 // custom global variables
 var targetList = [];
+
 var projector, touchPos = { x: 0, y: 0 },INTERSECTED;
 var raycaster;
 var selectedObject; 
@@ -299,12 +300,12 @@ function render()
 
     }
 
-    if(event.type === 'pinchin' && editMode === true){
+    if(event.type === 'pinchin' && editMode === true && toDel.object.id !== 7){
 
         controls2.enable = false;
         if( event.pointerType === "touch"){
  
-        
+          
               scene.remove( toDel);
       
 
