@@ -317,7 +317,7 @@ mc.get('tap').requireFailure('doubletap');
 
             console.log(cameraX,cameraY,cameraZ);
 
-            document.getElementById("resultDIV").innerHTML = ("tap: "+ intersects[0].object.id);
+            document.getElementById("resultDIV").innerHTML = ("double tap: "+ intersects[0].object.id);
 
           }      
         }
@@ -328,6 +328,7 @@ mc.get('tap').requireFailure('doubletap');
 
 
         if(event.type === 'panleft' ){
+          console.log(event);
         for(i = 0; i < 1; i++) {
           hour -= 1;
             if(hour < 0) {
@@ -342,6 +343,7 @@ mc.get('tap').requireFailure('doubletap');
       }
 
       if(event.type === 'panright' ){
+        console.log(event);
         for(i = 0; i < 1; i++) {
           hour += 1;
           if(hour > 23) {
@@ -356,6 +358,7 @@ mc.get('tap').requireFailure('doubletap');
       }
 
       if(event.type === 'panup'){
+        console.log(event);
         for(i = 0; i < 1; i++) {
           mins += 1;
           if(mins > 59) {
@@ -371,6 +374,7 @@ mc.get('tap').requireFailure('doubletap');
       }
 
       if(event.type === 'pandown'){
+        console.log(event);
         for(i = 0; i < 1; i++) {
           mins -= 1;
           if(mins < 0) {
@@ -379,10 +383,12 @@ mc.get('tap').requireFailure('doubletap');
         }
           if(mins < 10) {
           document.getElementById("mins").innerHTML = '0' + mins;
+
         } else {
           document.getElementById("mins").innerHTML = mins;
         }
       }if(event.type === 'tap'){
+        console.log(event);
         editMode = false;
    
       }
