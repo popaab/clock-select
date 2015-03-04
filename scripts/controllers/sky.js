@@ -166,9 +166,6 @@ function init()
           mainTime.position.x = 0;
           mainTime.position.y = 0;
           mainTime.position.z = 0;
-          mainTime.rotation.y = 0; 
-          mainTime.rotation.x = 0;
-          mainTime.rotation.z = 0;
 
           scene.add(mainTime);
           // targetList.push(mainTime);
