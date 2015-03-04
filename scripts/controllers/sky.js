@@ -281,9 +281,9 @@ function render()
             intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
             console.log(intersects[0].object.id);
             k = targetList.indexOf(intersects[0].object.id);
-            selectedObject = intersects[0].object;
+            selectedObject = toDel= intersects[0].object;
 
-            toDel = intersects[0].object;
+            
             cameraX = selectedObject.position.x;
             cameraY = selectedObject.position.y;
             cameraZ = -selectedObject.position.z + 200;
@@ -303,8 +303,9 @@ function render()
         controls2.enable = false;
         if( event.pointerType === "touch"){
  
-            
-            scene.remove( toDel);
+            if(toDel.object.id !=== 8){
+              scene.remove( toDel);
+            }
 
 
            document.getElementById("resultDIV").innerHTML = ("deleted: "+ k);
