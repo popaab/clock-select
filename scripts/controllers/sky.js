@@ -434,9 +434,9 @@ function update()
 
 function render() 
 {
-rotation_matrix = new THREE.Matrix4().setRotationX(.01);
+rotation_matrix = new THREE.Matrix4().makeRotationX(.01);;
 rotation_matrix.multiplySelf(mainTime.matrix);
-mainTime.rotation.setRotationFromMatrix(rotation_matrix);
+mainTime.rotation.getRotationFromMatrix(mesh.matrix);
   deltaTime = clock.getDelta();
   particleSystem.rotation.y += deltaTime/40;
   // mainTime.rotation.y += 0.05;
