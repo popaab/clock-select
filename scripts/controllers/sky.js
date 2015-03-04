@@ -251,6 +251,7 @@ var spritey2 = makeTextSprite( getRandom(0, 24) + " : " + getRandom(0, 60),
   // wireMesh object is added to the original as a sub-object
   octa.add(wireOcta );
   octa.add (spritey);
+  octa.add (spritey2);
   var tween = {
     scale: 1,
     go: function() {
