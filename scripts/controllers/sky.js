@@ -159,13 +159,14 @@ function init()
 
    
     var mainTime = new THREE.Mesh(new THREE.TetrahedronGeometry(100, 3), shiny);
-    mainTime.add(new THREE.Axis());
-    mainTime.rotation.set(Math.PI/2, Math.PI/4, Math.PI/4);
-    mainTime.matrix.setRotationFromEuler(mainTime.rotation);
+    mainTime.name = 'clock';
 
           mainTime.position.x = 0;
           mainTime.position.y = 0;
           mainTime.position.z = 0;
+          mainTime.rotation.x = 0;
+          mainTime.rotation.y = 0;
+          mainTime.rotation.z = 0;
 
           scene.add(mainTime);
           // targetList.push(mainTime);
@@ -434,14 +435,13 @@ function update()
 
 function render() 
 {
-rotation_matrix = new THREE.Matrix4().makeRotationX(.01);;
-rotation_matrix.multiplySelf(mainTime.matrix);
-mainTime.rotation.getRotationFromMatrix(mesh.matrix);
+  renderer.render( scene, camera );
+scene.getObjectByName('clock').rotation.x += 0.05;
   deltaTime = clock.getDelta();
   particleSystem.rotation.y += deltaTime/40;
   // mainTime.rotation.y += 0.05;
 //   mainTime.rotation.y += ( targetRotationX - mainTime.rotation.y ) * 0.1;
 // mainTime.rotation.x += ( targetRotationY - mainTime.rotation.x ) * 0.1;
-  renderer.render( scene, camera );
+  
 }
 
