@@ -247,7 +247,7 @@ function addOcta(x,y,z) {
   var tween = {
     scale: 1,
     go: function() {
-      TweenLite.to(octa.scale, .4, {
+      TweenLite.to(octa.scale, 2, {
         x: this.scale,
         y: this.scale,
         z: this.scale,
