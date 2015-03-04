@@ -240,7 +240,7 @@ function addOcta(x,y,z) {
   var wireOcta = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 'white', wireframe: true }));
   var spritey = makeTextSprite( "Alarm " + numb, 
     { fontsize: 32, fontface: "Lato"} );
-  spritey.position.set(x -190,y -50,z );
+  spritey.position.set(x -190,y -50,z -600);
 
   if( amountNow <= maxAlarms){
 
@@ -254,13 +254,14 @@ function addOcta(x,y,z) {
 }
 
 }
-      function alarmNumbers() {
+
+function alarmNumbers() {
 
         if (alarmEdit === true) {
           document.getElementById("alarmTitle").style.visibility = "visble";
           document.getElementById("hour").style.visibility = "visble";
           document.getElementById("mins").style.visibility = "visble";
-      } else {
+      } if (alarmEdit === false){
         document.getElementById("alarmTitle").style.visibility = "hidden";
         document.getElementById("hour").style.visibility = "hidden";
         document.getElementById("mins").style.visibility = "hidden";
@@ -317,9 +318,9 @@ mc.get('tap').requireFailure('doubletap');
     function manageMultitouchAlarm(event){
     
     if(event.type === 'doubletap'){
-      
+       alarmEdit = tru
        if( event.pointerType === "touch"){
-        alarmEdit = true;
+       
         alarmNumbers();
         
           console.log(event);
@@ -332,8 +333,8 @@ mc.get('tap').requireFailure('doubletap');
         
           if ( intersects.length > 0 ) {
 
-            setTimeout( function (){ intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );}, 5000);
-            intersects[ 0 ].object.material.color.setHex( 'white');
+            intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+            
             console.log(intersects[0].object.id);
             k = targetList.indexOf(intersects[0].object.id);
             selectedObject = intersects[0].object;
@@ -446,8 +447,8 @@ mc.get('tap').requireFailure('doubletap');
         
           if ( intersects.length > 0 ) {
 
-              setTimeout( function (){intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );}, 5000);
-              intersects[ 0 ].object.material.color.setHex( 'white');
+              intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+              
             console.log(intersects[0].object.id);
             k = targetList.indexOf(intersects[0].object.id);
             selectedObject = intersects[0].object;
