@@ -327,7 +327,7 @@ mc.get('tap').requireFailure('doubletap');
 
 
 
-        if(event.type === 'panmove' && event.type === 'panleft' ){
+        if(event.type === 'panleft' ){
         for(i = 0; i < 1; i++) {
           hour -= 1;
             if(hour < 0) {
@@ -341,7 +341,7 @@ mc.get('tap').requireFailure('doubletap');
         }
       }
 
-      if(event.type === 'panmove' && event.type === 'panright' ){
+      if(event.type === 'panright' ){
         for(i = 0; i < 1; i++) {
           hour += 1;
           if(hour > 23) {
@@ -355,7 +355,7 @@ mc.get('tap').requireFailure('doubletap');
         }
       }
 
-      if(event.type === 'panmove' && event.type === 'panup'){
+      if(event.type === 'panup'){
         for(i = 0; i < 1; i++) {
           mins += 1;
           if(mins > 59) {
@@ -370,7 +370,7 @@ mc.get('tap').requireFailure('doubletap');
           
       }
 
-      if(event.type === 'panmove' && event.type === 'pandown'){
+      if(event.type === 'pandown'){
         for(i = 0; i < 1; i++) {
           mins -= 1;
           if(mins < 0) {
